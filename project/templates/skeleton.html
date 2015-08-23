@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="{% block html_attr_alt %}{% endblock %}no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="{% block html_attr %}{% endblock %}no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>{% block head_title %}{{ SITE.name }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ STATIC_URL }}images/theme/favicon.ico">
+    {% block header_content %}{% spaceless %}
+        {% block head_metas %}
+            <meta name="robots" content="index,follow,all">
+        {% endblock %}
+
+        {% block page_base_links %}
+            <link rel="stylesheet" href="{{ STATIC_URL }}css/app.css">
+        {% endblock %}
+        
+        {% block page_more_links %}{% endblock %}
+        {% block page_base_js %}
+            <script type="text/javascript" src="{{ STATIC_URL }}js/foundation5/vendor/modernizr.js"></script>
+        {% endblock %}
+        
+    {% endspaceless %}{% endblock %}
+</head>
+
+<body{% block body_attr %}{% endblock %}>
+    {% block header_topbar %}{% spaceless %}
+    <div id="header-container"{% block header_topbar_attr %} class="contain-to-grid"{% endblock %}>
+        <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+                <li class="name">
+                    <p class="title-1">
+                        <a href="//{{ SITE.domain }}" title="{{ SITE.name }}" class="logo">
+                            {% comment %}<img src="{{ STATIC_URL }}images/theme/logo.png" alt="{{ SITE.name }}">{% endcomment %}
+                            <i class="icon-recalbox"></i>
+                        </a>
+                    </p>
+                </li>
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+            </ul>
+
+            <div class="top-bar-section">
+                <ul class="right social-badges">
+                    <li><a href="https://twitter.com/digitaLumberjak" target="_blank"><i class="icon-twitter-square"></i></a></li>
+                    <li><a href="https://www.facebook.com/recalbox" target="_blank"><i class="icon-facebook-square"></i></a></li>
+                    <li><a href="https://github.com/digitalLumberjack/recalbox-os" target="_blank"><i class="icon-github-square"></i></a></li>
+                </ul>
+
+                <ul class="left">
+                    <li><a href="{% url 'manager:bios' %}"><i class="icon-nes-console"></i> Bios</a></li>
+                    <li><a href="{% url 'manager:roms-systems' %}"><i class="icon-nes-cartridge"></i> Roms</a></li>
+                    <li><a href="{% url 'manager:logs' %}"><i class="icon-book"></i> Logs</a></li>
+                    <li><a href="{% url 'manager:config' %}"><i class="icon-cogs"></i> Configuration</a></li>
+                    <li class="has-dropdown">
+                        <a href="#"><i class="icon-external-link"></i> Links</a>
+                        <ul class="dropdown">
+                            <li><a href="http://blog.recalbox.com/forums" target="_blank">Forum</a></li>
+                            <li><a href="https://kiwiirc.com/client/irc.freenode.net/#recalbox" target="_blank">IRC</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+    {% endspaceless %}{% endblock %}
+    
+    {% block subheader_container %}{% endblock %}
+
+    {% block content_container %}<div id="body_content"{% block content_container_attrs %}{% endblock %}>
+        {% block base_content %}{% endblock %}
+    </div>{% endblock %}
+
+    {% comment %}{% block footer_container %}{% spaceless %}
+    <footer>
+        <div class="section">
+            <div class="row copyright larger">
+                <div class="small-12 columns">
+                    <p>Here comes big great footer credentials</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% endspaceless %}{% endblock %}{% endcomment %}
+
+    {% spaceless %}
+        {% block page_more_js %}
+            <script type="text/javascript" src="{{ STATIC_URL }}js/foundation5/vendor/modernizr.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}js/foundation5/vendor/jquery.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}js/foundation5/vendor/jquery.cookie.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}js/foundation5/foundation.min.js"></script>
+            <script type="text/javascript" src="{{ STATIC_URL }}js/app.js"></script>
+        {% endblock %}
+    {% endspaceless %}
+</body>
+</html>

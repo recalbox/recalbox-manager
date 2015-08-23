@@ -1,0 +1,81 @@
+//@import "components/icomoon";
+
+
+/*
+ * Breadcrumbs customize
+ */
+.breadcrumbs{
+    margin-left: $column-gutter/2;
+    margin-right: $column-gutter/2;
+    position: relative;
+    padding-left: 0;
+    background-color: transparent;
+    
+    a:hover{
+        color: $black;
+    }
+    
+    & > * {
+        font-weight: 400;
+        
+        &>span{
+            color: $black;
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+        
+        &>a{
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+        }
+        
+        &::before {
+            @extend .icon-angle-right:before;
+            margin: 0 0.5rem;
+            font-family: icomoon;
+            line-height: inherit;
+            color: inherit;
+            position: relative;
+            top: 0;
+        }
+        &:first-child{
+            position: relative;
+            top: 0;
+            &::before {
+                @extend .icon-home:before;
+                position: relative;
+                top: 1px;
+                font-family: icomoon;
+                font-size: 0.9rem;
+                color: $primary-color;
+                margin-right: 0.4rem;
+            }
+        }
+    }
+}
+/*
+ * **
+ * Body contents elements
+ * **
+ */
+// Dropzone (deprecated ?)
+.dropzone.dz-clickable{
+    input[type="file"]{
+        display: none;
+    }
+}
+
+.dashboard-icons{
+    padding: $column-gutter 0;
+}
+
+// Emulation systems list
+.systems-list{
+    .folder{
+        a > i{
+            display: block;
+        }
+    }
+}

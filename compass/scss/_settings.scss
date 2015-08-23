@@ -1,0 +1,35 @@
+@import "foundation/functions";
+
+// 
+// FOUNDATION SETTINGS
+// See utils/_sample_settings.scss for a full list of available settings
+//
+
+//
+// Settings overrides goes below
+//
+
+// Consistant colors names facility
+$white: #ffffff;
+$black: #000000;
+$DarkPastelBlue: #34495e;
+
+// c. Global
+$base-font-size: 14px;
+$rem-base: $base-font-size;
+
+// WARNING: Lucida Grande is probably not available on non linux systems
+$body-font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+
+// 04. Breadcrumbs
+$crumb-bg: $white;
+$crumb-border-size: 0;
+
+// 34. Top Bar
+$topbar-height: rem-calc(70px);
+$topbar-bg-color: $DarkPastelBlue;
+$topbar-bg: $topbar-bg-color;
+$topbar-link-bg-active-hover: scale-color($DarkPastelBlue, $lightness: -14%);
+
+// Available sizes class names on flexbox inline list
+$flex-inline-list-sizes: 14.6666 16.6666 18 20 23 25 31.3333 33.3333 48 50 98 100;

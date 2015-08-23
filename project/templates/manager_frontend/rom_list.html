@@ -1,0 +1,63 @@
+{% extends "manager_frontend/base.html" %}
+
+{% block manager_content %}
+<ul class="inline-list">
+    <li><span class="label info radius">Path: {{ system_path }}</span></li>
+    <li><span class="label info radius">Total: {{ rom_list|length }}</span></li>
+</ul>
+
+<form action="." method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="row collapse">
+                {% if messages %}{% for message in messages %}
+                <div class="alert-box{% if message.tags %} {{ message.tags }}{% endif %}" data-alert>
+                    {{ message }}
+                    <a href="#" class="close">&times;</a>
+                </div>
+                {% endfor %}{% endif %}
+                
+                {% if form.rom.errors %}
+                <div class="small-12 columns">
+                    {% for error in form.rom.errors %}
+                    <small class="error">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <div class="small-3 columns">
+                    <span class="prefix">Upload a rom</span>
+                </div>
+                <div class="small-7 columns">
+                    {{ form.rom }}
+                </div>
+                <div class="small-2 columns">
+                    <input type="submit" value="Send" class="button postfix">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<table class="expand">
+    <thead>
+        <tr>
+            <th class="text-right"><small>#</small></th>
+            <th>Filename</th>
+            <th>Size</th>
+            <th class="text-center">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for filename,size in rom_list %}
+        <tr>
+            <td class="text-right"><small>{{ forloop.counter }}</small></td>
+            <td>{{ filename }}</td>
+            <td>{{ size|filesizeformat }}</td>
+            <td class="text-center">x</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

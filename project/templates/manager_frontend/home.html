@@ -1,0 +1,41 @@
+{% extends "manager_frontend/base.html" %}
+{% block breadcrumbs_block %}{% endblock %}
+
+{% block manager_title %}{% endblock %}
+
+{% block manager_content %}
+<div class="row dashboard-icons">
+    <div class="small-12 large-6 columns">
+        <a href="{% url 'manager:bios' %}" class="button reverse-primary large expand radius text-center">
+            <i class="icon-nes-console icon-4x icon-block"></i>
+            <p>
+                Manage all supported <strong>Bios</strong> files for emulated systems
+            </p>
+        </a>
+    </div>
+    <div class="small-12 large-6 columns">
+        <a href="{% url 'manager:roms-systems' %}" class="button reverse-primary large expand radius text-center">
+            <i class="icon-nes-cartridge icon-4x icon-block"></i>
+            <p>
+                Manage <strong>Rom</strong> files for emulated systems
+            </p>
+        </a>
+    </div>
+    <div class="small-12 large-6 columns">
+        <a href="{% url 'manager:logs' %}" class="button reverse-primary large expand radius text-center">
+            <i class="icon-book icon-4x icon-block"></i>
+            <p>
+                Read the Recalbox <strong>logs</strong>
+            </p>
+        </a>
+    </div>
+    <div class="small-12 large-6 columns">
+        <a href="{% url 'manager:config' %}" class="button reverse-primary large expand radius text-center">
+            <i class="icon-cogs icon-4x icon-block"></i>
+            <p>
+                Read and edit the Recalbox <strong>Configuration</strong> file
+            </p>
+        </a>
+    </div>
+</div>
+{% endblock %}

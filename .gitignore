@@ -1,0 +1,29 @@
+*.pyc
+
+# Various directory index, temp file and editor's config
+*.DS_Store
+*.idea
+.*.swp
+
+# virtualenv
+/bin
+/include
+/lib
+/lib64
+/build
+/local
+
+# buildout
+*.egg-info
+.installed.cfg
+/develop-eggs
+/django-apps-src
+/eggs
+/parts
+/etc
+
+# Various
+node_modules
+foundation5
+
+*.sqlite3

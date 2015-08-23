@@ -1,0 +1,89 @@
+@charset "UTF-8";
+
+@import "settings";
+@import "compass";
+
+/*
+ * Full Foundation components import for development process
+ * 
+ * WARNING: Do not use this full import when passing to production, 
+ * instead select all needed component one by one
+ */
+@import "foundation";
+
+/*
+ * All foundation components, one by one
+*/
+/*
+@import
+  "foundation/components/accordion",
+  "foundation/components/alert-boxes",
+  "foundation/components/block-grid",
+  "foundation/components/breadcrumbs",
+  "foundation/components/button-groups",
+  "foundation/components/buttons",
+  "foundation/components/clearing",
+  "foundation/components/dropdown",
+  "foundation/components/dropdown-buttons",
+  "foundation/components/flex-video",
+  "foundation/components/forms",
+  "foundation/components/grid",
+  "foundation/components/inline-lists",
+  "foundation/components/joyride",
+  "foundation/components/keystrokes",
+  "foundation/components/labels",
+  "foundation/components/magellan",
+  "foundation/components/orbit",
+  "foundation/components/pagination",
+  "foundation/components/panels",
+  "foundation/components/pricing-tables",
+  "foundation/components/progress-bars",
+  "foundation/components/reveal",
+  "foundation/components/side-nav",
+  "foundation/components/split-buttons",
+  "foundation/components/sub-nav",
+  "foundation/components/switches",
+  "foundation/components/tables",
+  "foundation/components/tabs",
+  "foundation/components/thumbs",
+  "foundation/components/tooltips",
+  "foundation/components/top-bar",
+  "foundation/components/type",
+  "foundation/components/offcanvas",
+  "foundation/components/visibility";
+*/
+
+/* 
+ * Used components
+ * 
+ * Load only what is needed, not all components
+ */
+@import "utils/patchs";
+@import "components/icomoon";
+@import "utils/addons";
+@import "vendor/dropzone";
+
+@import "components/header";
+//@import "components/footer";
+#body_content{
+    @import "components/contents";
+}
+
+
+/* Foundation icons sizes */
+.size-12 { font-size: 12px; }
+.size-14 { font-size: 14px; }
+.size-16 { font-size: 16px; }
+.size-18 { font-size: 18px; }
+.size-21 { font-size: 21px; }
+.size-24 { font-size: 24px; }
+.size-36 { font-size: 36px; }
+.size-48 { font-size: 48px; }
+.size-60 { font-size: 60px; }
+.size-72 { font-size: 72px; }
+
+/*
+ * Sometime, you need fallback hacks for some specific browsers, it should allways be 
+ * at the end to be able to override every others components
+ */
+@import "utils/browser_fallbacks";

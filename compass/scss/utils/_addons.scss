@@ -1,0 +1,224 @@
+//@import "components/icomoon";
+
+// Duplicate titles behavior for simple paragraph
+p.title-1{
+    @extend h1;
+}
+p.title-2{
+    @extend h2;
+}
+p.title-3{
+    @extend h3;
+}
+p.title-4{
+    @extend h4;
+}
+p.title-5{
+    @extend h5;
+}
+p.title-6{
+    @extend h6;
+}
+
+// Remove all margins
+.unmarged{
+    margin: 0;
+}
+
+strong.upper{
+    text-transform: uppercase;
+}
+
+// Panel addons
+.panel{
+    // Remove additional titles top margin
+    h1:first-child,
+    h2:first-child,
+    h3:first-child,
+    h4:first-child,
+    h5:first-child,
+    h6:first-child,
+    p:first-child{
+        margin-top: 0 !important;
+    }
+    
+    // Remove negative children for direct .row elements
+    &>.row,
+    &> * > .row{
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+// Improve tables
+table{
+    // Expand table to the full width
+    &.expand{
+        width: 100%;
+    }
+    
+    // Active/inactive row
+    tr.active{
+        td{
+            font-weight: bold;
+        }
+    }
+    tr.disabled{
+        opacity: .7;
+    }
+}
+
+// Shortcut for relative position
+.relative-position{
+    position: relative;
+}
+
+// Centered image as a block
+img.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+// Proportionally expand image width to its container width
+img.expanded{
+    width: 100%;
+    height: auto;
+}
+
+// Sometime we need to separate an img from an another adjacent element
+img.divider{
+    margin-bottom: $paragraph-margin-bottom;
+}
+
+// Some easy text shadow class
+.shadow{
+    @include text-shadow(rgba(30, 30, 30, 0.5) 2px 2px 3px);
+}
+
+/*
+ * Buttons addons and improvements
+ */
+button, .button{
+    &.reverse-primary {
+        color: $primary-color;
+        background-color: $white;
+        border-color: $primary-color;
+        border-style: solid;
+        border-width: 1px;
+        
+        &:hover {
+            color: $white;
+            background-color: $primary-color;
+        }
+    }
+    
+    // Make stronger button
+    &.strong{
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+
+/* 
+ * Some usefull stuff for Grids
+ */
+// Fluid row, take the full width but keep normal row and columns behaviors
+.row.row-fluid{
+    max-width: 100%;
+    // Restore the initial behavior restrained to the grid
+    .row{
+        margin: auto;
+        @include grid-row;
+        // Preserve nested fluid behavior
+        &.row-fluid{
+            max-width: 100%;
+        }
+    }
+}
+
+// More larger row (around ~1328px instead of 1000px) for extra 
+// large screens
+$row-larger-width: 83rem !default;
+.row.larger{
+    @media #{$xlarge-up} {
+        max-width: $row-larger-width;
+    }
+}
+
+// Remove column padding for simple inner
+.row .columns > .row-inner{
+    margin-left: -($column-gutter/2);
+    margin-right: -($column-gutter/2);
+}
+
+// Remove padding on columns
+.columns{
+    &.unpadded{
+        padding: 0;
+    }
+    @media #{$small-only} {
+        &.small-unpadded{
+            padding: 0;
+        }
+    }
+    @media #{$medium-only} {
+        &.medium-unpadded{
+            padding: 0;
+        }
+    }
+    @media #{$large-only} {
+        &.large-unpadded{
+            padding: 0;
+        }
+    }
+}
+
+/*
+ * Supplementary divider classes
+ */
+// Apply margin bottom on rows
+.row.divider{
+    margin-bottom: rem-calc(10px);
+    @media #{$medium-up} {
+        margin-bottom: rem-calc(30px);
+    }
+}
+// By default, columns dont needs of a divider in medium display and up, 
+// because they should probably floating
+.columns.divider{
+    margin-bottom: rem-calc(5px);
+    @media #{$medium-up} {
+        margin-bottom: 0;
+    }
+}
+
+/*
+ * Forms addons
+ */
+$form-spacing: rem-calc(16) !default; // Needed because this part dont have access to Foundation 'components/forms' vars
+form{
+    // Container for inline inputs, all aligned, almost collapsed
+    .inline{
+        .divide-for-after{
+            padding-right: 0.5rem;
+        }
+        // No matter its styles, button must not be bigger than inputs
+        .button{
+            padding-top: ($form-spacing / 2) - rem-calc(1px);
+            padding-bottom: ($form-spacing / 2);
+        }
+    }
+    // Container that hide their labels
+    .hide-label{
+        label,
+        .label{
+            display: none;
+        }
+    }
+    // Inherit the same styles from text input but probably wont works well on 
+    // some browsers because file input is very special
+    input[type="file"]{
+        @extend input[type="text"];
+        padding: 0;
+    }
+}

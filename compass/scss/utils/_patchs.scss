@@ -1,0 +1,34 @@
+/*
+ * Here put your Foundation GLOBAL patchs
+ */
+.top-bar{
+    .name{
+        // <p> in .name should have the same settings than a <h1>
+        p{
+            line-height: $topbar-height;
+            font-size: $topbar-title-font-size;
+            margin: 0;
+            a {
+                font-weight: $topbar-title-weight;
+                color: $topbar-link-color;
+                width: 75%;
+                display: block;
+                padding: 0 $topbar-link-padding;
+                @media #{$topbar-media-query} {
+                    width: auto;
+                }
+            }
+        }
+    }
+}
+
+// More readable pagination numbers
+ul.pagination li{
+    font-weight: 400;
+}
+
+// Remove unecessary bottom margin from buttons into paragraphs
+p > .button,
+p > button{
+    margin-bottom: 0;
+}

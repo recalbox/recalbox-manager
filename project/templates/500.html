@@ -1,0 +1,19 @@
+{% load i18n %}<!DOCTYPE html>
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>{% trans "Error 500" %} - {% trans "Internal Server Error" %}</title>
+    <meta name="robot" content="noindex, nofollow">
+</head>
+<body>
+
+<h1>{{ SITE.name }}</h1>
+
+<div class="error">
+    <h2>{% trans "Error 500" %}, {% trans "Internal Server Error" %}</h2>
+    <p>{% trans "The server encountered an internal server error or misconfiguration and was unable to complete your request." %}.</p>
+</div>
+
+</body>
+</html>

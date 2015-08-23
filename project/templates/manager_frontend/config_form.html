@@ -1,0 +1,11 @@
+{% extends "manager_frontend/base.html" %}
+
+{% block manager_content %}
+<ul class="inline-list">
+    <li><span class="label info radius">Path: {{ config_filepath }}</span></li>
+</ul>
+
+<div>
+    <textarea rows="50">{{ config_content }}</textarea>
+</div>
+{% endblock %}

@@ -1,0 +1,241 @@
+/*Fonts library*/
+@font-face {
+  font-family: 'icomoon';
+  src:font-url('icomoon.eot');
+  src:font-url('icomoon.eot?#iefix') format('embedded-opentype'),
+  font-url('icomoon.ttf') format('truetype'),
+  font-url('icomoon.woff') format('woff'),
+  font-url('icomoon.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"], .icomoon-icon{
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  // Better Font Rendering
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  .shim{
+        display: none;
+   }
+}
+
+// Icon sticked in corner of a block element
+.sticked-icon{
+    display: block;
+    position: relative;
+    padding-left: rem-calc(40px);
+    font-family: inherit;
+    
+    &[class^="icon-"]:before,
+    &[class*=" icon-"]:before{
+        position: absolute;
+        top: rem-calc(15px);
+        left: rem-calc(15px);
+        font-family: 'icomoon';
+        //font-size: rem-calc(15px);
+    }
+  
+    &>.shim{
+            display: none;
+    }
+}
+
+// Prepend text button with an icon from a class (without <i class="">)
+.button[class^="icon-"], .button[class*=" icon-"] {
+    font-family: inherit;
+    
+    &:before{
+        font-family: 'icomoon';
+        margin-right: rem-calc(5px);
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+  &.icoAft {
+
+    &:before{
+     position:reltive;
+      right:0.5rem;
+      width:2rem;
+    }
+
+
+  }
+
+}
+
+.icon-block{
+    display: block;
+}
+
+// Icon Sizes
+.icon-2x{
+    font-size: 2em;
+    
+    &.sticked-icon{
+        font-size: inherit;
+        padding-left: 3.5em;
+        
+        &[class^="icon-"]:before,
+        &[class*=" icon-"]:before{
+            position: absolute;
+            top: 0.5em;
+            left: 0.5em;
+            font-family: 'icomoon';
+            font-size: 2em;
+        }
+    }
+  
+    &>.shim{
+            display: none;
+    }
+}
+.icon-3x{
+    font-size: 3em;
+    
+    &.sticked-icon{
+        font-size: inherit;
+        padding-left: 5.5em;
+        
+        &[class^="icon-"]:before,
+        &[class*=" icon-"]:before{
+            position: absolute;
+            top: 0.5em;
+            left: 0.5em;
+            font-family: 'icomoon';
+            font-size: 3em;
+        }
+    }
+  
+    &>.shim{
+            display: none;
+    }
+}
+.icon-4x{
+    font-size: 4em;
+    
+    &.sticked-icon{
+        font-size: inherit;
+        padding-left: 6.5em;
+        
+        &[class^="icon-"]:before,
+        &[class*=" icon-"]:before{
+            position: absolute;
+            top: 0.5em;
+            left: 0.5em;
+            font-family: 'icomoon';
+            font-size: 4em;
+        }
+    }
+  
+    &>.shim{
+            display: none;
+    }
+}
+.icon-2x-solo {
+  padding-left:3rem;
+  padding-right:1rem;
+  padding-top:1rem;
+  padding-bottom:1rem;
+    &[class^="icon-"]:before,
+    &[class*=" icon-"]:before{
+      font-size: 2rem;
+      position: absolute;
+      top: 0.25em;
+      left: 0.25em;
+      font-family: 'icomoon';
+  }
+  &.icoAft {
+
+    &[class^="icon-"]:before,
+    &[class*=" icon-"]:before{
+      top: 0.25em;
+      right: 0em;
+      left:auto;
+    }
+  }
+  &.button.go {
+
+    margin-left:1rem;
+    padding-right:3rem;
+    padding-left:1rem;
+    padding-top:1rem;
+    padding-bottom:1rem;
+
+  }
+
+}
+
+// Icon list
+/*
+ * 
+ * HERE GOES THE ICONS FROM THE style.css bundled in the icomoon archive
+ * 
+ */
+.icon-recalbox:before {
+    content: "\e602";
+}
+.icon-nes-cartridge:before {
+    content: "\e600";
+}
+.icon-nes-console:before {
+    content: "\e601";
+}
+.icon-trash-o:before {
+    content: "\f014";
+}
+.icon-home:before {
+    content: "\f015";
+}
+.icon-book:before {
+    content: "\f02d";
+}
+.icon-chevron-left:before {
+    content: "\f053";
+}
+.icon-chevron-right:before {
+    content: "\f054";
+}
+.icon-folder:before {
+    content: "\f07b";
+}
+.icon-twitter-square:before {
+    content: "\f081";
+}
+.icon-facebook-square:before {
+    content: "\f082";
+}
+.icon-cogs:before {
+    content: "\f085";
+}
+.icon-external-link:before {
+    content: "\f08e";
+}
+.icon-github-square:before {
+    content: "\f092";
+}
+.icon-google-plus-square:before {
+    content: "\f0d4";
+}
+.icon-angle-left:before {
+    content: "\f104";
+}
+.icon-angle-right:before {
+    content: "\f105";
+}

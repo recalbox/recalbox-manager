@@ -1,0 +1,57 @@
+@import "compass/css3";
+// Strip unit from a number value
+// Usage :
+//    strip-units(16px);
+// Will return "16" (as a number)
+@function strip-units($number) {
+    @return $number / ($number * 0 + 1);
+}
+
+// Mixin to make positionning
+@mixin positionning($name: absolute, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $name;
+    @if $top {
+        top: $top;
+    }
+    @if $right {
+        right: $right;
+    }
+    @if $bottom {
+        bottom: $bottom;
+    }
+    @if $left {
+        left: $left;
+    }
+}
+
+// Base stuff to add for content with Foundation
+@mixin global-addons(){
+    // Image en bloc centré
+    img.centered{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    // Etire proportionellement l'image à la largeur de son conteneur
+    img.expanded{
+        width: 100%;
+        height: auto;
+    }
+}
+
+// Base stuff to add for content with Foundation
+@mixin foundation-content-base(){
+    
+    .nontabular-table{
+        vertical-align:top;
+    }
+    .table-fiftyfifty td{
+        width: 50%;
+    }
+    
+    h1, h2, h3, h4, h5, h6{ font-weight: 400; }
+    h1{ font-size: 30px; }
+    h2{ font-size: 26px; }
+    h3{ font-size: 21px; }
+    h4{ font-size: 18px; }
+}

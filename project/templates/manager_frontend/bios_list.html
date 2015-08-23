@@ -1,0 +1,63 @@
+{% extends "manager_frontend/base.html" %}
+
+{% block manager_content %}
+<ul class="inline-list">
+    <li><span class="label info radius">Path: {{ bios_path }}</span></li>
+    <li><span class="label info radius">Total: {{ existing_bios_length }}</span></li>
+</ul>
+
+<form action="." method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="row collapse">
+                {% if messages %}{% for message in messages %}
+                <div class="alert-box{% if message.tags %} {{ message.tags }}{% endif %}" data-alert>
+                    {{ message }}
+                    <a href="#" class="close">&times;</a>
+                </div>
+                {% endfor %}{% endif %}
+                
+                {% if form.bios.errors %}
+                <div class="small-12 columns">
+                    {% for error in form.bios.errors %}
+                    <small class="error">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <div class="small-3 columns">
+                    <span class="prefix">Upload a bios</span>
+                </div>
+                <div class="small-7 columns">
+                    {{ form.bios }}
+                </div>
+                <div class="small-2 columns">
+                    <input type="submit" value="Send" class="button postfix">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<table class="expand">
+    <thead>
+        <tr>
+            <th class="text-right"><small>#</small></th>
+            <th>System</th>
+            <th>Filename</th>
+            <th>MD5 checksum</th>
+            <th class="text-center">Delete</th>
+        </tr>
+    </thead>
+    <tbody>{% for md5hash,filename,system,exist in bios_manifest %}
+        <tr class="{% if exist %}active{% else %}disabled{% endif %}">
+            <td class="text-right"><small>{{ forloop.counter }}</small></td>
+            <td>{{ system }}</td>
+            <td>{{ filename }}</td>
+            <td>{{ md5hash }}</td>
+            <td class="text-center">{% if exist %}x{% else %}&nbsp;{% endif %}</td>
+        </tr>{% endfor %}
+    </tbody>
+</table>
+{% endblock %}

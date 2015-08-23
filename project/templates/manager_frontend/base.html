@@ -1,0 +1,14 @@
+{% extends "skeleton.html" %}
+{% load i18n autobreadcrumb %}
+
+{% block head_title %}{% current_title_from_breadcrumbs %} - {{ block.super }}{% endblock %}
+
+{% block base_content %}
+<div class="row manager_frontend">
+    <div class="small-12 columns">{% spaceless %}
+        {% block breadcrumbs_block %}{% autobreadcrumbs_tag %}{% endblock %}
+        {% block manager_title %}<h1>{% current_title_from_breadcrumbs %}</h1>{% endblock %}
+        {% block manager_content %}{% endblock %}
+    {% endspaceless %}</div>
+</div>
+{% endblock %}

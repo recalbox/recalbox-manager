@@ -1,0 +1,19 @@
+/*
+ * Browsers fallbacks using Modernizr detection classes
+ */
+
+// Fix issues with brower without flexbox support like IE9
+html.no-flexbox{
+
+    #body_content{
+        .intro-related{
+            .flex-inline-list{
+                &>.cell{
+                    padding-left: 0 !important;
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+
+}

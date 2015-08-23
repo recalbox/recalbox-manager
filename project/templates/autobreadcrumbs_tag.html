@@ -1,0 +1,3 @@
+<nav class="breadcrumbs">{% for crumb in elements %}
+    <a href="{{ crumb.url }}"{% if forloop.last %} class="current"{% endif %}>{{ crumb.title }}</a>
+{% endfor %}</nav>
