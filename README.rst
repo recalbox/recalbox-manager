@@ -25,7 +25,19 @@ Features
 Install
 *******
 
-*To do, actually this is just some notes not complete yet*
+Common Linux system
+-------------------
+
+Nothing special, it's just about to have PIP and virtualenv installed on your system, then use the Makefile action: ::
+
+    make install
+
+And voila, it's done.
+
+Recalbox system
+---------------
+
+This is different because Recalbox don't have all the common libraries and tools installed as on Linux system.
 
 Before doing anything, ensure the rpi can access to the internet else configure your network interface and if needed dns resolving.
 
@@ -50,6 +62,8 @@ Usage
     
 Development notes
 *****************
+
+#. You can install the project on common Linux system for development but you will need to reproduce the Recalbox file structure for Roms, Bios, Configuration file, log file, etc..
 
 #. CSS are compiled from Compass sources, you will need to install the right Compass (use the shipped ``Gemfile`` file) and Foundation 5 (use the dedicated Makefile action) versions;
 
