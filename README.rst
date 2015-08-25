@@ -63,20 +63,13 @@ Usage
 Development notes
 *****************
 
-#. You can install the project on common Linux system for development but you will need to reproduce the Recalbox file structure for Roms, Bios, Configuration file, log file, etc..
+#. You can install the project on common Linux system for development but you will need to reproduce the Recalbox file structure for Roms, Bios, Configuration file, log file, etc.. Or you can edit needed paths in project settings;
 
 #. CSS are compiled from Compass sources, you will need to install the right Compass (use the shipped ``Gemfile`` file) and Foundation 5 (use the dedicated Makefile action) versions;
 
-#. Python 2.7.9 is installed on Recalbox 3.2.11, so *pip* is near to be ready to use;
-
-#. UTC Timezone does not seems available, have to set settings.TIME_ZONE to None and set settings.USE_TZ to False and so it start with a dummy project freshly created from startproject Django command;
+#. Python 2.7.9 is installed on Recalbox 3.2.11, so *pip* is near to be ready to use, just have to install it the first time. This will results to install ``pip==1.5.6``.
 
 #. Python devel lib is not installed but will be may be needed to install some packages from eggs (actually not needed);
 
-PIP
----
+#. UTC Timezone does not seems available, have to set settings.TIME_ZONE to None and set settings.USE_TZ to False and so it start with a dummy project freshly created from startproject Django command;
 
-Python 2.7.9 is installed on Recalbox 3.2.11, so *pip* is near to be ready to use, just have to install it the first time.
-
-    
-This will results to install ``pip==1.5.6``.

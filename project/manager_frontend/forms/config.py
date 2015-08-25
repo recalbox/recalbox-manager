@@ -1,0 +1,36 @@
+# -*- coding: utf-8 -*-
+"""
+Recalbox Configuration forms
+"""
+import os
+
+from django.conf import settings
+from django import forms
+from django.utils.translation import ugettext_lazy as _
+from django.core.files.storage import FileSystemStorage
+
+from project.manager_frontend.forms import CrispyFormMixin
+from project.utils.imports import safe_import_module
+
+class ConfigEditForm(CrispyFormMixin, forms.Form):
+    """
+    Configuration Edit form
+    """
+    #crispy_form_helper_path = 'project.manager_frontend.forms.crispies.config_helper'
+    #crispy_form_helper_kwargs = {}
+    
+    content = forms.CharField(label=_('Content'), widget=forms.Textarea(attrs={'rows': 50}), required=True)
+    
+    def __init__(self, *args, **kwargs):
+        self.config_filepath = kwargs.pop('config_filepath')
+        
+        super(ConfigEditForm, self).__init__(*args, **kwargs)
+        super(forms.Form, self).__init__(*args, **kwargs)
+    
+    def save(self):
+        content = self.cleaned_data["content"]
+        
+        with open(self.config_filepath, 'w') as file:
+            file.write(content)
+       
+        return content

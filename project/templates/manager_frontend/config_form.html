@@ -5,7 +5,31 @@
     <li><span class="label info radius">Path: {{ config_filepath }}</span></li>
 </ul>
 
-<div>
-    <textarea rows="50">{{ config_content }}</textarea>
-</div>
+<form action="." method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="large-12 columns">
+            {% if messages %}{% for message in messages %}
+            <div class="alert-box{% if message.tags %} {{ message.tags }}{% endif %}" data-alert>
+                {{ message }}
+                <a href="#" class="close">&times;</a>
+            </div>
+            {% endfor %}{% endif %}
+            
+            {% if form.content.errors %}
+            <div>
+                {% for error in form.content.errors %}
+                <small class="error">{{ error }}</small>
+                {% endfor %}
+            </div>
+            {% endif %}
+            
+            {{ form.content }}
+            
+            <p class="text-center">
+                <input type="submit" value="Save" class="button">
+            </p>
+        </div>
+    </div>
+</form>
 {% endblock %}
