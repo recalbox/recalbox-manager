@@ -93,7 +93,6 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -139,13 +138,22 @@ STATICFILES_DIRS = (
 # For Django Debug Toolbar
 INTERNAL_IPS = ('192.168.0.112',)
 
+#
 # Recalbox needed paths
-RECALBOX_BIOS_PATH = "/recalbox/share/bios"
-RECALBOX_BIOS_MANIFEST_FILE = "readme.txt"
-RECALBOX_CONF_PATH = '/recalbox/share/system/recalbox.conf'
-RECALBOX_LOGFILE_PATH = "/recalbox.log"
-RECALBOX_ROMS_PATH = '/recalbox/share/roms'
+#
 
+# Path to directory that contains bios file
+RECALBOX_BIOS_PATH = "/recalbox/share/bios"
+# Path to directory that contains system roms directories
+RECALBOX_ROMS_PATH = '/recalbox/share/roms'
+# Path to the Recalbox configuration file
+RECALBOX_CONF_PATH = '/recalbox/share/system/recalbox.conf'
+# Path to the Recalbox configuration backup file
+RECALBOX_CONF_BACKUP_PATH = '/recalbox/share/system/recalbox.old.conf'
+# Path to the Recalbox logs file
+RECALBOX_LOGFILE_PATH = "/recalbox.log"
+
+# Default empty entry for a system unknowed from Manifest
 RECALBOX_SYSTEM_DEFAULT = {
     'name': 'Unknow',
     'extensions': [],
@@ -153,6 +161,8 @@ RECALBOX_SYSTEM_DEFAULT = {
     'bios': [],
 }
 
+# Recalbox manifest about system roms and bios
+# Will soon be parsed from Manifest XML file
 RECALBOX_MANIFEST = {
     'atari2600': {
         'name': 'Atari 2600',

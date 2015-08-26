@@ -92,7 +92,6 @@ class BiosListView(FormView):
         return context
         
     def init_manifest(self):
-        #self.bios_manifest_file = os.path.join(settings.RECALBOX_BIOS_PATH, settings.RECALBOX_BIOS_MANIFEST_FILE)
         self.bios_manifest = self.get_bios_manifest()
         self.existing_bios_files = self.get_bios_list()
 
