@@ -121,6 +121,9 @@ USE_L10N = True
 
 USE_TZ = False
 
+LOCALE_PATHS = (
+    os.path.join(PROJECT_DIR, 'locale'),
+)
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
