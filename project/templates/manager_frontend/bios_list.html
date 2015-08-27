@@ -1,9 +1,10 @@
 {% extends "manager_frontend/base.html" %}
+{% load i18n %}
 
 {% block manager_content %}
 <ul class="inline-list">
-    <li><span class="label info radius">Path: {{ bios_path }}</span></li>
-    <li><span class="label info radius">Total: {{ existing_bios_length }}</span></li>
+    <li><span class="label info radius">{% trans "Path" %}: {{ bios_path }}</span></li>
+    <li><span class="label info radius">{% trans "Total" %}: {{ existing_bios_length }}</span></li>
 </ul>
 
 <form action="." method="post" enctype="multipart/form-data">
@@ -27,7 +28,7 @@
                 {% endif %}
                 
                 <div class="small-3 columns">
-                    <span class="prefix">Upload a bios</span>
+                    <span class="prefix">{% trans "Upload a bios" %}</span>
                 </div>
                 <div class="small-7 columns">
                     {{ form.bios }}
@@ -44,10 +45,10 @@
     <thead>
         <tr>
             <th class="text-right"><small>#</small></th>
-            <th>System</th>
-            <th>Filename</th>
-            <th>MD5 checksum</th>
-            <th class="text-center">Delete</th>
+            <th>{% trans "System" %}</th>
+            <th>{% trans "Filename" %}</th>
+            <th>{% trans "MD5 checksum" %}</th>
+            <th class="text-center">{% trans "Delete" %}</th>
         </tr>
     </thead>
     <tbody>{% for md5hash,filename,system,exist in bios_manifest %}

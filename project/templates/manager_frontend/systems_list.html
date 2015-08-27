@@ -1,9 +1,10 @@
 {% extends "manager_frontend/base.html" %}
+{% load i18n %}
 
 {% block manager_content %}
 <ul class="inline-list">
-    <li><span class="label info radius">Path: {{ systems_path }}</span></li>
-    <li><span class="label info radius">Total: {{ systems_list|length }}</span></li>
+    <li><span class="label info radius">{% trans "Path" %}: {{ systems_path }}</span></li>
+    <li><span class="label info radius">{% trans "Total" %}: {{ systems_list|length }}</span></li>
 </ul>
 
 <div class="row systems-list">{% for key,name in systems_list %}

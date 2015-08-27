@@ -1,8 +1,9 @@
 {% extends "manager_frontend/base.html" %}
+{% load i18n %}
 
 {% block manager_content %}
 <ul class="inline-list">
-    <li><span class="label info radius">Path: {{ logs_filepath }}</span></li>
+    <li><span class="label info radius">{% trans "Path" %}: {{ logs_filepath }}</span></li>
 </ul>
 
 <div>

@@ -1,4 +1,6 @@
 {% extends "manager_frontend/base.html" %}
+{% load i18n %}
+
 {% block breadcrumbs_block %}{% endblock %}
 
 {% block manager_title %}{% endblock %}
@@ -9,7 +11,7 @@
         <a href="{% url 'manager:bios' %}" class="button reverse-primary large expand radius text-center">
             <i class="icon-nes-console icon-4x icon-block"></i>
             <p>
-                Manage all supported <strong>Bios</strong> files for emulated systems
+                {% blocktrans %}Manage all supported <strong>Bios</strong> files for emulated systems{% endblocktrans %}
             </p>
         </a>
     </div>
@@ -17,7 +19,7 @@
         <a href="{% url 'manager:roms-systems' %}" class="button reverse-primary large expand radius text-center">
             <i class="icon-nes-cartridge icon-4x icon-block"></i>
             <p>
-                Manage <strong>Rom</strong> files for emulated systems
+                {% blocktrans %}Manage <strong>Rom</strong> files for emulated systems{% endblocktrans %}
             </p>
         </a>
     </div>
@@ -25,7 +27,7 @@
         <a href="{% url 'manager:logs' %}" class="button reverse-primary large expand radius text-center">
             <i class="icon-book icon-4x icon-block"></i>
             <p>
-                Read the Recalbox <strong>logs</strong>
+                {% blocktrans %}Read the Recalbox <strong>logs</strong>{% endblocktrans %}
             </p>
         </a>
     </div>
@@ -33,7 +35,7 @@
         <a href="{% url 'manager:config' %}" class="button reverse-primary large expand radius text-center">
             <i class="icon-cogs icon-4x icon-block"></i>
             <p>
-                Read and edit the Recalbox <strong>Configuration</strong> file
+                {% blocktrans %}Read and edit the Recalbox <strong>Configuration</strong> file{% endblocktrans %}
             </p>
         </a>
     </div>

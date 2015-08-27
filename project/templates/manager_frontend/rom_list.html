@@ -1,9 +1,10 @@
 {% extends "manager_frontend/base.html" %}
+{% load i18n %}
 
 {% block manager_content %}
 <ul class="inline-list">
-    <li><span class="label info radius">Path: {{ system_path }}</span></li>
-    <li><span class="label info radius">Total: {{ rom_list|length }}</span></li>
+    <li><span class="label info radius">{% trans "Path" %}: {{ system_path }}</span></li>
+    <li><span class="label info radius">{% trans "Total" %}: {{ rom_list|length }}</span></li>
 </ul>
 
 <form action="." method="post" enctype="multipart/form-data">
@@ -27,7 +28,7 @@
                 {% endif %}
                 
                 <div class="small-3 columns">
-                    <span class="prefix">Upload a rom</span>
+                    <span class="prefix">{% trans "Upload a rom" %}</span>
                 </div>
                 <div class="small-7 columns">
                     {{ form.rom }}
@@ -44,9 +45,9 @@
     <thead>
         <tr>
             <th class="text-right"><small>#</small></th>
-            <th>Filename</th>
-            <th>Size</th>
-            <th class="text-center">Delete</th>
+            <th>{% trans "Filename" %}</th>
+            <th>{% trans "Size" %}</th>
+            <th class="text-center">{% trans "Delete" %}</th>
         </tr>
     </thead>
     <tbody>

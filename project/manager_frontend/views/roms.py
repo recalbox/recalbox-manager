@@ -10,6 +10,7 @@ from django.views.generic.edit import FormView
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.http import Http404
+from django.utils.translation import ugettext_lazy as _
 
 from project.manager_frontend.forms.roms import RomUploadForm
 
@@ -102,7 +103,7 @@ class RomListView(FormView):
         uploaded_file = form.save()
         
         # Throw a message to tell about upload success
-        messages.success(self.request, 'File has been uploaded: {}'.format(os.path.basename(uploaded_file)))
+        messages.success(self.request, _('File has been uploaded: {}').format(os.path.basename(uploaded_file)))
         
         return super(RomListView, self).form_valid(form)
 

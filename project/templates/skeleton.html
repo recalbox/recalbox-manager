@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load i18n %}<!DOCTYPE html>
 <!--[if IE 8]> <html class="{% block html_attr_alt %}{% endblock %}no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="{% block html_attr %}{% endblock %}no-js"> <!--<![endif]-->
 <head>
@@ -31,7 +31,6 @@
                 <li class="name">
                     <p class="title-1">
                         <a href="//{{ SITE.domain }}" title="{{ SITE.name }}" class="logo">
-                            {% comment %}<img src="{{ STATIC_URL }}images/theme/logo.png" alt="{{ SITE.name }}">{% endcomment %}
                             <i class="icon-recalbox"></i>
                         </a>
                     </p>
@@ -47,14 +46,14 @@
                 </ul>
 
                 <ul class="left">
-                    <li><a href="{% url 'manager:bios' %}"><i class="icon-nes-console"></i> Bios</a></li>
-                    <li><a href="{% url 'manager:roms-systems' %}"><i class="icon-nes-cartridge"></i> Roms</a></li>
-                    <li><a href="{% url 'manager:logs' %}"><i class="icon-book"></i> Logs</a></li>
-                    <li><a href="{% url 'manager:config' %}"><i class="icon-cogs"></i> Configuration</a></li>
+                    <li><a href="{% url 'manager:bios' %}"><i class="icon-nes-console"></i> {% trans "Bios" %}</a></li>
+                    <li><a href="{% url 'manager:roms-systems' %}"><i class="icon-nes-cartridge"></i> {% trans "Roms" %}</a></li>
+                    <li><a href="{% url 'manager:logs' %}"><i class="icon-book"></i> {% trans "Logs" %}</a></li>
+                    <li><a href="{% url 'manager:config' %}"><i class="icon-cogs"></i> {% trans "Configuration" %}</a></li>
                     <li class="has-dropdown">
-                        <a href="#"><i class="icon-external-link"></i> Links</a>
+                        <a href="#"><i class="icon-external-link"></i> {% trans "Links" %}</a>
                         <ul class="dropdown">
-                            <li><a href="http://blog.recalbox.com/forums" target="_blank">Forum</a></li>
+                            <li><a href="http://blog.recalbox.com/forums" target="_blank">{% trans "Forum" %}</a></li>
                             <li><a href="https://kiwiirc.com/client/irc.freenode.net/#recalbox" target="_blank">IRC</a></li>
                         </ul>
                     </li>
