@@ -4,7 +4,7 @@
 {% block manager_content %}
 <ul class="inline-list">
     <li><span class="label info radius">{% trans "Path" %}: {{ system_path }}</span></li>
-    <li><span class="label info radius">{% trans "Total" %}: {{ rom_list|length }}</span></li>
+    <li><span class="label info radius">{% trans "Total" %}: {{ total_roms }}</span></li>
 </ul>
 
 <form action="." method="post" enctype="multipart/form-data">
@@ -19,9 +19,9 @@
                 </div>
                 {% endfor %}{% endif %}
                 
-                {% if form.rom.errors %}
+                {% if upload_form.rom.errors %}
                 <div class="small-12 columns">
-                    {% for error in form.rom.errors %}
+                    {% for error in upload_form.rom.errors %}
                     <small class="error">{{ error }}</small>
                     {% endfor %}
                 </div>
@@ -31,34 +31,51 @@
                     <span class="prefix">{% trans "Upload a rom" %}</span>
                 </div>
                 <div class="small-7 columns">
-                    {{ form.rom }}
+                    {{ upload_form.rom }}
                 </div>
                 <div class="small-2 columns">
-                    <input type="submit" value="Send" class="button postfix">
+                    <input type="submit" name="upload_submit" value="Send" class="button postfix">
                 </div>
             </div>
         </div>
     </div>
 </form>
 
-<table class="expand">
-    <thead>
-        <tr>
-            <th class="text-right"><small>#</small></th>
-            <th>{% trans "Filename" %}</th>
-            <th>{% trans "Size" %}</th>
-            <th class="text-center">{% trans "Delete" %}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for filename,size in rom_list %}
-        <tr>
-            <td class="text-right"><small>{{ forloop.counter }}</small></td>
-            <td>{{ filename }}</td>
-            <td>{{ size|filesizeformat }}</td>
-            <td class="text-center">x</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+<form action="." method="post">
+    {% csrf_token %}
+    {% if delete_form.roms.errors %}
+    <div class="row">
+        <div class="small-12 columns">
+            {% for error in delete_form.roms.errors %}
+            <small class="error">{{ error }}</small>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="text-right">
+        <input type="submit" name="delete_submit" value="{% trans "Delete selected files" %}" class="button tiny radius info">
+        <table class="expand">
+            <thead>
+                <tr>
+                    <th class="text-right"><small>#</small></th>
+                    <th>{% trans "Filename" %}</th>
+                    <th>{% trans "Size" %}</th>
+                    <th class="text-center">{% trans "Check" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for checkbox in delete_form.roms %}
+                <tr>
+                    <td class="text-right"><small>{{ forloop.counter }}</small></td>
+                    <td>{{ checkbox.choice_value }}</td>
+                    <td>{{ checkbox.choice_label|filesizeformat }}</td>
+                    <td class="text-center">{{ checkbox.tag }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <input type="submit" name="delete_submit" value="{% trans "Delete selected files" %}" class="button tiny radius info">
+    </div>
+</form>
 {% endblock %}

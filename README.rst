@@ -15,12 +15,22 @@ Features
 ********
 
 * Try to be the lightweight as possible;
+* Hardly repose on Recalbox Manifest file to valid uploads;
 * Web integration on top of `Foundation`_;
 * Read the Recalbox logs;
 * Edit the Recalbox configuration file;
+    
+  * Option to backup the file before updating it;
+
 * Manage (upload, delete) your roms by systems;
-* Manage your bios files;
-* Hardly repose on Recalbox Manifest file to valid uploads;
+  
+  * Only accept supported extensions for systems (from manifest);
+  
+* Manage (upload, delete) your bios files;
+
+  * Only accept supported Bios file (from manifest);
+  * MD5 checksum validation;
+  
 
 Install
 *******

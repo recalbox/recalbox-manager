@@ -6,13 +6,14 @@ from operator import itemgetter
 
 from django.conf import settings
 from django.views.generic import TemplateView
-from django.views.generic.edit import FormView
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 
-from project.manager_frontend.forms.roms import RomUploadForm
+from project.manager_frontend.forms.roms import RomUploadForm, RomDeleteForm
+from project.utils.views import MultiFormView
+
 
 class SystemsListView(TemplateView):
     """
@@ -43,12 +44,17 @@ class SystemsListView(TemplateView):
         })
         return context
 
-class RomListView(FormView):
+
+
+class RomListView(MultiFormView):
     """
-    List rom from a system folder
+    List rom from a system folder with an upload form and delete form
+    
+    This is a huge rewrite and mixing of some CBV views and mixins to be able 
+    to distinctly manage the two forms
     """
     template_name = "manager_frontend/rom_list.html"
-    form_class = RomUploadForm
+    enabled_forms = (RomUploadForm, RomDeleteForm)
             
     def init_system(self):
         self.system_key = self.kwargs.get('system')
@@ -66,11 +72,14 @@ class RomListView(FormView):
         # Get the system manifest part if any, else a default dict
         self.system_manifest = settings.RECALBOX_MANIFEST.get(self.system_key, default_manifest)
             
-    def get_rom_list(self):
-        rom_list = [(item, os.path.getsize(os.path.join(self.system_path, item))) for item in os.listdir(self.system_path) 
-                    if os.path.isfile(os.path.join(self.system_path, item)) and not item.startswith('.')]
+    def get_rom_choices(self):
+        rom_list = []
         
-        return sorted(rom_list, key=itemgetter(0))
+        for item in os.listdir(self.system_path):
+            if os.path.isfile(os.path.join(self.system_path, item)) and not item.startswith('.'):
+                rom_list.append( (item, os.path.getsize(os.path.join(self.system_path, item))) )
+        
+        return tuple( sorted(rom_list, key=itemgetter(0)) )
             
     def get_context_data(self, **kwargs):
         context = super(RomListView, self).get_context_data(**kwargs)
@@ -79,17 +88,39 @@ class RomListView(FormView):
             'system_path': self.system_path,
             'system_name': self.system_manifest['name'],
             'system_manifest': self.system_manifest,
-            'rom_list': self.get_rom_list(),
+            'total_roms': len(self.get_rom_choices()),
         })
         return context
-            
-    def get_form_kwargs(self):
-        context = super(RomListView, self).get_form_kwargs()
-        context.update({
-            'system': self.system_key,
+
+    def get_success_url(self):
+        return reverse('manager:roms-list', args=[self.kwargs.get('system')])
+    
+    def get_upload_form_kwargs(self, kwargs):
+        kwargs.update({
             'system_manifest': self.system_manifest,
+            'system': self.system_key,
         })
-        return context
+        return kwargs
+    
+    def get_delete_form_kwargs(self, kwargs):
+        kwargs.update({
+            'romchoices': self.get_rom_choices(),
+            'system': self.system_key,
+        })
+        return kwargs
+        
+    def upload_form_valid(self, form):
+        uploaded_file = form.save()
+        
+        # Throw a message to tell about upload success
+        messages.success(self.request, _('File has been uploaded: {}').format(os.path.basename(uploaded_file)))
+            
+    def delete_form_valid(self, form):
+        deleted_files = form.save()
+        if deleted_files and len(deleted_files)>0:
+            deleted_files = ", ".join([os.path.basename(item) for item in deleted_files])
+            # Throw a message to tell about deleted files
+            messages.success(self.request, _('Deleted file(s): {}').format( deleted_files ))
         
     def get(self, request, *args, **kwargs):
         self.init_system()
@@ -98,14 +129,3 @@ class RomListView(FormView):
     def post(self, request, *args, **kwargs):
         self.init_system()
         return super(RomListView, self).post(request, *args, **kwargs)
-
-    def form_valid(self, form):
-        uploaded_file = form.save()
-        
-        # Throw a message to tell about upload success
-        messages.success(self.request, _('File has been uploaded: {}').format(os.path.basename(uploaded_file)))
-        
-        return super(RomListView, self).form_valid(form)
-
-    def get_success_url(self):
-        return reverse('manager:roms-list', args=[self.kwargs.get('system')])

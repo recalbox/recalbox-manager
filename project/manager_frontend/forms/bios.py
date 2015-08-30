@@ -31,12 +31,47 @@ def hashfile(afile, hasher, blocksize=65536):
         buf = afile.read(blocksize)
     return hasher.hexdigest()
 
+
+class BiosDeleteForm(CrispyFormMixin, forms.Form):
+    """
+    Form to delete many bios
+    """
+    form_key = 'delete'
+    form_fieldname_trigger = 'delete_submit'
+    
+    #crispy_form_helper_path = 'project.manager_frontend.forms.crispies.bios_delete_helper'
+    #crispy_form_helper_kwargs = {}
+    
+    def __init__(self, *args, **kwargs):
+        self.bios_choices = kwargs.pop('bios_choices')
+        
+        super(BiosDeleteForm, self).__init__(*args, **kwargs)
+        super(forms.Form, self).__init__(*args, **kwargs)
+        
+        self.fields['bios_files'] = forms.MultipleChoiceField(choices=self.bios_choices, widget=forms.CheckboxSelectMultiple, required=False)
+    
+    def save(self):
+        bios_map = dict(self.bios_choices)
+        
+        deleted_bios = []
+        # Delete all selected bios files
+        for md5hash in self.cleaned_data["bios_files"]:
+            filename = bios_map.get(md5hash)
+            if BIOS_FS_STORAGE.exists(filename):
+                BIOS_FS_STORAGE.delete(filename)
+                deleted_bios.append(filename)
+        
+        return deleted_bios
+
+
 class BiosUploadForm(CrispyFormMixin, forms.Form):
     """
     Bios upload form
     """
     #crispy_form_helper_path = 'project.manager_frontend.forms.crispies.bios_helper'
     #crispy_form_helper_kwargs = {}
+    form_key = 'upload'
+    form_fieldname_trigger = 'upload_submit'
     
     bios = forms.FileField(label=_('Bios file'), required=True)
     
@@ -55,7 +90,8 @@ class BiosUploadForm(CrispyFormMixin, forms.Form):
         """
         bios = self.cleaned_data['bios']
         if bios:
-            simple_manifest = {filename: md5hash for (md5hash,filename,system_name,exists) in self.manifest}
+            #simple_manifest = {filename: md5hash for (md5hash,filename,system_name,exists) in self.manifest}
+            simple_manifest = {values[0]: md5hash for md5hash,values in self.manifest.items()}
             name = os.path.basename(bios.name)
             
             if name not in simple_manifest:

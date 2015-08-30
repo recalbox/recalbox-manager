@@ -118,6 +118,10 @@ button, .button{
         text-transform: uppercase;
     }
 }
+// Little trick to verticaly align paragraph on the tiny button height
+.tiny-button-v-align{
+    line-height: $paragraph-font-size * 2.6;
+}
 
 /* 
  * Some usefull stuff for Grids

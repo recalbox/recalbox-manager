@@ -9899,14 +9899,19 @@ button.strong, .button.strong {
   text-transform: uppercase;
 }
 
+/* line 122, ../../../compass/scss/utils/_addons.scss */
+.tiny-button-v-align {
+  line-height: 2.6rem;
+}
+
 /* 
  * Some usefull stuff for Grids
  */
-/* line 126, ../../../compass/scss/utils/_addons.scss */
+/* line 130, ../../../compass/scss/utils/_addons.scss */
 .row.row-fluid {
   max-width: 100%;
 }
-/* line 129, ../../../compass/scss/utils/_addons.scss */
+/* line 133, ../../../compass/scss/utils/_addons.scss */
 .row.row-fluid .row {
   margin: auto;
   margin: 0 auto;
@@ -9922,42 +9927,42 @@ button.strong, .button.strong {
 .row.row-fluid .row:after {
   clear: both;
 }
-/* line 133, ../../../compass/scss/utils/_addons.scss */
+/* line 137, ../../../compass/scss/utils/_addons.scss */
 .row.row-fluid .row.row-fluid {
   max-width: 100%;
 }
 
 @media only screen and (min-width: 102.92857em) {
-  /* line 142, ../../../compass/scss/utils/_addons.scss */
+  /* line 146, ../../../compass/scss/utils/_addons.scss */
   .row.larger {
     max-width: 83rem;
   }
 }
 
-/* line 149, ../../../compass/scss/utils/_addons.scss */
+/* line 153, ../../../compass/scss/utils/_addons.scss */
 .row .columns > .row-inner {
   margin-left: -1.07143rem;
   margin-right: -1.07143rem;
 }
 
-/* line 156, ../../../compass/scss/utils/_addons.scss */
+/* line 160, ../../../compass/scss/utils/_addons.scss */
 .columns.unpadded {
   padding: 0;
 }
 @media only screen and (max-width: 45.71429em) {
-  /* line 160, ../../../compass/scss/utils/_addons.scss */
+  /* line 164, ../../../compass/scss/utils/_addons.scss */
   .columns.small-unpadded {
     padding: 0;
   }
 }
 @media only screen and (min-width: 45.78571em) and (max-width: 73.14286em) {
-  /* line 165, ../../../compass/scss/utils/_addons.scss */
+  /* line 169, ../../../compass/scss/utils/_addons.scss */
   .columns.medium-unpadded {
     padding: 0;
   }
 }
 @media only screen and (min-width: 73.21429em) and (max-width: 102.85714em) {
-  /* line 170, ../../../compass/scss/utils/_addons.scss */
+  /* line 174, ../../../compass/scss/utils/_addons.scss */
   .columns.large-unpadded {
     padding: 0;
   }
@@ -9966,23 +9971,23 @@ button.strong, .button.strong {
 /*
  * Supplementary divider classes
  */
-/* line 180, ../../../compass/scss/utils/_addons.scss */
+/* line 184, ../../../compass/scss/utils/_addons.scss */
 .row.divider {
   margin-bottom: 0.71429rem;
 }
 @media only screen and (min-width: 45.78571em) {
-  /* line 180, ../../../compass/scss/utils/_addons.scss */
+  /* line 184, ../../../compass/scss/utils/_addons.scss */
   .row.divider {
     margin-bottom: 2.14286rem;
   }
 }
 
-/* line 188, ../../../compass/scss/utils/_addons.scss */
+/* line 192, ../../../compass/scss/utils/_addons.scss */
 .columns.divider {
   margin-bottom: 0.35714rem;
 }
 @media only screen and (min-width: 45.78571em) {
-  /* line 188, ../../../compass/scss/utils/_addons.scss */
+  /* line 192, ../../../compass/scss/utils/_addons.scss */
   .columns.divider {
     margin-bottom: 0;
   }
@@ -9991,21 +9996,21 @@ button.strong, .button.strong {
 /*
  * Forms addons
  */
-/* line 202, ../../../compass/scss/utils/_addons.scss */
+/* line 206, ../../../compass/scss/utils/_addons.scss */
 form .inline .divide-for-after {
   padding-right: 0.5rem;
 }
-/* line 206, ../../../compass/scss/utils/_addons.scss */
+/* line 210, ../../../compass/scss/utils/_addons.scss */
 form .inline .button {
   padding-top: 0.5rem;
   padding-bottom: 0.57143rem;
 }
-/* line 213, ../../../compass/scss/utils/_addons.scss */
+/* line 217, ../../../compass/scss/utils/_addons.scss */
 form .hide-label label,
 form .hide-label .label {
   display: none;
 }
-/* line 220, ../../../compass/scss/utils/_addons.scss */
+/* line 224, ../../../compass/scss/utils/_addons.scss */
 form input[type="file"] {
   padding: 0;
 }

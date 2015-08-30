@@ -1,5 +1,5 @@
 {% extends "manager_frontend/base.html" %}
-{% load i18n %}
+{% load i18n manager_tags %}
 
 {% block manager_content %}
 <ul class="inline-list">
@@ -19,9 +19,9 @@
                 </div>
                 {% endfor %}{% endif %}
                 
-                {% if form.bios.errors %}
+                {% if upload_form.bios.errors %}
                 <div class="small-12 columns">
-                    {% for error in form.bios.errors %}
+                    {% for error in upload_form.bios.errors %}
                     <small class="error">{{ error }}</small>
                     {% endfor %}
                 </div>
@@ -31,34 +31,61 @@
                     <span class="prefix">{% trans "Upload a bios" %}</span>
                 </div>
                 <div class="small-7 columns">
-                    {{ form.bios }}
+                    {{ upload_form.bios }}
                 </div>
                 <div class="small-2 columns">
-                    <input type="submit" value="Send" class="button postfix">
+                    <input type="submit" name="upload_submit" value="Send" class="button postfix">
                 </div>
             </div>
         </div>
     </div>
 </form>
 
-<table class="expand">
-    <thead>
-        <tr>
-            <th class="text-right"><small>#</small></th>
-            <th>{% trans "System" %}</th>
-            <th>{% trans "Filename" %}</th>
-            <th>{% trans "MD5 checksum" %}</th>
-            <th class="text-center">{% trans "Delete" %}</th>
-        </tr>
-    </thead>
-    <tbody>{% for md5hash,filename,system,exist in bios_manifest %}
-        <tr class="{% if exist %}active{% else %}disabled{% endif %}">
-            <td class="text-right"><small>{{ forloop.counter }}</small></td>
-            <td>{{ system }}</td>
-            <td>{{ filename }}</td>
-            <td>{{ md5hash }}</td>
-            <td class="text-center">{% if exist %}x{% else %}&nbsp;{% endif %}</td>
-        </tr>{% endfor %}
-    </tbody>
-</table>
+<form action="." method="post">
+    {% csrf_token %}
+    {% if delete_form.roms.errors %}
+    <div class="row">
+        <div class="small-12 columns">
+            {% for error in delete_form.roms.errors %}
+            <small class="error">{{ error }}</small>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="row">
+        <div class="small-12 medium-10 columns">
+            <p class="tiny-button-v-align">This is the full list of supported Bios, existing bios you have uploaded will be decorated and followed with a checkbox</p>
+        </div>
+        <div class="small-12 medium-2 columns text-right">
+            <input type="submit" name="delete_submit" value="{% trans "Delete selected files" %}" class="button tiny radius info">
+        </div>
+    </div>
+    
+    <div class="text-right">
+        <table class="expand">
+            <thead>
+                <tr>
+                    <th class="text-right"><small>#</small></th>
+                    <th>{% trans "System" %}</th>
+                    <th>{% trans "Filename" %}</th>
+                    <th>{% trans "MD5 checksum" %}</th>
+                    <th class="text-center">{% trans "Check" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for checkbox in delete_form.bios_files %}{% with manifest_entry=bios_manifest|get_item:checkbox.choice_value %}
+                <tr class="{% if manifest_entry.2 %}active{% else %}disabled{% endif %}">
+                    <td class="text-right"><small>{{ forloop.counter }}</small></td>
+                    <td>{{ manifest_entry.1 }}</td>
+                    <td>{{ checkbox.choice_label }}</td> {% comment %}filename{% endcomment %}
+                    <td>{{ checkbox.choice_value }}</td> {% comment %}-> md5{% endcomment %}
+                    <td class="text-center">{% if manifest_entry.2 %}{{ checkbox.tag }}{% else %}&nbsp;{% endif %}</td>
+                </tr>
+            {% endwith %}{% endfor %}
+            </tbody>
+        </table>
+        <input type="submit" name="delete_submit" value="{% trans "Delete selected files" %}" class="button tiny radius info">
+    </div>
+</form>
 {% endblock %}
