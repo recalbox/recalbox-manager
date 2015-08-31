@@ -69,6 +69,8 @@ Usage
 
     source bin/activate
     python manage.py runserver 0.0.0.0:8001
+
+You should also use the option ``--noreload`` at the last command end if you don't plan to develop on this project.
     
 Development notes
 *****************
