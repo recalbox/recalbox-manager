@@ -1,7 +1,0 @@
-include MANIFEST.in
-include LICENCE.txt
-include README.rst
-include requirements.txt
-recursive-include project/templates *
-recursive-include project/locale *
-recursive-include project/static *
