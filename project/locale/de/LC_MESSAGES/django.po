@@ -20,7 +20,7 @@ msgstr ""
 
 #: manager_frontend/crumbs.py:9
 msgid "Home"
-msgstr ""
+msgstr "Start"
 
 #: manager_frontend/crumbs.py:10 templates/skeleton.html:49
 msgid "Bios"
@@ -28,7 +28,7 @@ msgstr ""
 
 #: manager_frontend/crumbs.py:11 templates/skeleton.html:52
 msgid "Configuration"
-msgstr ""
+msgstr "Konfiguration"
 
 #: manager_frontend/crumbs.py:12 templates/skeleton.html:51
 msgid "Logs"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: manager_frontend/crumbs.py:13
 msgid "Rom by system"
-msgstr ""
+msgstr "Roms nach System"
 
 #: manager_frontend/crumbs.py:14
 msgid "{{ system_name }}"
@@ -44,60 +44,64 @@ msgstr ""
 
 #: manager_frontend/forms/__init__.py:23
 msgid "Submit"
-msgstr ""
+msgstr "Anwenden"
 
 #: manager_frontend/forms/bios.py:76
 msgid "Bios file"
-msgstr ""
+msgstr "Biosdatei"
 
 #: manager_frontend/forms/bios.py:98
 msgid "Your file does not seem to be a supported Bios"
-msgstr ""
+msgstr "Die Biosdatei wird nicht unterstützt"
 
 #: manager_frontend/forms/bios.py:102
 msgid "Your file does not have a correct MD5 checksum"
-msgstr ""
+msgstr "Die Biosdatei hat keine korrekte MD5 Checksumme"
 
 #: manager_frontend/forms/config.py:22
 msgid "Content"
-msgstr ""
+msgstr "Inhalt"
 
 #: manager_frontend/forms/config.py:23
 #: templates/manager_frontend/config_form.html:38
 msgid "Backup previous version before saving"
-msgstr ""
+msgstr "Backup erstellen vor dem Speichern"
 
 #: manager_frontend/forms/roms.py:60
 msgid "Rom file"
-msgstr ""
+msgstr "Romdatei"
 
 #: manager_frontend/forms/roms.py:80
 msgid "Your file does not seem to be a valid Rom for this system"
-msgstr ""
+msgstr "Die Romdatei ist nicht gültig für dieses System"
 
 #: manager_frontend/views/bios.py:91 manager_frontend/views/roms.py:116
 msgid "File has been uploaded: {}"
-msgstr ""
+msgstr "Datei wurde hochgeladen: {}"
 
 #: manager_frontend/views/bios.py:98 manager_frontend/views/roms.py:123
 msgid "Deleted file(s): {}"
-msgstr ""
+msgstr "Gelöschte Datei(en): {}"
 
 #: manager_frontend/views/config.py:74
 msgid "File has been backuped then edited"
-msgstr ""
+msgstr "Datei wurde gesichert vor dem editieren"
 
 #: manager_frontend/views/config.py:76
 msgid "File has been edited"
-msgstr ""
+msgstr "Datei wurde editiert"
 
 #: settings.py:114
 msgid "English"
-msgstr ""
+msgstr "Englisch"
 
 #: settings.py:115
 msgid "French"
-msgstr ""
+msgstr "Französisch"
+
+#: settings.py:116
+msgid "German"
+msgstr "Deutsch"
 
 #: templates/404.html:6 templates/404.html.py:14
 msgid "Error 404"
@@ -113,7 +117,7 @@ msgstr ""
 
 #: templates/500.html:6 templates/500.html.py:14
 msgid "Error 500"
-msgstr ""
+msgstr "
 
 #: templates/500.html:6 templates/500.html.py:14
 msgid "Internal Server Error"
@@ -132,7 +136,7 @@ msgstr ""
 #: templates/manager_frontend/rom_list.html:6
 #: templates/manager_frontend/systems_list.html:6
 msgid "Path"
-msgstr ""
+msgstr "Pfad"
 
 #: templates/manager_frontend/bios_list.html:7
 #: templates/manager_frontend/rom_list.html:7
@@ -142,77 +146,77 @@ msgstr ""
 
 #: templates/manager_frontend/bios_list.html:31
 msgid "Upload a bios"
-msgstr ""
+msgstr "Bios hochladen"
 
 #: templates/manager_frontend/bios_list.html:61
 #: templates/manager_frontend/bios_list.html:90
 #: templates/manager_frontend/rom_list.html:57
 #: templates/manager_frontend/rom_list.html:78
 msgid "Delete selected files"
-msgstr ""
+msgstr "Lösche ausgewählte Dateien"
 
 #: templates/manager_frontend/bios_list.html:70
 msgid "System"
-msgstr ""
+msgstr "System"
 
 #: templates/manager_frontend/bios_list.html:71
 #: templates/manager_frontend/rom_list.html:62
 msgid "Filename"
-msgstr ""
+msgstr "Dateiname"
 
 #: templates/manager_frontend/bios_list.html:72
 msgid "MD5 checksum"
-msgstr ""
+msgstr "MD5 Checksumme"
 
 #: templates/manager_frontend/bios_list.html:73
 #: templates/manager_frontend/rom_list.html:64
 msgid "Check"
-msgstr ""
+msgstr "Auswählen"
 
 #: templates/manager_frontend/config_form.html:6
 msgid "Current"
-msgstr ""
+msgstr "Aktuell"
 
 #: templates/manager_frontend/config_form.html:7
 msgid "Backup"
-msgstr ""
+msgstr "Sicherung"
 
 #: templates/manager_frontend/config_form.html:41
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: templates/manager_frontend/home.html:14
 msgid "Manage all supported <strong>Bios</strong> files for emulated systems"
-msgstr ""
+msgstr "Verwalte alle unterstützten <strong>Bios</strong> Dateien für emulierte Systeme"
 
 #: templates/manager_frontend/home.html:22
 msgid "Manage <strong>Rom</strong> files for emulated systems"
-msgstr ""
+msgstr "Verwalte <strong>Rom</strong> Dateien für emulierte Systeme"
 
 #: templates/manager_frontend/home.html:30
 msgid "Read the Recalbox <strong>logs</strong>"
-msgstr ""
+msgstr "Lese Recalbox <strong>Logs</strong>"
 
 #: templates/manager_frontend/home.html:38
 msgid "Read and edit the Recalbox <strong>Configuration</strong> file"
-msgstr ""
+msgstr "Lesen und editieren der Recalbox <strong>Konfigurations</strong>-Datei"
 
 #: templates/manager_frontend/rom_list.html:31
 msgid "Upload a rom"
-msgstr ""
+msgstr "Rom hochladen"
 
 #: templates/manager_frontend/rom_list.html:63
 msgid "Size"
-msgstr ""
+msgstr "Grösse"
 
 #: templates/skeleton.html:50
 msgid "Roms"
-msgstr ""
+msgstr "Roms"
 
 #: templates/skeleton.html:54
 msgid "Links"
-msgstr ""
+msgstr "Links"
 
 #: templates/skeleton.html:56
 msgid "Forum"
-msgstr ""
+msgstr "Forum"
