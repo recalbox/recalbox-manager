@@ -117,7 +117,7 @@ msgstr ""
 
 #: templates/500.html:6 templates/500.html.py:14
 msgid "Error 500"
-msgstr "
+msgstr ""
 
 #: templates/500.html:6 templates/500.html.py:14
 msgid "Internal Server Error"
