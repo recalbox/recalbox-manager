@@ -4,84 +4,84 @@
 .. _Foundation: http://foundation.zurb.com
 .. _autobreadcrumbs: https://github.com/sveetch/autobreadcrumbs
 
-Recalbox manager Web interface
+Recalbox Manager Web Interface
 ==============================
 
-Like `recalbox-webconfig`_ this project aims to serve a web interface to manage some common `Recalbox`_ configurations but with `Django`_ instead of *Node.js*.
+Genauso wie `recalbox-webconfig`_ ist dieses Projekt eine Web-Schnittstelle, um allgemeine `Recalbox`_ Einstellungen zu verwalten, aber im Gegensatz zu *Node.js* mit `Django`_.
 
-This is a full Django webapp project, meaning it's ready to launch when correctly installed.
+Dies ist ein komplettes Django Webapp Projekt, was bedeutet wenn es richtig installiert wurde, ist es bereit zum Start.
 
-Features
-********
+Eigenschaften
+*************
 
-* Try to be the lightweight as possible;
-* Hardly repose on Recalbox Manifest file to valid uploads;
-* Web integration on top of `Foundation`_;
-* Read the Recalbox logs;
-* Edit the Recalbox configuration file;
+* Versucht so vereinfacht wie möglich zu sein;
+* Beruht strikt auf der Recalbox-Manifest-Datei zur Berechtigung von Uploads;
+* Web-Integration basierend auf `Foundation`_;
+* Lesen der Recalbox-Einträge (Logs);
+* Bearbeitung der Recalbox Konfigurations-Datei;
     
-  * Option to backup the file before updating it;
+  * Option zur Sicherung der Datei, bevor sie aktualisiert wird;
 
-* Manage (upload, delete) your roms by systems;
+* Verwalte (Hochladen, Löschen) Deine Roms nach Systemen;
   
-  * Only accept supported extensions for systems (from manifest);
+  * Nur unterstützte Erweiterungen der Systeme werden akzeptiert (von manifest);
   
-* Manage (upload, delete) your bios files;
+* Verwalte (Hochladen, Löschen) Deine BIOS Dateien;
 
-  * Only accept supported Bios file (from manifest);
-  * MD5 checksum validation;
+  * Nur unterstütze BIOS-Dateien werden akzeptiert (von manifest);
+  * MD5 Checksummen Überprüfung;
   
 
-Install
-*******
+Installation
+************
 
-Common Linux system
+Gängiges Linux System
 -------------------
 
-Nothing special, it's just about to have PIP and virtualenv installed on your system, then use the Makefile action: ::
+Nichts Spezielles, es sollten PIP und virtualenv auf Deinem System installiert sein, dann benutz Makefile: ::
 
     make install
 
-And voila, it's done.
+Und voila, es ist vollbracht.
 
-Recalbox system
+Recalbox System
 ---------------
 
-This is different because Recalbox don't have all the common libraries and tools installed as on Linux system.
+Dies ist ein wenig anders, weil Recalbox nicht alle gängigen Bibliotheken und Werkzeuge besitzt, wie ein Linux System.
 
-Before doing anything, ensure the rpi can access to the internet else configure your network interface and if needed dns resolving.
+Bevor irgendwas gemacht wird, muss sichergestellt werden, das der RPI Zugang zum Internet hat, andernfalls richte Deinen Internet Zugang ein und falls erforderlich DNS-Auflösung.
 
-Get the project repository, enter in its directory then type the following commands: ::
+Hole Dir das "project repository", gehe in dessen Verzeichnis und führe folgende Befehle aus: ::
 
     python -m ensurepip
     pip install virtualenv
     virtualenv --no-site-packages .
     bin/pip install -r requirements.txt
 
-The first two lines would be needed only the first time.
+Die ersten beiden Zeilen werden nur beim ersten Mal benötigt.
 
-Finally, because Git is not available on Recalbox, you should get the repository on your PC before, transfer it to your recalbox and then continue on it with the commands.
+Abschliessend, weil Git auf Recalbox nicht verfügbar ist, solltest Du Dir davor das Repository auf den PC holen, übertrage es auf Deine Recalbox und fahre dann mit den Befehlen fort.
 
-Usage
-*****
+Verwendung
+**********
 
 ::
 
     source bin/activate
     python manage.py runserver 0.0.0.0:8001
 
-You should also use the option ``--noreload`` at the last command end if you don't plan to develop on this project.
+Du solltest auch die Option ``--noreload`` am Ende vom letzten Befehl benutzen, wenn Du nicht vorhast an diesem Projekt mit zu entwickeln.
     
-Development notes
-*****************
+Entwicklungshinweise
+*********************
 
-#. You can install the project on common Linux system for development but you will need to reproduce the Recalbox file structure for Roms, Bios, Configuration file, log file, etc.. Or you can edit needed paths in project settings;
+#. Für die Entwicklung, kannst Du das Projekt auf gängige Linux-Systeme installieren, aber es ist erforderlich die Recalbox Dateistruktur für Roms, BIOS, Konfigurationsdatei, Protokolldatei, etc. zu reproduzieren. Oder Du kannst die benötigten Pfade in den Projekt-Einstellungen bearbeiten;
 
-#. CSS are compiled from Compass sources, you will need to install the right Compass (use the shipped ``Gemfile`` file) and Foundation 5 (use the dedicated Makefile action) versions;
+#. CSS wird mit "Compass Sources" kompiliert, Du musst den richtigen "Compass" installieren (verwende die `` mitgelieferte Gemfile`` -Datei) und Foundation 5 Version. (Benutze die zugewiesene "Makefile" Aktion);
 
-#. Python 2.7.9 is installed on Recalbox 3.2.11, so *pip* is near to be ready to use, just have to install it the first time. This will results to install ``pip==1.5.6``.
+#. Python 2.7.9 ist auf Recalbox 3.2.11 installiert, also ist *pip* fast bereit zur Nutzung, es muss beim ersten Mal nur noch installiert werden. Es wird mit ``pip==1.5.6`` installiert.
 
-#. Python devel lib is not installed but will be may be needed to install some packages from eggs (actually not needed);
+#. "Python devel lib" ist nicht installiert, aber es wird vielleicht gebraucht um einige Pakete von "eggs" zu installieren (momentan nicht benötigt);
 
-#. UTC Timezone does not seems available, have to set settings.TIME_ZONE to None and set settings.USE_TZ to False and so it start with a dummy project freshly created from startproject Django command;
+#. UTC Zeitzone scheint nicht verfügbar zu sein, muss eingestellt werden. TIME_ZONE auf None und USE_TZ auf False. Es wird ein Dummy-Projekt gestartet, frisch erstellt vom startproject Django Befehl;
 
