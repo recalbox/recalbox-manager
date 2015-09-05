@@ -1,6 +1,6 @@
 {% load i18n %}<!DOCTYPE html>
-<!--[if IE 8]> <html class="{% block html_attr_alt %}{% endblock %}no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="{% block html_attr %}{% endblock %}no-js"> <!--<![endif]-->
+<!--[if IE 8]> <html class="{% block html_attr_alt %}{% endblock %}no-js lt-ie9" lang="{{ LANGUAGE_CODE }}"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="{% block html_attr %}{% endblock %}no-js" lang="{{ LANGUAGE_CODE }}"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <title>{% block head_title %}{{ SITE.name }}{% endblock %}</title>
@@ -30,7 +30,7 @@
             <ul class="title-area">
                 <li class="name">
                     <p class="title-1">
-                        <a href="//{{ SITE.domain }}" title="{{ SITE.name }}" class="logo">
+                        <a href="{% comment %}//{{ SITE.domain }}{% endcomment %}/" title="{{ SITE.name }}" class="logo">
                             <i class="icon-recalbox"></i>
                         </a>
                     </p>
@@ -54,6 +54,7 @@
                         <a href="#"><i class="icon-external-link"></i> {% trans "Links" %}</a>
                         <ul class="dropdown">
                             <li><a href="http://blog.recalbox.com/forums" target="_blank">{% trans "Forum" %}</a></li>
+                            <li><a href="{% blocktrans %}https://github.com/digitalLumberjack/recalbox-os/wiki/Home-(EN){% endblocktrans %}" target="_blank">{% trans "Wiki (EN)" %}</a></li>
                             <li><a href="https://kiwiirc.com/client/irc.freenode.net/#recalbox" target="_blank">IRC</a></li>
                         </ul>
                     </li>

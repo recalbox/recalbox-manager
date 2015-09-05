@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 16:17+0200\n"
+"POT-Creation-Date: 2015-09-06 01:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -22,15 +22,15 @@ msgstr ""
 msgid "Home"
 msgstr "Start"
 
-#: manager_frontend/crumbs.py:10 templates/skeleton.html:49
+#: manager_frontend/crumbs.py:10 templates/skeleton.html:50
 msgid "Bios"
 msgstr ""
 
-#: manager_frontend/crumbs.py:11 templates/skeleton.html:52
+#: manager_frontend/crumbs.py:11 templates/skeleton.html:53
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: manager_frontend/crumbs.py:12 templates/skeleton.html:51
+#: manager_frontend/crumbs.py:12 templates/skeleton.html:52
 msgid "Logs"
 msgstr ""
 
@@ -83,23 +83,23 @@ msgstr "Datei wurde hochgeladen: {}"
 msgid "Deleted file(s): {}"
 msgstr "Gelöschte Datei(en): {}"
 
-#: manager_frontend/views/config.py:74
+#: manager_frontend/views/config.py:77
 msgid "File has been backuped then edited"
 msgstr "Datei wurde gesichert vor dem editieren"
 
-#: manager_frontend/views/config.py:76
+#: manager_frontend/views/config.py:79
 msgid "File has been edited"
 msgstr "Datei wurde editiert"
 
-#: settings.py:114
+#: settings.py:113
 msgid "English"
 msgstr "Englisch"
 
-#: settings.py:115
+#: settings.py:114
 msgid "French"
 msgstr "Französisch"
 
-#: settings.py:116
+#: settings.py:115
 msgid "German"
 msgstr "Deutsch"
 
@@ -187,7 +187,9 @@ msgstr "Speichern"
 
 #: templates/manager_frontend/home.html:14
 msgid "Manage all supported <strong>Bios</strong> files for emulated systems"
-msgstr "Verwalte alle unterstützten <strong>Bios</strong> Dateien für emulierte Systeme"
+msgstr ""
+"Verwalte alle unterstützten <strong>Bios</strong> Dateien für emulierte "
+"Systeme"
 
 #: templates/manager_frontend/home.html:22
 msgid "Manage <strong>Rom</strong> files for emulated systems"
@@ -209,14 +211,22 @@ msgstr "Rom hochladen"
 msgid "Size"
 msgstr "Grösse"
 
-#: templates/skeleton.html:50
+#: templates/skeleton.html:51
 msgid "Roms"
-msgstr "Roms"
+msgstr ""
 
-#: templates/skeleton.html:54
+#: templates/skeleton.html:55
 msgid "Links"
-msgstr "Links"
+msgstr ""
 
-#: templates/skeleton.html:56
+#: templates/skeleton.html:57
 msgid "Forum"
-msgstr "Forum"
+msgstr ""
+
+#: templates/skeleton.html:58
+msgid "https://github.com/digitalLumberjack/recalbox-os/wiki/Home-(EN)"
+msgstr "https://github.com/digitalLumberjack/recalbox-os/wiki/Home-(DE)"
+
+#: templates/skeleton.html:58
+msgid "Wiki (EN)"
+msgstr "Wiki (DE)"

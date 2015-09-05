@@ -57,8 +57,9 @@ Get the project repository, enter in its directory then type the following comma
     pip install virtualenv
     virtualenv --no-site-packages .
     bin/pip install -r requirements.txt
+    bin/python manage.py runserver 0.0.0.0:8001
 
-The first two lines would be needed only the first time.
+The first two lines would be needed only the first time. The last line init a dummy database (into file ``db.sqlite3``) that is not really used for now.
 
 Finally, because Git is not available on Recalbox, you should get the repository on your PC before, transfer it to your recalbox and then continue on it with the commands.
 
@@ -67,7 +68,7 @@ Usage
 
 ::
 
-    source bin/activate
+    . bin/activate
     python manage.py runserver 0.0.0.0:8001
 
 You should also use the option ``--noreload`` at the last command end if you don't plan to develop on this project.

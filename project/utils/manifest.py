@@ -2,7 +2,7 @@
 """
 Common stuff for Recalbox manifest
 """
-import os, json
+import json
 #import xml.etree.ElementTree as ET
 import xml.etree.cElementTree as ET
 

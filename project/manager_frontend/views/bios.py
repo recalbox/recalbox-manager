@@ -10,7 +10,7 @@ from django.views.generic.edit import FormView
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.http import Http404
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 
 from project.manager_frontend.forms.bios import BiosDeleteForm, BiosUploadForm
 from project.utils.views import MultiFormView

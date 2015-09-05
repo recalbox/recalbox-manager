@@ -9,11 +9,14 @@ from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 from django.core.urlresolvers import reverse
 from django.contrib import messages
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 
 from project.manager_frontend.forms.config import ConfigEditForm
 
 class RecalboxConfigFormView(FormView):
+    """
+    Display a form to edit the Recalbox config file
+    """
     template_name = "manager_frontend/config_form.html"
     form_class = ConfigEditForm
 

@@ -9,7 +9,7 @@ from django.views.generic import TemplateView
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.http import Http404
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 
 from project.manager_frontend.forms.roms import RomUploadForm, RomDeleteForm
 from project.utils.views import MultiFormView
