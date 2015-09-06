@@ -21,6 +21,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PROJECT_DIR = os.path.join(BASE_DIR, 'project')
 
 SITE_ID = 1
+# If not empty, use this instead of Site framework to know the name and use 
+# a trick to find the host ip
+SITE_FIXED = {
+    'name': "Recalbox Manager",
+    'ip': None, # If None find the ip automatically, else use a string to define another hostname
+    'port': '8001', # If None no port is appended to hostname, so the server have to be reachable from port 80
+}
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/

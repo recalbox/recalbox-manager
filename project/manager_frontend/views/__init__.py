@@ -3,15 +3,6 @@ import os, glob, re
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
-def process_list():
-
-    pids = []
-    for subdir in os.listdir('/proc'):
-        if subdir.isdigit():
-            pids.append(subdir)
-
-    return pids
-
 class HomeView(TemplateView):
     """
     System infos mining is disabled since it's very hard to get all the 
@@ -20,16 +11,15 @@ class HomeView(TemplateView):
     template_name = "manager_frontend/home.html"
     devices_pattern = ['sd.*','mmcblk*']
     
-    #def get_context_data(self, **kwargs):
-        #context = super(HomeView, self).get_context_data(**kwargs)
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
         #context.update({
             #'cpu_infos': self.get_cpu_infos(),
             #'processes_infos': self.get_processes_infos(),
             #'memory_infos': self.get_memory_infos(),
             #'disk_infos': self.get_disk_infos(),
         #})
-        
-        #return context
+        return context
     
     #def get_cpu_infos(self):
         #"""
