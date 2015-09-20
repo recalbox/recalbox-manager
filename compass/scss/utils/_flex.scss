@@ -155,33 +155,72 @@ html.flexbox{
             }
         }
         
-        // Some inner padding on cells
+        // Some margin on cells
+        // horizontal and vertical
         &.marged .cell{
+            margin:  1rem 1%;
+        }
+        // horizontal only
+        &.h-marged .cell{
             margin: 0 1%;
+        }
+        // vertical only
+        &.v-marged .cell{
+            margin: 1% 0;
         }
         @media #{$small-up} {
             &.small-marged .cell{
+                margin: 1rem 1%;
+            }
+            &.small-h-marged .cell{
                 margin: 0 1%;
+            }
+            &.small-v-marged .cell{
+                margin: 1% 0;
             }
         }
         @media #{$medium-up} {
             &.medium-marged .cell{
+                margin: 1rem 1%;
+            }
+            &.medium-h-marged .cell{
                 margin: 0 1%;
+            }
+            &.medium-v-marged .cell{
+                margin: 1% 0;
             }
         }
         @media #{$large-up} {
             &.large-marged .cell{
+                margin: 1rem 1%;
+            }
+            &.large-h-marged .cell{
                 margin: 0 1%;
+            }
+            &.large-v-marged .cell{
+                margin: 1% 0;
             }
         }
         @media #{$xlarge-up} {
             &.xlarge-marged .cell{
+                margin: 1rem 1%;
+            }
+            &.xlarge-h-marged .cell{
                 margin: 0 1%;
+            }
+            &.xlarge-v-marged .cell{
+                margin: 1% 0;
             }
         }
         @media #{$xxlarge-up} {
             &.xxlarge-marged .cell{
+                margin: 1rem 1%;
+            }
+            &.xxlarge-h-marged .cell{
                 margin: 0 1%;
+            }
+            &.xxlarge-v-marged .cell{
+                margin: 1% 0;
             }
         }
     }
@@ -190,15 +229,7 @@ html.flexbox{
     .flex-grid{
         // Cell base
         &>.cell{
-            padding: 0 ($column-gutter/2);
-            
-            &+.cell{
-                margin-top: ($column-gutter/2);
-                
-                @media #{$medium-up} {
-                    margin-top: 0;
-                }
-            }
+            padding: ($column-gutter/2);
             
             &.unpadded{
                 padding: 0;

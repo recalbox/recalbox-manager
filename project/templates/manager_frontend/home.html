@@ -6,6 +6,7 @@
 {% block manager_title %}{% endblock %}
 
 {% block manager_content %}
+{% if PSUTIL_AVAILABLE %}
 <div class="dashboard-system-infos">
 
     <div class="row cpu">
@@ -93,6 +94,7 @@
 </div>
 
 <hr>
+{% endif %}
 
 <div class="dashboard-icons">
     <div class="row">

@@ -5,45 +5,54 @@
  * All stuff for page header
  * 
  */
-.top-bar{
-    .title-area{
-        .name{
-            .logo > img{
-                height: rem-calc(50px);
-                @media #{$topbar-media-query} {
-                    width: 80%;
-                    height: auto;
-                }
-            }
-            .logo > i{
-                line-height: inherit;
-                &:before{
-                    font-size: 3rem;
-                    line-height: inherit;
-                }
-            }
+#header-container{
+    &.contain-to-grid .top-bar {
+        @media #{$xlarge-up} {
+            max-width: $row-larger-width;
         }
     }
     
-    .top-bar-section{
-        .social-badges{
-            display: none;
-            @media #{$large-up} {
-                display: block;
-            }
-            
-            &>li{
-                a{
-                    height: $topbar-height;
-                    & > i{
+    .top-bar{
+        .title-area{
+            .name{
+                .logo > img{
+                    height: rem-calc(50px);
+                    @media #{$topbar-media-query} {
+                        width: 80%;
+                        height: auto;
+                    }
+                }
+                .logo > i{
+                    line-height: inherit;
+                    &:before{
+                        font-size: 3rem;
                         line-height: inherit;
-                        &:before{
-                            font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+        
+        .top-bar-section{
+            .social-badges{
+                display: none;
+                @media #{$large-up} {
+                    display: block;
+                }
+                
+                &>li{
+                    a{
+                        height: $topbar-height;
+                        & > i{
                             line-height: inherit;
+                            &:before{
+                                font-size: 1.5rem;
+                                line-height: inherit;
+                            }
                         }
                     }
                 }
             }
         }
     }
+
 }

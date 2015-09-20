@@ -1,5 +1,6 @@
 import os, glob, re
 
+from django.conf import settings
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
@@ -16,8 +17,7 @@ else:
         Mixin to get all system infos using 'psutil' library
         """
         psutil_available = True
-        # TODO add paramter below to settings
-        mining_cpu_interval = 0.5 # 0.1 seems a little too low but 1.0 add 1s on page loading time
+        mining_cpu_interval = settings.RECALBOX_PSUTIL_CPU_INTERVAL
         
         def get_cpu_infos(self):
             return {
@@ -56,6 +56,8 @@ class HomeView(RecalboxSystemInfosMixin, TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
+        context['PSUTIL_AVAILABLE'] = self.psutil_available
+        
         if self.psutil_available:
             context.update({
                 'cpu_infos': self.get_cpu_infos(),

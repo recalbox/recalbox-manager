@@ -11692,95 +11692,145 @@ html.flexbox .flex-grid.padded .cell {
     padding: 0 1%;
   }
 }
-/* line 159, ../../../compass/scss/utils/_flex.scss */
+/* line 160, ../../../compass/scss/utils/_flex.scss */
 html.flexbox .flex-inline-list.marged .cell,
 html.flexbox .flex-grid.marged .cell {
+  margin: 1rem 1%;
+}
+/* line 164, ../../../compass/scss/utils/_flex.scss */
+html.flexbox .flex-inline-list.h-marged .cell,
+html.flexbox .flex-grid.h-marged .cell {
   margin: 0 1%;
 }
+/* line 168, ../../../compass/scss/utils/_flex.scss */
+html.flexbox .flex-inline-list.v-marged .cell,
+html.flexbox .flex-grid.v-marged .cell {
+  margin: 1% 0;
+}
 @media only screen {
-  /* line 163, ../../../compass/scss/utils/_flex.scss */
+  /* line 172, ../../../compass/scss/utils/_flex.scss */
   html.flexbox .flex-inline-list.small-marged .cell,
   html.flexbox .flex-grid.small-marged .cell {
+    margin: 1rem 1%;
+  }
+  /* line 175, ../../../compass/scss/utils/_flex.scss */
+  html.flexbox .flex-inline-list.small-h-marged .cell,
+  html.flexbox .flex-grid.small-h-marged .cell {
     margin: 0 1%;
+  }
+  /* line 178, ../../../compass/scss/utils/_flex.scss */
+  html.flexbox .flex-inline-list.small-v-marged .cell,
+  html.flexbox .flex-grid.small-v-marged .cell {
+    margin: 1% 0;
   }
 }
 @media only screen and (min-width: 45.78571em) {
-  /* line 168, ../../../compass/scss/utils/_flex.scss */
+  /* line 183, ../../../compass/scss/utils/_flex.scss */
   html.flexbox .flex-inline-list.medium-marged .cell,
   html.flexbox .flex-grid.medium-marged .cell {
+    margin: 1rem 1%;
+  }
+  /* line 186, ../../../compass/scss/utils/_flex.scss */
+  html.flexbox .flex-inline-list.medium-h-marged .cell,
+  html.flexbox .flex-grid.medium-h-marged .cell {
     margin: 0 1%;
+  }
+  /* line 189, ../../../compass/scss/utils/_flex.scss */
+  html.flexbox .flex-inline-list.medium-v-marged .cell,
+  html.flexbox .flex-grid.medium-v-marged .cell {
+    margin: 1% 0;
   }
 }
 @media only screen and (min-width: 73.21429em) {
-  /* line 173, ../../../compass/scss/utils/_flex.scss */
+  /* line 194, ../../../compass/scss/utils/_flex.scss */
   html.flexbox .flex-inline-list.large-marged .cell,
   html.flexbox .flex-grid.large-marged .cell {
+    margin: 1rem 1%;
+  }
+  /* line 197, ../../../compass/scss/utils/_flex.scss */
+  html.flexbox .flex-inline-list.large-h-marged .cell,
+  html.flexbox .flex-grid.large-h-marged .cell {
     margin: 0 1%;
+  }
+  /* line 200, ../../../compass/scss/utils/_flex.scss */
+  html.flexbox .flex-inline-list.large-v-marged .cell,
+  html.flexbox .flex-grid.large-v-marged .cell {
+    margin: 1% 0;
   }
 }
 @media only screen and (min-width: 102.92857em) {
-  /* line 178, ../../../compass/scss/utils/_flex.scss */
+  /* line 205, ../../../compass/scss/utils/_flex.scss */
   html.flexbox .flex-inline-list.xlarge-marged .cell,
   html.flexbox .flex-grid.xlarge-marged .cell {
+    margin: 1rem 1%;
+  }
+  /* line 208, ../../../compass/scss/utils/_flex.scss */
+  html.flexbox .flex-inline-list.xlarge-h-marged .cell,
+  html.flexbox .flex-grid.xlarge-h-marged .cell {
     margin: 0 1%;
+  }
+  /* line 211, ../../../compass/scss/utils/_flex.scss */
+  html.flexbox .flex-inline-list.xlarge-v-marged .cell,
+  html.flexbox .flex-grid.xlarge-v-marged .cell {
+    margin: 1% 0;
   }
 }
 @media only screen and (min-width: 137.21429em) {
-  /* line 183, ../../../compass/scss/utils/_flex.scss */
+  /* line 216, ../../../compass/scss/utils/_flex.scss */
   html.flexbox .flex-inline-list.xxlarge-marged .cell,
   html.flexbox .flex-grid.xxlarge-marged .cell {
+    margin: 1rem 1%;
+  }
+  /* line 219, ../../../compass/scss/utils/_flex.scss */
+  html.flexbox .flex-inline-list.xxlarge-h-marged .cell,
+  html.flexbox .flex-grid.xxlarge-h-marged .cell {
     margin: 0 1%;
   }
-}
-/* line 192, ../../../compass/scss/utils/_flex.scss */
-html.flexbox .flex-grid > .cell {
-  padding: 0 1.07143rem;
-}
-/* line 195, ../../../compass/scss/utils/_flex.scss */
-html.flexbox .flex-grid > .cell + .cell {
-  margin-top: 1.07143rem;
-}
-@media only screen and (min-width: 45.78571em) {
-  /* line 195, ../../../compass/scss/utils/_flex.scss */
-  html.flexbox .flex-grid > .cell + .cell {
-    margin-top: 0;
+  /* line 222, ../../../compass/scss/utils/_flex.scss */
+  html.flexbox .flex-inline-list.xxlarge-v-marged .cell,
+  html.flexbox .flex-grid.xxlarge-v-marged .cell {
+    margin: 1% 0;
   }
 }
-/* line 203, ../../../compass/scss/utils/_flex.scss */
+/* line 231, ../../../compass/scss/utils/_flex.scss */
+html.flexbox .flex-grid > .cell {
+  padding: 1.07143rem;
+}
+/* line 234, ../../../compass/scss/utils/_flex.scss */
 html.flexbox .flex-grid > .cell.unpadded {
   padding: 0;
 }
 @media only screen {
-  /* line 207, ../../../compass/scss/utils/_flex.scss */
+  /* line 238, ../../../compass/scss/utils/_flex.scss */
   html.flexbox .flex-grid > .cell.small-unpadded {
     padding: 0;
   }
 }
 @media only screen and (min-width: 45.78571em) {
-  /* line 212, ../../../compass/scss/utils/_flex.scss */
+  /* line 243, ../../../compass/scss/utils/_flex.scss */
   html.flexbox .flex-grid > .cell.medium-unpadded {
     padding: 0;
   }
 }
 @media only screen and (min-width: 73.21429em) {
-  /* line 217, ../../../compass/scss/utils/_flex.scss */
+  /* line 248, ../../../compass/scss/utils/_flex.scss */
   html.flexbox .flex-grid > .cell.large-unpadded {
     padding: 0;
   }
 }
 @media only screen and (min-width: 102.92857em) {
-  /* line 222, ../../../compass/scss/utils/_flex.scss */
+  /* line 253, ../../../compass/scss/utils/_flex.scss */
   html.flexbox .flex-grid > .cell.xlarge-unpadded {
     padding: 0;
   }
 }
 @media only screen and (min-width: 137.21429em) {
-  /* line 227, ../../../compass/scss/utils/_flex.scss */
+  /* line 258, ../../../compass/scss/utils/_flex.scss */
   html.flexbox .flex-grid > .cell.xxlarge-unpadded {
     padding: 0;
   }
 }
-/* line 237, ../../../compass/scss/utils/_flex.scss */
+/* line 268, ../../../compass/scss/utils/_flex.scss */
 html.flexbox form .flexbox-select .holder > ul {
   margin: 0;
   padding: 0;
@@ -11790,18 +11840,18 @@ html.flexbox form .flexbox-select .holder > ul {
   flex-wrap: wrap;
   list-style-type: none;
 }
-/* line 244, ../../../compass/scss/utils/_flex.scss */
+/* line 275, ../../../compass/scss/utils/_flex.scss */
 html.flexbox form .flexbox-select .holder > ul > li {
   -webkit-flex: 1 0 auto;
   flex: 1 0 auto;
   max-width: auto;
 }
-/* line 248, ../../../compass/scss/utils/_flex.scss */
+/* line 279, ../../../compass/scss/utils/_flex.scss */
 html.flexbox form .flexbox-select .holder > ul > li input[type="checkbox"] {
   margin: 0 0.71429rem 0 0;
 }
 
-/* line 259, ../../../compass/scss/utils/_flex.scss */
+/* line 290, ../../../compass/scss/utils/_flex.scss */
 html.no-flexbox .flex-inline-list,
 html.no-flexbox .flex-grid {
   list-style-type: none;
@@ -12122,46 +12172,52 @@ html.no-flexbox .flex-grid {
  * All stuff for page header
  * 
  */
-/* line 11, ../../../compass/scss/components/_header.scss */
-.top-bar .title-area .name .logo > img {
+@media only screen and (min-width: 102.92857em) {
+  /* line 9, ../../../compass/scss/components/_header.scss */
+  #header-container.contain-to-grid .top-bar {
+    max-width: 83rem;
+  }
+}
+/* line 18, ../../../compass/scss/components/_header.scss */
+#header-container .top-bar .title-area .name .logo > img {
   height: 3.57143rem;
 }
 @media only screen and (min-width: 45.78571em) {
-  /* line 11, ../../../compass/scss/components/_header.scss */
-  .top-bar .title-area .name .logo > img {
+  /* line 18, ../../../compass/scss/components/_header.scss */
+  #header-container .top-bar .title-area .name .logo > img {
     width: 80%;
     height: auto;
   }
 }
-/* line 18, ../../../compass/scss/components/_header.scss */
-.top-bar .title-area .name .logo > i {
+/* line 25, ../../../compass/scss/components/_header.scss */
+#header-container .top-bar .title-area .name .logo > i {
   line-height: inherit;
 }
-/* line 20, ../../../compass/scss/components/_header.scss */
-.top-bar .title-area .name .logo > i:before {
+/* line 27, ../../../compass/scss/components/_header.scss */
+#header-container .top-bar .title-area .name .logo > i:before {
   font-size: 3rem;
   line-height: inherit;
 }
-/* line 29, ../../../compass/scss/components/_header.scss */
-.top-bar .top-bar-section .social-badges {
+/* line 36, ../../../compass/scss/components/_header.scss */
+#header-container .top-bar .top-bar-section .social-badges {
   display: none;
 }
 @media only screen and (min-width: 73.21429em) {
-  /* line 29, ../../../compass/scss/components/_header.scss */
-  .top-bar .top-bar-section .social-badges {
+  /* line 36, ../../../compass/scss/components/_header.scss */
+  #header-container .top-bar .top-bar-section .social-badges {
     display: block;
   }
 }
-/* line 36, ../../../compass/scss/components/_header.scss */
-.top-bar .top-bar-section .social-badges > li a {
+/* line 43, ../../../compass/scss/components/_header.scss */
+#header-container .top-bar .top-bar-section .social-badges > li a {
   height: 5rem;
 }
-/* line 38, ../../../compass/scss/components/_header.scss */
-.top-bar .top-bar-section .social-badges > li a > i {
+/* line 45, ../../../compass/scss/components/_header.scss */
+#header-container .top-bar .top-bar-section .social-badges > li a > i {
   line-height: inherit;
 }
-/* line 40, ../../../compass/scss/components/_header.scss */
-.top-bar .top-bar-section .social-badges > li a > i:before {
+/* line 47, ../../../compass/scss/components/_header.scss */
+#header-container .top-bar .top-bar-section .social-badges > li a > i:before {
   font-size: 1.5rem;
   line-height: inherit;
 }
@@ -12233,64 +12289,13 @@ html.no-flexbox .flex-grid {
 #body_content .dropzone.dz-clickable input[type="file"] {
   display: none;
 }
-/* line 70, ../../../compass/scss/components/_contents.scss */
+/* line 71, ../../../compass/scss/components/_contents.scss */
 #body_content .dashboard-icons {
   padding: 2.14286rem 0;
 }
-/* line 77, ../../../compass/scss/components/_contents.scss */
+/* line 78, ../../../compass/scss/components/_contents.scss */
 #body_content .systems-list .folder a > i {
   display: block;
-}
-
-/* Foundation icons sizes */
-/* line 75, ../../../compass/scss/app.scss */
-.size-12 {
-  font-size: 12px;
-}
-
-/* line 76, ../../../compass/scss/app.scss */
-.size-14 {
-  font-size: 14px;
-}
-
-/* line 77, ../../../compass/scss/app.scss */
-.size-16 {
-  font-size: 16px;
-}
-
-/* line 78, ../../../compass/scss/app.scss */
-.size-18 {
-  font-size: 18px;
-}
-
-/* line 79, ../../../compass/scss/app.scss */
-.size-21 {
-  font-size: 21px;
-}
-
-/* line 80, ../../../compass/scss/app.scss */
-.size-24 {
-  font-size: 24px;
-}
-
-/* line 81, ../../../compass/scss/app.scss */
-.size-36 {
-  font-size: 36px;
-}
-
-/* line 82, ../../../compass/scss/app.scss */
-.size-48 {
-  font-size: 48px;
-}
-
-/* line 83, ../../../compass/scss/app.scss */
-.size-60 {
-  font-size: 60px;
-}
-
-/* line 84, ../../../compass/scss/app.scss */
-.size-72 {
-  font-size: 72px;
 }
 
 /*

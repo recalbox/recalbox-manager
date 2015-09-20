@@ -181,3 +181,6 @@ RECALBOX_SYSTEM_DEFAULT = {
 
 # Recalbox manifest about system roms and bios
 RECALBOX_MANIFEST = ManifestParser(RECALBOX_MANIFEST_FILEPATH).read()
+
+# Blocking time during psutil watch for cpu charge in second (float number)
+RECALBOX_PSUTIL_CPU_INTERVAL = 0.5 # 0.1 seems a little too low but 1.0 add 1s on page loading time
