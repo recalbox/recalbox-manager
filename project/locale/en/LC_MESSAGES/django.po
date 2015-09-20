@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-06 01:23+0200\n"
+"POT-Creation-Date: 2015-09-20 03:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,15 +21,15 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: manager_frontend/crumbs.py:10 templates/skeleton.html:50
+#: manager_frontend/crumbs.py:10 templates/skeleton.html:49
 msgid "Bios"
 msgstr ""
 
-#: manager_frontend/crumbs.py:11 templates/skeleton.html:53
+#: manager_frontend/crumbs.py:11 templates/skeleton.html:52
 msgid "Configuration"
 msgstr ""
 
-#: manager_frontend/crumbs.py:12 templates/skeleton.html:52
+#: manager_frontend/crumbs.py:12 templates/skeleton.html:51
 msgid "Logs"
 msgstr ""
 
@@ -90,15 +90,15 @@ msgstr ""
 msgid "File has been edited"
 msgstr ""
 
-#: settings.py:113
+#: settings.py:120
 msgid "English"
 msgstr ""
 
-#: settings.py:114
+#: settings.py:121
 msgid "French"
 msgstr ""
 
-#: settings.py:115
+#: settings.py:122
 msgid "German"
 msgstr ""
 
@@ -138,6 +138,7 @@ msgid "Path"
 msgstr ""
 
 #: templates/manager_frontend/bios_list.html:7
+#: templates/manager_frontend/home.html:68
 #: templates/manager_frontend/rom_list.html:7
 #: templates/manager_frontend/systems_list.html:7
 msgid "Total"
@@ -184,19 +185,70 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: templates/manager_frontend/home.html:14
+#: templates/manager_frontend/home.html:13
+msgid "CPU"
+msgstr ""
+
+#: templates/manager_frontend/home.html:19
+#, python-format
+msgid "Core&nbsp;%(number)s"
+msgstr ""
+
+#: templates/manager_frontend/home.html:37
+msgid "Memory"
+msgstr ""
+
+#: templates/manager_frontend/home.html:40
+#, python-format
+msgid "Free: %(size)s"
+msgstr ""
+
+#: templates/manager_frontend/home.html:49
+#, python-format
+msgid "Total: %(size)s"
+msgstr ""
+
+#: templates/manager_frontend/home.html:58
+msgid "File system"
+msgstr ""
+
+#: templates/manager_frontend/home.html:62
+msgid "Device"
+msgstr ""
+
+#: templates/manager_frontend/home.html:63
+msgid "Mount"
+msgstr ""
+
+#: templates/manager_frontend/home.html:64
+msgid "Type"
+msgstr ""
+
+#: templates/manager_frontend/home.html:65
+msgid "Usage"
+msgstr ""
+
+#: templates/manager_frontend/home.html:66
+msgid "Used"
+msgstr ""
+
+#: templates/manager_frontend/home.html:67
+msgid "Free"
+msgstr ""
+
+#: templates/manager_frontend/home.html:103
 msgid "Manage all supported <strong>Bios</strong> files for emulated systems"
 msgstr ""
 
-#: templates/manager_frontend/home.html:22
+#: templates/manager_frontend/home.html:111
 msgid "Manage <strong>Rom</strong> files for emulated systems"
 msgstr ""
 
-#: templates/manager_frontend/home.html:30
+#: templates/manager_frontend/home.html:119
 msgid "Read the Recalbox <strong>logs</strong>"
 msgstr ""
 
-#: templates/manager_frontend/home.html:38
+#: templates/manager_frontend/home.html:127
 msgid "Read and edit the Recalbox <strong>Configuration</strong> file"
 msgstr ""
 
@@ -208,22 +260,22 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-#: templates/skeleton.html:51
+#: templates/skeleton.html:50
 msgid "Roms"
 msgstr ""
 
-#: templates/skeleton.html:55
+#: templates/skeleton.html:54
 msgid "Links"
 msgstr ""
 
-#: templates/skeleton.html:57
+#: templates/skeleton.html:56
 msgid "Forum"
 msgstr ""
 
-#: templates/skeleton.html:58
+#: templates/skeleton.html:57
 msgid "https://github.com/digitalLumberjack/recalbox-os/wiki/Home-(EN)"
 msgstr ""
 
-#: templates/skeleton.html:58
+#: templates/skeleton.html:57
 msgid "Wiki (EN)"
 msgstr ""

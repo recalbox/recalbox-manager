@@ -10,13 +10,13 @@
 
     <div class="row cpu">
         <div class="small-12 columns">
-            <p class="title-3">CPU</p>
+            <p class="title-3">{% trans "CPU" %}</p>
         </div>
         {% for core_percent in cpu_infos.usage %}{% with core_int=core_percent|floatformat:"0" %}
         <div class="small-6 columns{% if forloop.last %} end{% endif %} core-item">
             <div class="row">
                 <div class="small-12 medium-4 columns core-number">
-                    <p>Core&nbsp;{{ forloop.counter }}</p>
+                    <p>{% blocktrans with number=forloop.counter %}Core&nbsp;{{ number }}{% endblocktrans %}</p>
                 </div>
                 <div class="small-12 medium-8 columns core-usage-progress">
                     <div class="progress success radius">
@@ -34,19 +34,19 @@
     <div class="row memory">
         {% with memory_usage_int=memory_infos.usage_percent|floatformat:"0" %}
         <div class="small-12 columns">
-            <p class="title-3">Memory</p>
+            <p class="title-3">{% trans "Memory" %}</p>
         </div>
-        <div class="small-3 medium-3 columns text-right free">
-            Free: {{ memory_infos.free_unified|filesizeformat }}
+        <div class="small-12 medium-3 columns medium-text-right free">
+            {% blocktrans with size=memory_infos.free_unified|filesizeformat %}Free: {{ size }}{% endblocktrans %}
         </div>
-        <div class="small-6 medium-6 columns usage">
+        <div class="small-12 medium-6 columns usage">
             <div class="progress success radius">
                 <span class="meter" style="width: {{ memory_usage_int }}%"></span>
                 <span class="value">{{ memory_usage_int }}%</span>
             </div>
         </div>
-        <div class="small-3 medium-3 columns text-left total">
-            Total: {{ memory_infos.total|filesizeformat }}
+        <div class="small-12 medium-3 columns medium-text-left total">
+            {% blocktrans with size=memory_infos.total|filesizeformat %}Total: {{ size }}{% endblocktrans %}
         </div>
         {% endwith %}
     </div>
@@ -55,17 +55,17 @@
     
     <div class="row filesystem">
         <div class="small-12 columns">
-            <p class="title-3">File system</p>
+            <p class="title-3">{% trans "File system" %}</p>
             <table class="expand">
                 <thead>
                     <tr>
-                        <th class="device">Device</th>
-                        <th class="mountpoint">Mount</th>
-                        <th class="type">Type</th>
-                        <th class="usage">Usage</th>
-                        <th class="used">Used</th>
-                        <th class="free">Free</th>
-                        <th class="total">Total</th>
+                        <th class="device">{% trans "Device" %}</th>
+                        <th class="mountpoint">{% trans "Mount" %}</th>
+                        <th class="type">{% trans "Type" %}</th>
+                        <th class="usage">{% trans "Usage" %}</th>
+                        <th class="used">{% trans "Used" %}</th>
+                        <th class="free">{% trans "Free" %}</th>
+                        <th class="total">{% trans "Total" %}</th>
                     </tr>
                 </thead>
                 <tbody>
