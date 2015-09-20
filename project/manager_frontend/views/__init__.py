@@ -3,76 +3,64 @@ import os, glob, re
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
-class HomeView(TemplateView):
-    """
-    System infos mining is disabled since it's very hard to get all the 
-    right stuff. Recommend to use a library like https://pypi.python.org/pypi/psutil
-    """
+# Compatibility support for Recalbox versions from 3.2.x to 3.3.x
+# (psutil package only available since 3.3.0 beta 5)
+try:
+    import psutil
+except ImportError:
+    class RecalboxSystemInfosMixin(object):
+        psutil_available = False
+else:
+    class RecalboxSystemInfosMixin(object):
+        """
+        Mixin to get all system infos using 'psutil' library
+        """
+        psutil_available = True
+        # TODO add paramter below to settings
+        mining_cpu_interval = 0.5 # 0.1 seems a little too low but 1.0 add 1s on page loading time
+        
+        def get_cpu_infos(self):
+            return {
+                'count': psutil.cpu_count(),
+                'usage': psutil.cpu_percent(interval=self.mining_cpu_interval, percpu=True),
+            }
+        
+        def get_memory_infos(self):
+            virtual_mem = psutil.virtual_memory()
+            return {
+                'usage_percent': virtual_mem.percent,
+                'usage_bytes': virtual_mem.used,
+                'free_unified': virtual_mem.available,
+                'total': virtual_mem.total,
+            }
+        
+        def get_filesystem_infos(self):
+            context = []
+            
+            for disk_part in psutil.disk_partitions():
+                usage = psutil.disk_usage(disk_part.mountpoint)
+                context.append({
+                    'device': disk_part.device,
+                    'mountpoint': disk_part.mountpoint,
+                    'fstype': disk_part.fstype,
+                    'total': usage.total,
+                    'free': usage.free,
+                    'used_bytes': usage.used,
+                    'used_percent': usage.percent,
+                })
+            
+            return context
+
+class HomeView(RecalboxSystemInfosMixin, TemplateView):
     template_name = "manager_frontend/home.html"
-    devices_pattern = ['sd.*','mmcblk*']
     
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
-        #context.update({
-            #'cpu_infos': self.get_cpu_infos(),
-            #'processes_infos': self.get_processes_infos(),
-            #'memory_infos': self.get_memory_infos(),
-            #'disk_infos': self.get_disk_infos(),
-        #})
+        if self.psutil_available:
+            context.update({
+                'cpu_infos': self.get_cpu_infos(),
+                'memory_infos': self.get_memory_infos(),
+                'filesystem_infos': self.get_filesystem_infos(),
+            })
         return context
-    
-    #def get_cpu_infos(self):
-        #"""
-        #TODO: Need a proper way to find cpu usage
-        #"""
-        #content = {}
-        #return content
-    
-    #def get_processes_infos(self):
-        #"""
-        #Watch in '/proc' directory to find how many process is running
-        #"""
-        #pids = []
-        #for subdir in os.listdir('/proc'):
-            #if subdir.isdigit():
-                #pids.append(subdir)
-        
-        #return {'running': len(pids)}
-    
-    #def get_memory_infos(self):
-        #"""
-        #Open '/proc/meminfo' to get usefull infos about memory usage
-        #"""
-        #content = {}
-        #labels = {'MemTotal': 'total','MemFree': 'free'}
-        
-        #with open('/proc/meminfo') as f:
-            #for line in f:
-                #key = line.split(':')[0]
-                #if key in ('MemTotal','MemFree',):
-                    ## Use a better label and convert value in Kb to bytes
-                    #value = line.split(':')[1].strip().split(' ')[0]
-                    #content[labels[key]] = int(value)*1024
-        
-        #return content
-
-    #def device_size(self, device):
-        #"""
-        #Return device size (total or used?)
-        #"""
-        #nr_sectors = open(device+'/size').read().rstrip('\n')
-        #sect_size = open(device+'/queue/hw_sector_size').read().rstrip('\n')
-
-        #return float(nr_sectors)*float(sect_size)
-
-    #def get_disk_infos(self):
-        #"""
-        #Watch through '/sys/block/*' to find FS devices, filtering them using the 
-        #'devices_pattern' class attribute
-        #"""
-        #content = {}
-        #for device in glob.glob('/sys/block/*'):
-            #for pattern in self.devices_pattern:
-                #if re.compile(pattern).match(os.path.basename(device)):
-                    #content[device] = self.device_size(device)
-        #return content
+ 

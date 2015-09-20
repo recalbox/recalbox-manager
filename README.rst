@@ -3,6 +3,8 @@
 .. _Django: https://www.djangoproject.com
 .. _Foundation: http://foundation.zurb.com
 .. _autobreadcrumbs: https://github.com/sveetch/autobreadcrumbs
+.. _virtualenv: http://www.virtualenv.org/
+.. _psutil: https://pypi.python.org/pypi/psutil
 
 Recalbox manager Web interface
 ==============================
@@ -14,9 +16,10 @@ This is a full Django webapp project, meaning it's ready to launch when correctl
 Features
 ********
 
-* Try to be the lightweight as possible;
-* Hardly repose on Recalbox Manifest file to valid uploads;
+* Try to be the lightweight as possible (..but using Django..);
+* Hardly repose on Recalbox Manifest file to validate uploads;
 * Web integration on top of `Foundation`_;
+* Display system informations like CPU, Memory and disks usage;
 * Read the Recalbox logs;
 * Edit the Recalbox configuration file;
     
@@ -38,18 +41,22 @@ Install
 Common Linux system
 -------------------
 
-Nothing special, it's just about to have PIP and virtualenv installed on your system, then use the Makefile action: ::
+Nothing special, it's just about to have PIP and `virtualenv`_ installed on your system, enter into your recalbox-manager directory, then use the Makefile action: ::
 
     make install
 
 And voila, it's done.
 
+But note this procedure is mostly for development purpose. See next section.
+
 Recalbox system
 ---------------
 
-This is different because Recalbox don't have all the common libraries and tools installed as on Linux system.
+Recalbox system is assumed to be the production environment.
 
-Before doing anything, ensure the rpi can access to the internet else configure your network interface and if needed dns resolving.
+This is different because Recalbox don't have all the common libraries and tools installed on a common Linux system.
+
+Before doing anything, ensure the Raspberry can access to the internet else configure your network interface and if needed dns resolving.
 
 Get the project repository, enter in its directory then type the following commands: ::
 
@@ -63,6 +70,8 @@ The first two lines would be needed only the first time. The last line init a du
 
 Finally, because Git is not available on Recalbox, you should get the repository on your PC before, transfer it to your recalbox and then continue on it with the commands.
 
+Since Recalbox 3.3.0 beta 5, `psutil`_ library is available, you would have to use ``requirements.beta5.txt`` instead ``requirements.txt``. This will probably become the behavior default when Recalbox 3.3.0 final will be released.
+
 Usage
 *****
 
@@ -73,8 +82,14 @@ Usage
 
 You should also use the option ``--noreload`` at the last command end if you don't plan to develop on this project.
     
-Development notes
-*****************
+Notes for development
+*********************
+
+#. Use the ``requirements.development.txt`` instead of ``requirements.txt``, it contains additional packages needed for development;
+
+#. Launch the webserver using the settings file for development: ::
+
+       python manage.py runserver 0.0.0.0:8001 --settings=project.settings_development
 
 #. You can install the project on common Linux system for development but you will need to reproduce the Recalbox file structure for Roms, Bios, Configuration file, log file, etc.. Or you can edit needed paths in project settings;
 
@@ -86,3 +101,11 @@ Development notes
 
 #. UTC Timezone does not seems available, have to set settings.TIME_ZONE to None and set settings.USE_TZ to False and so it start with a dummy project freshly created from startproject Django command;
 
+Notes for production
+********************
+
+#. Launch the webserver using the settings file for production: ::
+
+       python manage.py runserver 0.0.0.0:80 --settings=project.settings_production
+
+#. Currently the webapp is served using the development server from Django. It is strongly advised to not use it in production, but this should be fine as the webapp should not have to response to many connections because it's not a website on internet. This choice has been done to avoid to load a real web server on the Raspberry;

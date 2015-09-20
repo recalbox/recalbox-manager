@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Common stuff for Recalbox manifest
+Manifest parser
 """
 import json
-#import xml.etree.ElementTree as ET
 import xml.etree.cElementTree as ET
 
 class ManifestParser(object):
@@ -28,6 +27,11 @@ class ManifestParser(object):
             return []
         return [(item.get('md5', ''), item.text) for item in node.find("bios").findall("file")]
     
+    def get_system_extra_comments(self, node):
+        if node.find("extra_comments") is None:
+            return []
+        return [item.text for item in node.find("extra_comments").findall("comment")]
+    
     def read(self):
         """
         Return the manifest as a Python dictionnary
@@ -45,6 +49,7 @@ class ManifestParser(object):
                 'extensions': self.get_system_extensions(node),
                 'download_links': self.get_system_download_links(node),
                 'bios': self.get_system_bios(node),
+                'extra_comments': self.get_system_extra_comments(node),
             }
         
         return manifest
@@ -54,7 +59,3 @@ class ManifestParser(object):
         Return the manifest as a JSON string
         """
         return json.dumps(self.read(), indent=4)
-
-
-#ManifestParser(RECALBOX_MANIFEST_FILEPATH).read()
-#print ManifestParser(RECALBOX_MANIFEST_FILEPATH).json()

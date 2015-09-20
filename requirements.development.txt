@@ -1,0 +1,4 @@
+# Dependancies for development, inherit from beta5 deps until they are enabled in default requirements file
+ -r requirements.beta5.txt
+django-debug-toolbar==1.3.2
+django-icomoon==0.1

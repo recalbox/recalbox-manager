@@ -1,4 +1,47 @@
-//@import "components/icomoon";
+@import "utils/mixins";
+@import "components/icomoon";
+
+/* 
+ * **
+ * Common addons
+ * **
+ */
+
+// text-*** name format should be the only one used, name format without text-*** is 
+// deprecated (can be use from other element like .underline)
+.text-upper{
+    text-transform: uppercase !important;
+}
+.text-important{
+    text-decoration: underline !important;
+}
+
+.text-thin{
+    font-weight: 300 !important;
+}
+.text-bold{
+    font-weight: 400 !important;
+}
+.text-strong{
+    font-weight: 600 !important;
+}
+
+h1, h2, h3, h4, h5, h6{
+    &.text-thin{
+        font-weight: 300 !important;
+    }
+    &.text-normal{
+        font-weight: 400 !important;
+    }
+    &.text-strong{
+        font-weight: 600 !important;
+    }
+}
+
+// Keep font weight normal on little titles
+h5, h6{
+    font-weight: normal;
+}
 
 // Duplicate titles behavior for simple paragraph
 p.title-1{
@@ -25,10 +68,6 @@ p.title-6{
     margin: 0;
 }
 
-strong.upper{
-    text-transform: uppercase;
-}
-
 // Panel addons
 .panel{
     // Remove additional titles top margin
@@ -50,6 +89,129 @@ strong.upper{
     }
 }
 
+// Surrounded (top+bottom) element
+.surrounded{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-top: rem-calc(1px) solid #fcc241;
+    border-bottom: rem-calc(1px) solid #fcc241;
+}
+
+// Underlined element
+.underline{
+    // Base
+    &:after{
+        content:"";
+        display: block;
+        width: 50%;
+        height: rem-calc(2px);
+        margin: 2rem 0;
+        border-bottom: rem-calc(2px) solid $black;
+    }
+    
+    // On centered text
+    &.text-center{
+        &:after{
+            margin: 2rem auto;
+        }
+    }
+    
+    // Border weight
+    &.thin{
+        &:after{
+            height: rem-calc(1px);
+            margin: 1.5rem 0;
+            border-bottom: rem-calc(1px) solid $black;
+        }
+        &.text-center{
+            &:after{
+                margin: 1.5rem auto;
+            }
+        }
+    }
+    &.bold{
+        &:after{
+            height: rem-calc(5px);
+            margin: 2rem 0;
+            border-bottom: rem-calc(5px) solid $black;
+        }
+        &.text-center{
+            &:after{
+                margin: 2rem auto;
+            }
+        }
+    }
+    
+    // Border width size
+    &.tiny{
+        &:after{
+            width: 5%;
+        }
+    }
+    &.short{
+        &:after{
+            width: 15%;
+        }
+    }
+    &.normal{
+        &:after{
+            width: 40%;
+        }
+    }
+    &.large{
+        &:after{
+            width: 70%;
+        }
+    }
+    &.full{
+        &:after{
+            width: 100%;
+        }
+    }
+    
+    // Border distance from text
+    &.far{
+        &:after{
+            margin: 2.5rem 0;
+        }
+        &.text-center{
+            &:after{
+                margin: 2.5rem auto;
+            }
+        }
+    }
+    &.near{
+        &:after{
+            margin: 1rem 0;
+        }
+        &.text-center{
+            &:after{
+                margin: 1rem auto;
+            }
+        }
+    }
+}
+
+
+// Raccourci de positionnement relatif
+.relative-position{
+    position: relative;
+}
+
+// Image en bloc centre
+img.centered{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+// Etire proportionellement l'image a la largeur de son conteneur
+img.expand{
+    width: 100%;
+    height: auto;
+}
+
 // Improve tables
 table{
     // Expand table to the full width
@@ -66,23 +228,6 @@ table{
     tr.disabled{
         opacity: .7;
     }
-}
-
-// Shortcut for relative position
-.relative-position{
-    position: relative;
-}
-
-// Centered image as a block
-img.centered{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-// Proportionally expand image width to its container width
-img.expanded{
-    width: 100%;
-    height: auto;
 }
 
 // Sometime we need to separate an img from an another adjacent element
@@ -112,89 +257,103 @@ button, .button{
         }
     }
     
-    // Make stronger button
-    &.strong{
-        font-weight: bold;
-        text-transform: uppercase;
-    }
+    &.tertiary {}
+
+    &.quaternary {}
 }
-// Little trick to verticaly align paragraph on the tiny button height
-.tiny-button-v-align{
-    line-height: $paragraph-font-size * 2.6;
+
+/*
+ * Visually transform a dropdown button into a select list with vertical 
+ * scrollbar. This is useful for long list items that can impact on page size
+ */
+.f-dropdown.overflow{
+    overflow: auto;
+    height: rem-calc(200px);
+    // Various sizes
+    &.overflow-100{ height: rem-calc(100px); }
+    &.overflow-150{ height: rem-calc(150px); }
+    &.overflow-200{ height: rem-calc(200px); }
+    &.overflow-250{ height: rem-calc(250px); }
+    &.overflow-300{ height: rem-calc(300px); }
 }
 
 /* 
  * Some usefull stuff for Grids
  */
-// Fluid row, take the full width but keep normal row and columns behaviors
-.row.row-fluid{
-    max-width: 100%;
-    // Restore the initial behavior restrained to the grid
-    .row{
-        margin: auto;
-        @include grid-row;
-        // Preserve nested fluid behavior
-        &.row-fluid{
-            max-width: 100%;
-        }
-    }
-}
-
-// More larger row (around ~1328px instead of 1000px) for extra 
-// large screens
 $row-larger-width: 83rem !default;
-.row.larger{
-    @media #{$xlarge-up} {
-        max-width: $row-larger-width;
-    }
-}
-
-// Remove column padding for simple inner
-.row .columns > .row-inner{
-    margin-left: -($column-gutter/2);
-    margin-right: -($column-gutter/2);
-}
-
-// Remove padding on columns
-.columns{
-    &.unpadded{
-        padding: 0;
-    }
-    @media #{$small-only} {
-        &.small-unpadded{
-            padding: 0;
+.row{
+    // Fluid row, take the full width but keep normal row and columns behaviors
+    &.row-fluid{
+        max-width: 100%;
+        // Restore the initial behavior restrained to the grid
+        .row{
+            margin: auto;
+            @include grid-row;
+            // Preserve nested fluid behavior
+            &.row-fluid{
+                max-width: 100%;
+            }
         }
     }
-    @media #{$medium-only} {
-        &.medium-unpadded{
-            padding: 0;
+
+    // More larger row (around ~1328px instead of 1000px) for extra 
+    // large screens
+    &.larger{
+        @media #{$xlarge-up} {
+            max-width: $row-larger-width;
         }
     }
-    @media #{$large-only} {
-        &.large-unpadded{
+    
+    // Apply margin bottom on rows
+    .divider{
+        margin-bottom: rem-calc(10px);
+        @media #{$medium-up} {
+            margin-bottom: rem-calc(30px);
+        }
+    }
+
+    // Remove column padding for simple inner
+    & .columns > .row-inner{
+        margin-left: -($column-gutter/2);
+        margin-right: -($column-gutter/2);
+    }
+
+    // Remove padding on columns
+    .columns{
+        // By default, columns dont needs of a divider in medium display and up, 
+        // because they should probably floating
+        &.divider{
+            margin-bottom: rem-calc(5px);
+            @media #{$medium-up} {
+                margin-bottom: 0;
+            }
+        }
+        
+        &.unpadded{
             padding: 0;
+        }
+        @media #{$small-only} {
+            &.small-unpadded{
+                padding: 0;
+            }
+        }
+        @media #{$medium-only} {
+            &.medium-unpadded{
+                padding: 0;
+            }
+        }
+        @media #{$large-only} {
+            &.large-unpadded{
+                padding: 0;
+            }
         }
     }
 }
 
 /*
- * Supplementary divider classes
+ * Special breadcrumbs element that fit to the page
  */
-// Apply margin bottom on rows
-.row.divider{
-    margin-bottom: rem-calc(10px);
-    @media #{$medium-up} {
-        margin-bottom: rem-calc(30px);
-    }
-}
-// By default, columns dont needs of a divider in medium display and up, 
-// because they should probably floating
-.columns.divider{
-    margin-bottom: rem-calc(5px);
-    @media #{$medium-up} {
-        margin-bottom: 0;
-    }
-}
+.breadcrumbs-container{}
 
 /*
  * Forms addons
@@ -214,8 +373,8 @@ form{
     }
     // Container that hide their labels
     .hide-label{
-        label,
-        .label{
+        .holder > label,
+        .holder > .label{
             display: none;
         }
     }
@@ -224,5 +383,23 @@ form{
     input[type="file"]{
         @extend input[type="text"];
         padding: 0;
+    }
+}
+// Little trick to verticaly align paragraph on the tiny button height
+.tiny-button-v-align{
+    line-height: $paragraph-font-size * 2.6;
+}
+
+/*
+ * Progress addons
+ */
+.progress{
+    position: relative;
+    
+    // Progress value that is centered hover the bar meter
+    .value{
+        position: absolute;
+        top: 0;
+        left: 50%;
     }
 }

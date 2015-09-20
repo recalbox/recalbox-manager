@@ -2,13 +2,13 @@
 
 // Available percentage sizes
 // Sizes like 18 is when you want a 20% container but with 1% horizontal 
-// marging (1+18+1=20)
-$flex-inline-list-sizes: 18 20 23 25 31.3333 33.3333 48 50 58 60 73 75 98 100 !default;
+// marging or padding (1+18+1=20)
+$flex-grid-sizes: 14.666667 16.666667 18 20 23 25 31.3333 33.3333 48 49 50 58 60 73 75 98 100 !default;
 
 /*
  * Mixin to create cells widths with flexbox
  */
-@mixin -emencia-flex-inline-list-classes($sizes, $viewport: small) {
+@mixin -emencia-flex-grid-classes($sizes, $viewport: small) {
     @each $size in $sizes{
         $width: $size / 100;
         $name: floor($size);
@@ -24,7 +24,7 @@ $flex-inline-list-sizes: 18 20 23 25 31.3333 33.3333 48 50 58 60 73 75 98 100 !d
  * Mixin to create "simple" cells widths
  * Mixin to simulate inline list, used as a fallback
  */
-@mixin -emencia-simulate-inline-list-classes($sizes, $viewport: small) {
+@mixin -emencia-simulate-grid-columns($sizes, $viewport: small) {
     @each $size in $sizes{
         $width: $size / 100;
         $name: floor($size);
@@ -40,9 +40,13 @@ $flex-inline-list-sizes: 18 20 23 25 31.3333 33.3333 48 50 58 60 73 75 98 100 !d
  */
 // For browser with flexbox capability (detected from modernizr)
 html.flexbox{
-    .flex-inline-list{
+    .flex-inline-list,
+    .flex-grid{
         @include display-flex;
         @include flex-wrap(wrap);
+        // Enforce no horizontal margins to avoid bad cell widths
+        margin-left: 0;
+        margin-right: 0;
         
         // Remove spacing from default list styles
         &.clean{
@@ -59,25 +63,66 @@ html.flexbox{
             margin: 0;
             list-style-type: none;
             
+            // Last element paragraph dont have bottom margin
+            &>p:last-child{
+                margin: 0;
+            }
+            
+            // Remove negative margin for direct child row
             &>.row{
                 margin: 0;
+            }
+            
+            // All container elements are vertically stacked on center
+            &.flex-vertical-start-stack{
+                @include display-flex;
+                @include flex-direction(column);
+                @include justify-content(flex-start);
+            }
+            
+            // All container elements are vertically stacked on center
+            &.flex-vertical-end-stack{
+                @include display-flex;
+                @include flex-direction(column);
+                @include justify-content(flex-end);
+            }
+            
+            // All container elements are vertically stacked on center
+            &.flex-vertical-center-stack{
+                @include display-flex;
+                @include flex-direction(column);
+                @include justify-content(center);
+            }
+            
+            // All container elements are stacked with space around
+            &.flex-space-around-stack{
+                @include display-flex;
+                @include flex-direction(column);
+                @include justify-content(space-around);
+            }
+            
+            // All container elements are stacked with space between
+            &.flex-space-between-stack{
+                @include display-flex;
+                @include flex-direction(column);
+                @include justify-content(space-between);
             }
         }
         
         @media #{$small-up} {
-            @include -emencia-flex-inline-list-classes($flex-inline-list-sizes, $viewport: small);
+            @include -emencia-flex-grid-classes($flex-grid-sizes, $viewport: small);
         }
         @media #{$medium-up} {
-            @include -emencia-flex-inline-list-classes($flex-inline-list-sizes, $viewport: medium);
+            @include -emencia-flex-grid-classes($flex-grid-sizes, $viewport: medium);
         }
         @media #{$large-up} {
-            @include -emencia-flex-inline-list-classes($flex-inline-list-sizes, $viewport: large);
+            @include -emencia-flex-grid-classes($flex-grid-sizes, $viewport: large);
         }
         @media #{$xlarge-up} {
-            @include -emencia-flex-inline-list-classes($flex-inline-list-sizes, $viewport: xlarge);
+            @include -emencia-flex-grid-classes($flex-grid-sizes, $viewport: xlarge);
         }
         @media #{$xxlarge-up} {
-            @include -emencia-flex-inline-list-classes($flex-inline-list-sizes, $viewport: xxlarge);
+            @include -emencia-flex-grid-classes($flex-grid-sizes, $viewport: xxlarge);
         }
         
         // Some inner padding on cells
@@ -140,11 +185,79 @@ html.flexbox{
             }
         }
     }
+    
+    // Grid cells have the same padding that Foundation grid columns
+    .flex-grid{
+        // Cell base
+        &>.cell{
+            padding: 0 ($column-gutter/2);
+            
+            &+.cell{
+                margin-top: ($column-gutter/2);
+                
+                @media #{$medium-up} {
+                    margin-top: 0;
+                }
+            }
+            
+            &.unpadded{
+                padding: 0;
+            }
+            @media #{$small-up} {
+                &.small-unpadded{
+                    padding: 0;
+                }
+            }
+            @media #{$medium-up} {
+                &.medium-unpadded{
+                    padding: 0;
+                }
+            }
+            @media #{$large-up} {
+                &.large-unpadded{
+                    padding: 0;
+                }
+            }
+            @media #{$xlarge-up} {
+                &.xlarge-unpadded{
+                    padding: 0;
+                }
+            }
+            @media #{$xxlarge-up} {
+                &.xxlarge-unpadded{
+                    padding: 0;
+                }
+            }
+        }
+    }
+    
+    form{
+        // Multiple checkbox select with flexbox
+        .flexbox-select{
+            .holder > ul{
+                margin: 0;
+                padding: 0;
+                @include display-flex;
+                @include flex-wrap(wrap);
+                list-style-type: none;
+                
+                &>li{
+                    @include flex(1 0 auto);
+                    max-width: auto;
+                    
+                    input[type="checkbox"]{
+                        margin: 0 rem-calc(10px) 0 0;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // Fallback for browsers that dont have flexbox capability, we inherit from Foundation grid row
 html.no-flexbox{
-    .flex-inline-list{
+    .flex-inline-list,
+    .flex-grid{
         list-style-type: none;
         @extend .row;
         
@@ -152,19 +265,19 @@ html.no-flexbox{
             @extend .columns;
         }
         @media #{$small-up} {
-            @include -emencia-simulate-inline-list-classes($flex-inline-list-sizes, $viewport: small);
+            @include -emencia-simulate-grid-columns($flex-grid-sizes, $viewport: small);
         }
         @media #{$medium-up} {
-            @include -emencia-simulate-inline-list-classes($flex-inline-list-sizes, $viewport: medium);
+            @include -emencia-simulate-grid-columns($flex-grid-sizes, $viewport: medium);
         }
         @media #{$large-up} {
-            @include -emencia-simulate-inline-list-classes($flex-inline-list-sizes, $viewport: large);
+            @include -emencia-simulate-grid-columns($flex-grid-sizes, $viewport: large);
         }
         @media #{$xlarge-up} {
-            @include -emencia-simulate-inline-list-classes($flex-inline-list-sizes, $viewport: xlarge);
+            @include -emencia-simulate-grid-columns($flex-grid-sizes, $viewport: xlarge);
         }
         @media #{$xxlarge-up} {
-            @include -emencia-simulate-inline-list-classes($flex-inline-list-sizes, $viewport: xxlarge);
+            @include -emencia-simulate-grid-columns($flex-grid-sizes, $viewport: xxlarge);
         }
     }
 }
