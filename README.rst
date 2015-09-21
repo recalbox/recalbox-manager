@@ -120,7 +120,7 @@ Notes for production
 
 #. Launch the webserver using the settings file for production: ::
 
-       python manage.py runserver 0.0.0.0:80 --settings=project.settings_production
+       bin/python manage.py runserver 0.0.0.0:80 --settings=project.settings_production
 
 #. The server can take some times to fully initialize (something like 10s) the first time;
 
