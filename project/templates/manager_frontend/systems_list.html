@@ -17,9 +17,7 @@
 
 <div class="flex-grid marged systems-list">{% for key,name in systems_list %}
     <a href="{% url 'manager:roms-list' system=key %}" class="cell small-58 large-23 folder text-center flex-vertical-center-stack button large radius">
-{% comment %}         <a class="button large expand radius"> {% endcomment %}
-            <i class="icon-folder icon-4x"></i> {{ name }}
-{% comment %}         </a> {% endcomment %}
+        <i class="icon-folder icon-4x"></i> {{ name }}
     </a>
 {% endfor %}</div>
 {% endblock %}

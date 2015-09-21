@@ -188,6 +188,30 @@
  * HERE GOES THE ICONS FROM THE style.css bundled in the icomoon archive
  * 
  */
+.icon-check:before {
+    content: "\f00c";
+}
+.icon-close:before {
+    content: "\f00d";
+}
+.icon-download:before {
+    content: "\f019";
+}
+.icon-folder-open:before {
+    content: "\f07c";
+}
+.icon-bar-chart:before {
+    content: "\f080";
+}
+.icon-question:before {
+    content: "\f128";
+}
+.icon-info:before {
+    content: "\f129";
+}
+.icon-exclamation:before {
+    content: "\f12a";
+}
 .icon-recalbox:before {
     content: "\e602";
 }

@@ -6,130 +6,38 @@
 {% block manager_title %}{% endblock %}
 
 {% block manager_content %}
-{% if PSUTIL_AVAILABLE %}
-<div class="dashboard-system-infos">
-
-    <div class="row cpu">
-        <div class="small-12 columns">
-            <p class="title-3">{% trans "CPU" %}</p>
-        </div>
-        {% for core_percent in cpu_infos.usage %}{% with core_int=core_percent|floatformat:"0" %}
-        <div class="small-6 columns{% if forloop.last %} end{% endif %} core-item">
-            <div class="row">
-                <div class="small-12 medium-4 columns core-number">
-                    <p>{% blocktrans with number=forloop.counter %}Core&nbsp;{{ number }}{% endblocktrans %}</p>
-                </div>
-                <div class="small-12 medium-8 columns core-usage-progress">
-                    <div class="progress success radius">
-                        <span class="meter" style="width: {{ core_int }}%"></span>
-                        <span class="value">{{ core_int }}%</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endwith %}{% endfor %}
-    </div>
-
-    <hr>
-
-    <div class="row memory">
-        {% with memory_usage_int=memory_infos.usage_percent|floatformat:"0" %}
-        <div class="small-12 columns">
-            <p class="title-3">{% trans "Memory" %}</p>
-        </div>
-        <div class="small-12 medium-3 columns medium-text-right free">
-            {% blocktrans with size=memory_infos.free_unified|filesizeformat %}Free: {{ size }}{% endblocktrans %}
-        </div>
-        <div class="small-12 medium-6 columns usage">
-            <div class="progress success radius">
-                <span class="meter" style="width: {{ memory_usage_int }}%"></span>
-                <span class="value">{{ memory_usage_int }}%</span>
-            </div>
-        </div>
-        <div class="small-12 medium-3 columns medium-text-left total">
-            {% blocktrans with size=memory_infos.total|filesizeformat %}Total: {{ size }}{% endblocktrans %}
-        </div>
-        {% endwith %}
-    </div>
-
-    <hr>
-    
-    <div class="row filesystem">
-        <div class="small-12 columns">
-            <p class="title-3">{% trans "File system" %}</p>
-            <table class="expand">
-                <thead>
-                    <tr>
-                        <th class="device">{% trans "Device" %}</th>
-                        <th class="mountpoint">{% trans "Mount" %}</th>
-                        <th class="type">{% trans "Type" %}</th>
-                        <th class="usage">{% trans "Usage" %}</th>
-                        <th class="used">{% trans "Used" %}</th>
-                        <th class="free">{% trans "Free" %}</th>
-                        <th class="total">{% trans "Total" %}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for disk in filesystem_infos %}{% with usage_percent=disk.used_percent|floatformat:"0" %}
-                    <tr class="device-item">
-                        <td class="device">{{ disk.device }}</td>
-                        <td class="mountpoint">{{ disk.mountpoint }}</td>
-                        <td class="type">{{ disk.fstype }}</td>
-                        <td class="usage">
-                            <div class="progress success radius">
-                                <span class="meter" style="width: {{ usage_percent }}%"></span>
-                                <span class="value">{{ usage_percent }}%</span>
-                            </div>
-                        </td>
-                        <td class="used">{{ disk.used_bytes|filesizeformat }}</td>
-                        <td class="free">{{ disk.free|filesizeformat }}</td>
-                        <td class="total">{{ disk.total|filesizeformat }}</td>
-                    </tr>
-                    {% endwith %}{% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-    
-</div>
-
-<hr>
-{% endif %}
-
 <div class="dashboard-icons">
-    <div class="row">
-        <div class="small-12 large-6 columns">
-            <a href="{% url 'manager:bios' %}" class="button reverse-primary large expand radius text-center">
-                <i class="icon-nes-console icon-4x icon-block"></i>
-                <p>
-                    {% blocktrans %}Manage all supported <strong>Bios</strong> files for emulated systems{% endblocktrans %}
-                </p>
-            </a>
-        </div>
-        <div class="small-12 large-6 columns">
-            <a href="{% url 'manager:roms-systems' %}" class="button reverse-primary large expand radius text-center">
-                <i class="icon-nes-cartridge icon-4x icon-block"></i>
-                <p>
-                    {% blocktrans %}Manage <strong>Rom</strong> files for emulated systems{% endblocktrans %}
-                </p>
-            </a>
-        </div>
-        <div class="small-12 large-6 columns">
-            <a href="{% url 'manager:logs' %}" class="button reverse-primary large expand radius text-center">
-                <i class="icon-book icon-4x icon-block"></i>
-                <p>
-                    {% blocktrans %}Read the Recalbox <strong>logs</strong>{% endblocktrans %}
-                </p>
-            </a>
-        </div>
-        <div class="small-12 large-6 columns">
-            <a href="{% url 'manager:config' %}" class="button reverse-primary large expand radius text-center">
-                <i class="icon-cogs icon-4x icon-block"></i>
-                <p>
-                    {% blocktrans %}Read and edit the Recalbox <strong>Configuration</strong> file{% endblocktrans %}
-                </p>
-            </a>
-        </div>
+    <div class="flex-grid marged">
+        <a href="{% url 'manager:monitoring' %}" class="cell small-98 medium-48 large-31 button reverse-primary large radius text-center">
+            <i class="icon-bar-chart icon-4x icon-block"></i>
+            <p>
+                {% blocktrans %}Read and edit the Recalbox <strong>Configuration</strong> file{% endblocktrans %}
+            </p>
+        </a>
+        <a href="{% url 'manager:config' %}" class="cell small-98 medium-48 large-31 button reverse-primary large radius text-center">
+            <i class="icon-cogs icon-4x icon-block"></i>
+            <p>
+                {% blocktrans %}Read and edit the Recalbox <strong>Configuration</strong> file{% endblocktrans %}
+            </p>
+        </a>
+        <a href="{% url 'manager:bios' %}" class="cell small-98 medium-48 large-31 button reverse-primary large radius text-center">
+            <i class="icon-nes-console icon-4x icon-block"></i>
+            <p>
+                {% blocktrans %}Manage all supported <strong>Bios</strong> files for emulated systems{% endblocktrans %}
+            </p>
+        </a>
+        <a href="{% url 'manager:roms-systems' %}" class="cell small-98 medium-48 large-31 button reverse-primary large radius text-center">
+            <i class="icon-nes-cartridge icon-4x icon-block"></i>
+            <p>
+                {% blocktrans %}Manage <strong>Rom</strong> files for emulated systems{% endblocktrans %}
+            </p>
+        </a>
+        <a href="{% url 'manager:logs' %}" class="cell small-98 medium-48 large-31 button reverse-primary large radius text-center">
+            <i class="icon-book icon-4x icon-block"></i>
+            <p>
+                {% blocktrans %}Read the Recalbox <strong>logs</strong>{% endblocktrans %}
+            </p>
+        </a>
     </div>
 </div>
 {% endblock %}

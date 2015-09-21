@@ -43,6 +43,6 @@ class ConfigEditForm(CrispyFormMixin, forms.Form):
         
         # Write the new configuration file
         with open(self.config_filepath, 'w') as file:
-            file.write(content)
+            file.write(content.encode('UTF-8'))
        
         return content, backup

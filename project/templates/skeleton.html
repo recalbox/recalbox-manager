@@ -46,10 +46,11 @@
                 </ul>
 
                 <ul class="left">
+                    <li><a href="{% url 'manager:monitoring' %}"><i class="icon-bar-chart"></i> {% trans "Monitoring" %}</a></li>
+                    <li><a href="{% url 'manager:config' %}"><i class="icon-cogs"></i> {% trans "Configuration" %}</a></li>
                     <li><a href="{% url 'manager:bios' %}"><i class="icon-nes-console"></i> {% trans "Bios" %}</a></li>
                     <li><a href="{% url 'manager:roms-systems' %}"><i class="icon-nes-cartridge"></i> {% trans "Roms" %}</a></li>
                     <li><a href="{% url 'manager:logs' %}"><i class="icon-book"></i> {% trans "Logs" %}</a></li>
-                    <li><a href="{% url 'manager:config' %}"><i class="icon-cogs"></i> {% trans "Configuration" %}</a></li>
                     <li class="has-dropdown">
                         <a href="#"><i class="icon-external-link"></i> {% trans "Links" %}</a>
                         <ul class="dropdown">

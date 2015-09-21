@@ -62,15 +62,29 @@ Get the project repository, enter in its directory then type the following comma
 
     python -m ensurepip
     pip install virtualenv
-    virtualenv --no-site-packages .
+    wget https://github.com/sveetch/recalbox-manager/archive/0.8.2.zip
+    unzip 0.8.2.zip
+    cd recalbox-manager-0.8.2/
+    virtualenv --system-site-packages .
     bin/pip install -r requirements.txt
+    bin/python manage.py migrate
     bin/python manage.py runserver 0.0.0.0:8001
 
 The first two lines would be needed only the first time. The last line init a dummy database (into file ``db.sqlite3``) that is not really used for now.
 
 Finally, because Git is not available on Recalbox, you should get the repository on your PC before, transfer it to your recalbox and then continue on it with the commands.
 
-Since Recalbox 3.3.0 beta 5, `psutil`_ library is available, you would have to use ``requirements.beta5.txt`` instead ``requirements.txt``. This will probably become the behavior default when Recalbox 3.3.0 final will be released.
+Some explanations, line by line:
+
+#. Install Pip;
+#. Install virtualenv;
+#. Directly download last stable release;
+#. Decompress downloaded archive;
+#. Enter recalbox-manager directory;
+#. Initialize the virtual environment, it will inherits from the Python system packages to be able to use installed `psutil`_ if any;
+#. Install dependancies using PIP;
+#. Initialize a dummy database (into file ``db.sqlite3``) that is not really used, but required;
+#. Run the server on all IP interface with port 8001 and default settings (``settings.py``);
 
 Usage
 *****
@@ -108,4 +122,9 @@ Notes for production
 
        python manage.py runserver 0.0.0.0:80 --settings=project.settings_production
 
+#. The server can take some times to fully initialize (something like 10s) the first time;
+
 #. Currently the webapp is served using the development server from Django. It is strongly advised to not use it in production, but this should be fine as the webapp should not have to response to many connections because it's not a website on internet. This choice has been done to avoid to load a real web server on the Raspberry;
+
+#. Last tests on Recalbox 3.3.0 beta 6 and recalbox-manager==0.8.2 was giving 2% CPU charge when Django instance is idle and can go to 17% when furiously reloading a page during 30seconds. Memory is allways stable around 80Mo and should probably don't go further. This is a naive benchmark just using ``top``.
+

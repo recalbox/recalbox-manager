@@ -23,7 +23,7 @@
 /etc
 
 # Various
-node_modules
-foundation5
+/node_modules
+/foundation5
 
 *.sqlite3
