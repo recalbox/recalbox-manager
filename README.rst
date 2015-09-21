@@ -62,9 +62,9 @@ Get the project repository, enter in its directory then type the following comma
 
     python -m ensurepip
     pip install virtualenv
-    wget https://github.com/sveetch/recalbox-manager/archive/0.8.2.zip
-    unzip 0.8.2.zip
-    cd recalbox-manager-0.8.2/
+    wget https://github.com/sveetch/recalbox-manager/archive/0.8.3.zip
+    unzip 0.8.3.zip
+    cd recalbox-manager-0.8.3/
     virtualenv --system-site-packages .
     bin/pip install -r requirements.txt
     bin/python manage.py migrate
