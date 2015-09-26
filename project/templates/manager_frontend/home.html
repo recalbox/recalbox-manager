@@ -20,6 +20,12 @@
                 {% blocktrans %}Read and edit the Recalbox <strong>Configuration</strong> file{% endblocktrans %}
             </p>
         </a>
+        <a href="{% url 'manager:logs' %}" class="cell small-98 medium-48 large-31 button reverse-primary large radius text-center">
+            <i class="icon-book icon-4x icon-block"></i>
+            <p>
+                {% blocktrans %}Read the Recalbox <strong>logs</strong>{% endblocktrans %}
+            </p>
+        </a>
         <a href="{% url 'manager:bios' %}" class="cell small-98 medium-48 large-31 button reverse-primary large radius text-center">
             <i class="icon-nes-console icon-4x icon-block"></i>
             <p>
@@ -32,10 +38,10 @@
                 {% blocktrans %}Manage <strong>Rom</strong> files for emulated systems{% endblocktrans %}
             </p>
         </a>
-        <a href="{% url 'manager:logs' %}" class="cell small-98 medium-48 large-31 button reverse-primary large radius text-center">
-            <i class="icon-book icon-4x icon-block"></i>
+        <a href="http://{{ SITE.hostname }}:8081" class="cell small-98 medium-48 large-31 button reverse-primary large radius text-center">
+            <i class="icon-gamepad icon-4x icon-block"></i>
             <p>
-                {% blocktrans %}Read the Recalbox <strong>logs</strong>{% endblocktrans %}
+                {% blocktrans %}Use the <strong>Virtual gamepad</strong>{% endblocktrans %}
             </p>
         </a>
     </div>

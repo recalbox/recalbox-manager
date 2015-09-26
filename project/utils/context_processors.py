@@ -30,6 +30,7 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
     * SITE.domain: Current *Site* entry domain;
     * SITE.web_url: The Current *Site* entry domain prefixed with the http
       protocol like ``http://mydomain.com``. If HTTPS is enabled 'https' will be used instead of 'http';
+    * SITE.hostname: The current hostname, like ``SITE.domain`` but without port if any;
 
     Optionally it can also return ``STATIC_URL`` and ``MEDIA_URL`` if needed
     (like out of Django requests).
@@ -48,6 +49,7 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
             'SITE': {
                 'name': site_current.get('name', ''),
                 'domain': ':'.join(host_address),
+                'hostname': host_address[0],
             }
         }
         metas['SITE']['web_url'] = 'http://%s' % metas['SITE']['domain']
@@ -59,6 +61,7 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
             'SITE': {
                 'name': site_current.name,
                 'domain': site_current.domain,
+                'hostname': site_current.domain.split(':')[0],
                 'web_url': 'http://%s' % site_current.domain,
             }
         }
