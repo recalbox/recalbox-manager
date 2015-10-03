@@ -1,4 +1,4 @@
-{% load i18n %}<!DOCTYPE html>
+{% load i18n assets %}<!DOCTYPE html>
 <!--[if IE 8]> <html class="{% block html_attr_alt %}{% endblock %}no-js lt-ie9" lang="{{ LANGUAGE_CODE }}"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="{% block html_attr %}{% endblock %}no-js" lang="{{ LANGUAGE_CODE }}"> <!--<![endif]-->
 <head>
@@ -12,12 +12,12 @@
         {% endblock %}
 
         {% block page_base_links %}
-            <link rel="stylesheet" href="{{ STATIC_URL }}css/app.css">
+            {% stylesheet_tag "css/app.min.css" %}
         {% endblock %}
         
         {% block page_more_links %}{% endblock %}
         {% block page_base_js %}
-            <script type="text/javascript" src="{{ STATIC_URL }}js/foundation5/vendor/modernizr.js"></script>
+            {% javascript_tag "js/modernizr.min.js" %}
         {% endblock %}
         
     {% endspaceless %}{% endblock %}
@@ -86,11 +86,7 @@
 
     {% spaceless %}
         {% block page_more_js %}
-            <script type="text/javascript" src="{{ STATIC_URL }}js/foundation5/vendor/modernizr.js"></script>
-            <script type="text/javascript" src="{{ STATIC_URL }}js/foundation5/vendor/jquery.js"></script>
-            <script type="text/javascript" src="{{ STATIC_URL }}js/foundation5/vendor/jquery.cookie.js"></script>
-            <script type="text/javascript" src="{{ STATIC_URL }}js/foundation5/foundation.min.js"></script>
-            <script type="text/javascript" src="{{ STATIC_URL }}js/app.js"></script>
+            {% javascript_tag "js/app.min.js" %}
         {% endblock %}
     {% endspaceless %}
 </body>

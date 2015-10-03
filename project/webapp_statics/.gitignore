@@ -1,5 +1,3 @@
 robots.txt
 .webassets-cache
-**/*.min.css
-**/*.min.js
 webassets.manifest

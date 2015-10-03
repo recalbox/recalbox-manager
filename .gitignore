@@ -22,6 +22,9 @@
 /parts
 /etc
 
+# Ruby
+*.bundle
+
 # Various
 /node_modules
 /foundation5

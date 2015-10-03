@@ -1,0 +1,28 @@
+{
+    "stylesheets": {
+        "css/app.min.css": [
+            "css/app.css"
+        ]
+    },
+    "javascripts": {
+        "js/modernizr.min.js": [
+            "js/foundation5/vendor/modernizr.js"
+        ],
+        "js/app.min.js": [
+            "js/foundation5/vendor/jquery.js",
+            "js/foundation5/vendor/jquery.cookie.js",
+            "js/foundation5/foundation/foundation.js",
+            "js/foundation5/foundation/foundation.abide.js",
+            "js/foundation5/foundation/foundation.accordion.js",
+            "js/foundation5/foundation/foundation.alert.js",
+            "js/foundation5/foundation/foundation.dropdown.js",
+            "js/foundation5/foundation/foundation.equalizer.js",
+            "js/foundation5/foundation/foundation.joyride.js",
+            "js/foundation5/foundation/foundation.slider.js",
+            "js/foundation5/foundation/foundation.tab.js",
+            "js/foundation5/foundation/foundation.tooltip.js",
+            "js/foundation5/foundation/foundation.topbar.js",
+            "js/app.js"
+        ]
+    }
+}

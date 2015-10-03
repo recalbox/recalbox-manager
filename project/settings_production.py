@@ -10,3 +10,6 @@ SITE_FIXED = {
 
 # Production path to the Recalbox logs file
 RECALBOX_LOGFILE_PATH = "/root/recalbox.log"
+
+# Use packaged assets
+ASSETS_COMPRESSED = True

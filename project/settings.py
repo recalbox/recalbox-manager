@@ -150,6 +150,14 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, "webapp_statics"),
 )
 
+# For assets management
+ASSETS_PACKAGED = not(DEBUG)
+ASSETS_STRICT = False
+ASSETS_MAP_FILEPATH = os.path.join(PROJECT_DIR, "assets.json")
+ASSETS_TAG_TEMPLATES = {
+    "javascripts": "assets/javascript_tag.html",
+    "stylesheets": "assets/stylesheet_tag.html",
+}
 # For Django messages framework, we could use this settings to avoid database requests
 #MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 

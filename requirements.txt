@@ -1,3 +1,4 @@
-# Dependancies for default install (not for development or/and Recalbox < 3.3.0 beta5)
+# Dependancies for basic install
 django>=1.8
 autobreadcrumbs==1.1
+psutil==2.1.3

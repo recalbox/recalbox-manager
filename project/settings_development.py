@@ -13,5 +13,9 @@ ICOMOON_MANIFEST_FILEPATH = os.path.join(PROJECT_DIR, 'webapp_statics/fonts/sele
 
 ICOMOON_PRIVATE = False
 
+# Do not use packaged assets, use the originals
+ASSETS_PACKAGED = True
+
+ASSETS_STRICT = True
 
 ROOT_URLCONF = 'project.urls_development'

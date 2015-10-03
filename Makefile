@@ -1,4 +1,4 @@
-.PHONY: help install install-dev clean delpyc syncf5
+.PHONY: help install install-dev assets clean delpyc syncf5
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -9,7 +9,9 @@ help:
 	@echo "  install -- to build the project"
 	@echo "  install-dev -- to build the project for development"
 	@echo
-	@echo "  syncf5 -- to synchronize needed Javascript files from foundation5 sources dir to the project static files"
+	@echo "  assets  -- to build assets for production environment"
+	@echo
+	@echo "  syncf5 -- to synchronize Foundation5 sources dir to assets (used only when you upgrade Foundation5)"
 
 delpyc:
 	find . -name "*\.pyc"|xargs rm -f
@@ -23,8 +25,13 @@ install:
 	bin/python manage.py migrate
 
 install-dev: install
+	bundle install --gemfile=compass/Gemfile
 	npm install
 	foundation new foundation5 --version=5.5.2
+
+assets: 
+	grunt uglify
+	grunt cssmin
 
 syncf5:
 	rm -f foundation5/bower_components/foundation/js/vendor/jquery.js

@@ -9,7 +9,7 @@
  * WARNING: Do not use this full import when passing to production, 
  * instead select all needed component one by one
  */
-@import "foundation";
+//@import "foundation";
 
 /*
  * All foundation components, one by one
@@ -52,6 +52,33 @@
   "foundation/components/offcanvas",
   "foundation/components/visibility";
 */
+@import
+  "foundation/components/accordion",
+  "foundation/components/alert-boxes",
+  "foundation/components/block-grid",
+  "foundation/components/breadcrumbs",
+  "foundation/components/button-groups",
+  "foundation/components/buttons",
+  "foundation/components/dropdown",
+  "foundation/components/dropdown-buttons",
+  "foundation/components/forms",
+  "foundation/components/grid",
+  "foundation/components/inline-lists",
+  "foundation/components/keystrokes",
+  "foundation/components/labels",
+  "foundation/components/pagination",
+  "foundation/components/panels",
+  "foundation/components/progress-bars",
+  "foundation/components/reveal",
+  "foundation/components/split-buttons",
+  "foundation/components/sub-nav",
+  "foundation/components/switches",
+  "foundation/components/tables",
+  "foundation/components/tabs",
+  "foundation/components/tooltips",
+  "foundation/components/top-bar",
+  "foundation/components/type",
+  "foundation/components/visibility";
 
 /* 
  * Used components

@@ -16,7 +16,12 @@ This is a full Django webapp project, meaning it's ready to launch when correctl
 Features
 ********
 
-* Try to be the lightweight as possible (..but using Django..);
+* Try to be the lightweight as possible (even if using Django):
+    
+  * Actually don't have any app models, so we never perform database request for anything;
+  * Don't use Django site framework (to avoid database request);
+  * Don't use compressor system (like django-assets or django-pipeline) to avoid processing many files just to display static files tags. Instead ships allready compressed assets and switch to them in production environment;
+
 * Hardly repose on Recalbox Manifest file to validate uploads;
 * Web integration on top of `Foundation`_;
 * Display system informations like CPU, Memory and disks usage;
@@ -99,7 +104,11 @@ You should also use the option ``--noreload`` at the last command end if you don
 Notes for development
 *********************
 
-#. Use the ``requirements.development.txt`` instead of ``requirements.txt``, it contains additional packages needed for development;
+#. Before doing anything (install or whatever), development requires additional tools : *Ruby*, *Node.js* and *npm*. Install them on your system;
+
+#. To directly install the full development environment, just use ``make install-dev`` from the project root, it will install everything (use ``make clean`` before if you previously used the ``make install`` command) but the Compass stuff.
+
+#. The ``requirements.development.txt`` contains some additional packages on top ``requirements.txt``;
 
 #. Launch the webserver using the settings file for development: ::
 
@@ -111,20 +120,47 @@ Notes for development
 
 #. Python 2.7.9 is installed on Recalbox 3.2.11, so *pip* is near to be ready to use, just have to install it the first time. This will results to install ``pip==1.5.6``.
 
-#. Python devel lib is not installed but will be may be needed to install some packages from eggs (actually not needed);
+Assets
+------
 
-#. UTC Timezone does not seems available, have to set settings.TIME_ZONE to None and set settings.USE_TZ to False and so it start with a dummy project freshly created from startproject Django command;
+You need to install the required Grunt stuff to develop on assets, it should have been done with ``make install-dev``
+
+Assets are managed in a JSON manifest ``project/assets.json`` that are used by Django template tags to know what asset to load in the pages. And the manifest is used also by Grunt tasks to optimize and build the asset files for production environment. 
+
+In default and development environment loaded assets are not uglified or compressed to ease asset debugging.
+
+When you did some changes (add, delete, change) on Javascript files, you will need to execute the following Grunt task: ::
+
+    grunt uglify
+
+And when you did some changes on CSS files (or when Compass rebuild CSS from your SCSS changes), you will need to execute the following Grunt task: ::
+
+    grunt cssmin
+
+Also to make continue development, you can use the watch task so every time Compass is making a recompile, cssmin will compress CSS: ::
+
+    grunt watch
+
+**Remember** to execute theses tasks before commiting updates on assets.
 
 Notes for production
 ********************
 
-#. Launch the webserver using the settings file for production: ::
+* Launch the webserver using the settings file for production: ::
 
        bin/python manage.py runserver 0.0.0.0:80 --settings=project.settings_production
 
-#. The server can take some times to fully initialize (something like 10s) the first time;
+* The server can take some times to fully initialize (something like 10s) the first time;
 
-#. Currently the webapp is served using the development server from Django. It is strongly advised to not use it in production, but this should be fine as the webapp should not have to response to many connections because it's not a website on internet. This choice has been done to avoid to load a real web server on the Raspberry;
+Last tests on Recalbox 3.3.0 beta 6 and recalbox-manager==0.8.2 was giving 2% CPU charge when Django instance is idle and can go to 17% when furiously reloading a page during 30seconds. Memory is allways stable around 80Mo and should probably don't go further. This was a naive benchmark just using ``top``.
 
-#. Last tests on Recalbox 3.3.0 beta 6 and recalbox-manager==0.8.2 was giving 2% CPU charge when Django instance is idle and can go to 17% when furiously reloading a page during 30seconds. Memory is allways stable around 80Mo and should probably don't go further. This is a naive benchmark just using ``top``.
+Caveats
+*******
 
+* Python devel lib is not installed on Recalbox, this would prevent you to be able to install somes additional Python packages that require to compile some C code;
+
+* Currently the webapp is served using the development server from Django. It is strongly advised to not use it in production, but this should be fine as the webapp should not have to response to many connections because it's not a website on internet. This choice has been done to avoid to load a real web server on the Raspberry;
+
+* UTC Timezone does not seems available, have to set settings.TIME_ZONE to None and set settings.USE_TZ to False and so it start with a dummy project freshly created from startproject Django command;
+
+* Minified and compressed assets are shipped in static files. This is not a common and good way but needed for the special production environment (on Recalbox) that is not able to correctly do asset management;
