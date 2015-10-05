@@ -72,22 +72,8 @@
         {% block base_content %}{% endblock %}
     </div>{% endblock %}
 
-    {% comment %}{% block footer_container %}{% spaceless %}
-    <footer>
-        <div class="section">
-            <div class="row copyright larger">
-                <div class="small-12 columns">
-                    <p>Here comes big great footer credentials</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-    {% endspaceless %}{% endblock %}{% endcomment %}
-
-    {% spaceless %}
-        {% block page_more_js %}
-            {% javascript_tag "js/app.min.js" %}
-        {% endblock %}
-    {% endspaceless %}
+    {% block page_more_js %}
+        {% javascript_tag "js/app.min.js" %}
+    {% endblock %}
 </body>
 </html>

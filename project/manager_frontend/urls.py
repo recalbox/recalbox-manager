@@ -5,7 +5,7 @@ from .views import HomeView
 from .views.config import RecalboxConfigFormView
 from .views.logs import LogsView
 from .views.bios import BiosListView
-from .views.roms import SystemsListView, RomListView
+from .views.roms import SystemsListView, RomListView, RomUploadJsonView
 from .views.monitor import MonitoringView
 
 urlpatterns = [
@@ -21,4 +21,5 @@ urlpatterns = [
     
     url(r'^systems/$', SystemsListView.as_view(), name='roms-systems'),
     url(r'^systems/roms/(?P<system>\w+)/$', RomListView.as_view(), name='roms-list'),
+    url(r'^systems/roms/(?P<system>\w+)/upload/$', RomUploadJsonView.as_view(), name='roms-upload'),
 ]

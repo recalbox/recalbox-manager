@@ -23,6 +23,9 @@
             "js/foundation5/foundation/foundation.tooltip.js",
             "js/foundation5/foundation/foundation.topbar.js",
             "js/app.js"
+        ],
+        "js/dropzone.min.js": [
+            "js/dropzone.js"
         ]
     }
 }

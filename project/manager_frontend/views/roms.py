@@ -1,14 +1,14 @@
 """
 Views for roms
 """
-import os
+import json, os
 from operator import itemgetter
 
 from django.conf import settings
 from django.views.generic import TemplateView
 from django.core.urlresolvers import reverse
 from django.contrib import messages
-from django.http import Http404
+from django.http import Http404, HttpResponse, HttpResponseBadRequest
 from django.utils.translation import ugettext as _
 
 from project.manager_frontend.forms.roms import RomUploadForm, RomDeleteForm
@@ -52,6 +52,9 @@ class RomListView(MultiFormView):
     
     This is a huge rewrite and mixing of some CBV views and mixins to be able 
     to distinctly manage the two forms
+    
+    Upload form part is only used with browser that dont accept Javascript, others 
+    use the Dropzone plugin and so are routed to 'RomUploadJsonView'.
     """
     template_name = "manager_frontend/rom_list.html"
     enabled_forms = (RomUploadForm, RomDeleteForm)
@@ -129,3 +132,69 @@ class RomListView(MultiFormView):
     def post(self, request, *args, **kwargs):
         self.init_system()
         return super(RomListView, self).post(request, *args, **kwargs)
+
+
+
+class RomUploadJsonView(RomListView):
+    """
+    Inherit from RomListView to be similary but gives only response in JSON
+    
+    Also the delete form should not really be used here
+    """
+    def upload_form_valid(self, form):
+        """
+        Return a dummy success response suitable to Dropzone plugin
+        """
+        uploaded_file = form.save()
+        
+        return self.json_response({'status': 'success'})
+
+    def form_invalid(self, *args):
+        """
+        Tricky error JSON response for upload
+        
+        This is a naive implementation than assume this is only about rom upload 
+        form errors.
+        """
+        forms_errors = {'error': 'Unknow error occured'}
+        error_msg = ''
+        
+        for form in args:
+            # Bother only about upload form
+            if form.form_key == 'upload':
+                errs = form.errors.as_data()
+                # Get error(s), potentially compact them if more than one message
+                if 'rom' in errs:
+                    error_context = [str(item.message) for item in errs['rom']]
+                    if len(error_context) > 1:
+                        error_msg = "\n".join(error_context)
+                    elif len(error_context) == 1:
+                        error_msg = "".join(error_context)
+            else:
+                continue
+        
+        if error_msg:
+            forms_errors['error'] = error_msg
+        
+        return self.json_response(forms_errors, response_klass=HttpResponseBadRequest)
+    
+    def json_response(self, backend, response_klass=HttpResponse):
+        """
+        Attemp a JSON string as the backend
+        
+        If not a string, assume this is an object suitable to JSON and convert it with json.dumps(...)
+        
+        Return a HttpResponse with right content_type and some cache 
+        headers (to avoid response caching)
+        """
+        if not isinstance(backend, basestring):
+            backend = json.dumps(backend)
+        
+        content_type = "application/json; charset=utf-8"
+        
+        response = response_klass(backend, content_type=content_type)
+        
+        response['Pragma'] = "no-cache"
+        response['Cache-Control'] = "no-cache, no-store, must-revalidate, max-age=0" 
+        
+        return response

@@ -1,5 +1,26 @@
 {% extends "manager_frontend/base.html" %}
-{% load i18n %}
+{% load i18n assets %}
+
+{% block page_more_js %}{{ block.super }}
+    {% javascript_tag "js/dropzone.min.js" %}
+    <script type="text/javascript">
+    //<![CDATA[
+        Dropzone.options['uploadDropzone'] = {
+            'init': function() {
+                // Naive usage of queuecomplete event
+                // Should be aware of upload errors and so don't automatically 
+                // reload the page (displaying a warning?)
+                this.on("queuecomplete", function() {
+                    window.location.href = '{% url 'manager:roms-list' system=system %}';
+                });
+            },
+            'url': "{% url 'manager:roms-upload' system=system %}",
+            'paramName': "{{ upload_form.rom.name }}"
+        };
+    //]]>
+    </script>
+{% endblock %}
+
 
 {% block manager_content %}
 <ul class="inline-list">
@@ -7,34 +28,37 @@
     <li><span class="label info radius">{% trans "Total" %}: {{ total_roms }}</span></li>
 </ul>
 
-<form action="." method="post" enctype="multipart/form-data">
+<form action="{% url 'manager:roms-list' system=system %}" method="post" id="upload-dropzone" class="dropzone" enctype="multipart/form-data">
     {% csrf_token %}
-    <div class="row">
-        <div class="large-12 columns">
-            <div class="row collapse">
-                {% if messages %}{% for message in messages %}
-                <div class="alert-box{% if message.tags %} {{ message.tags }}{% endif %}" data-alert>
-                    {{ message }}
-                    <a href="#" class="close">&times;</a>
-                </div>
-                {% endfor %}{% endif %}
-                
-                {% if upload_form.rom.errors %}
-                <div class="small-12 columns">
-                    {% for error in upload_form.rom.errors %}
-                    <small class="error">{{ error }}</small>
-                    {% endfor %}
-                </div>
-                {% endif %}
-                
-                <div class="small-3 columns">
-                    <span class="prefix">{% trans "Upload a rom" %}</span>
-                </div>
-                <div class="small-7 columns">
-                    {{ upload_form.rom }}
-                </div>
-                <div class="small-2 columns">
-                    <input type="submit" name="upload_submit" value="Send" class="button postfix">
+    <input type="hidden" name="upload_submit" value="1">
+    <div class="fallback">
+        <div class="row">
+            <div class="large-12 columns">
+                <div class="row collapse">
+                    {% if messages %}{% for message in messages %}
+                    <div class="alert-box{% if message.tags %} {{ message.tags }}{% endif %}" data-alert>
+                        {{ message }}
+                        <a href="#" class="close">&times;</a>
+                    </div>
+                    {% endfor %}{% endif %}
+                    
+                    {% if upload_form.rom.errors %}
+                    <div class="small-12 columns">
+                        {% for error in upload_form.rom.errors %}
+                        <small class="error">{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="small-3 columns">
+                        <span class="prefix">{% trans "Upload a rom" %}</span>
+                    </div>
+                    <div class="small-7 columns">
+                        {{ upload_form.rom }}
+                    </div>
+                    <div class="small-2 columns">
+                        <input type="submit" name="upload_submit" value="Send" class="button postfix">
+                    </div>
                 </div>
             </div>
         </div>
