@@ -1,6 +1,12 @@
 History
 =======
 
+Version 1.0.0 - 2015/**/** (unreleased)
+---------------------------------------
+
+* Added Dropzone.js asset;
+* Added all machinary to enabled Dropzone on rom upload;
+
 Version 0.9.0 - 2015/10/03
 --------------------------
 
