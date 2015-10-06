@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from .views import HomeView
 from .views.config import RecalboxConfigFormView
 from .views.logs import LogsView
-from .views.bios import BiosListView
+from .views.bios import BiosListView, BiosUploadJsonView
 from .views.roms import SystemsListView, RomListView, RomUploadJsonView
 from .views.monitor import MonitoringView
 
@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     
     url(r'^bios/$', BiosListView.as_view(), name='bios'),
+    url(r'^bios/upload$', BiosUploadJsonView.as_view(), name='bios-upload'),
     
     url(r'^config/$', RecalboxConfigFormView.as_view(), name='config'),
     

@@ -9,12 +9,11 @@ from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 from django.core.urlresolvers import reverse
 from django.contrib import messages
-from django.http import Http404
+from django.http import Http404, HttpResponseBadRequest
 from django.utils.translation import ugettext as _
 
 from project.manager_frontend.forms.bios import BiosDeleteForm, BiosUploadForm
-from project.utils.views import MultiFormView
-
+from project.utils.views import MultiFormView, JsonMixin
 
 class BiosListView(MultiFormView):
     """
@@ -107,3 +106,47 @@ class BiosListView(MultiFormView):
     def post(self, request, *args, **kwargs):
         self.init_manifest()
         return super(BiosListView, self).post(request, *args, **kwargs)
+
+
+class BiosUploadJsonView(JsonMixin, BiosListView):
+    """
+    Inherit from BiosListView to be similary but gives only response in JSON
+    
+    Also the delete form should not really be used here
+    """
+    def upload_form_valid(self, form):
+        """
+        Return a dummy success response suitable to Dropzone plugin
+        """
+        uploaded_file = form.save()
+        
+        return self.json_response({'status': 'success'})
+
+    def form_invalid(self, *args):
+        """
+        Tricky error JSON response for upload
+        
+        This is a naive implementation than assume this is only about bios upload 
+        form errors.
+        """
+        forms_errors = {'error': 'Unknow error occured'}
+        error_msg = ''
+        
+        for form in args:
+            # Bother only about upload form
+            if form.form_key == 'upload':
+                errs = form.errors.as_data()
+                # Get error(s), potentially compact them if more than one message
+                if 'bios' in errs:
+                    error_context = [str(item.message) for item in errs['bios']]
+                    if len(error_context) > 1:
+                        error_msg = "\n".join(error_context)
+                    elif len(error_context) == 1:
+                        error_msg = "".join(error_context)
+            else:
+                continue
+        
+        if error_msg:
+            forms_errors['error'] = error_msg
+        
+        return self.json_response(forms_errors, response_klass=HttpResponseBadRequest)

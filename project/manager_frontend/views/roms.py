@@ -8,11 +8,11 @@ from django.conf import settings
 from django.views.generic import TemplateView
 from django.core.urlresolvers import reverse
 from django.contrib import messages
-from django.http import Http404, HttpResponse, HttpResponseBadRequest
+from django.http import Http404, HttpResponseBadRequest
 from django.utils.translation import ugettext as _
 
 from project.manager_frontend.forms.roms import RomUploadForm, RomDeleteForm
-from project.utils.views import MultiFormView
+from project.utils.views import MultiFormView, JsonMixin
 
 
 class SystemsListView(TemplateView):
@@ -135,7 +135,7 @@ class RomListView(MultiFormView):
 
 
 
-class RomUploadJsonView(RomListView):
+class RomUploadJsonView(JsonMixin, RomListView):
     """
     Inherit from RomListView to be similary but gives only response in JSON
     
@@ -177,24 +177,3 @@ class RomUploadJsonView(RomListView):
             forms_errors['error'] = error_msg
         
         return self.json_response(forms_errors, response_klass=HttpResponseBadRequest)
-    
-    def json_response(self, backend, response_klass=HttpResponse):
-        """
-        Attemp a JSON string as the backend
-        
-        If not a string, assume this is an object suitable to JSON and convert it with json.dumps(...)
-        
-        Return a HttpResponse with right content_type and some cache 
-        headers (to avoid response caching)
-        """
-        if not isinstance(backend, basestring):
-            backend = json.dumps(backend)
-        
-        content_type = "application/json; charset=utf-8"
-        
-        response = response_klass(backend, content_type=content_type)
-        
-        response['Pragma'] = "no-cache"
-        response['Cache-Control'] = "no-cache, no-store, must-revalidate, max-age=0" 
-        
-        return response
