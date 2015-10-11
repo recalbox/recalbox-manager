@@ -15,6 +15,41 @@
     </div>
 {% endfor %}</div>{% endcomment %}
 
+<form action="." method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="row collapse">
+                {% if messages %}{% for message in messages %}
+                <div class="alert-box{% if message.tags %} {{ message.tags }}{% endif %}" data-alert>
+                    {{ message }}
+                    <a href="#" class="close">&times;</a>
+                </div>
+                {% endfor %}{% endif %}
+                
+                {% if form.name.errors %}
+                <div class="small-12 columns">
+                    {% for error in form.name.errors %}
+                    <small class="error">{{ error }}</small>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <div class="small-3 columns">
+                    <span class="prefix">{% trans "Available systems" %}</span>
+                </div>
+                <div class="small-7 columns">
+                    {{ form.name }}
+                </div>
+                <div class="small-2 columns">
+                    <input type="submit" name="submit" value="Add" class="button postfix">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
 <div class="flex-grid marged systems-list">{% for key,name in systems_list %}
     <a href="{% url 'manager:roms-list' system=key %}" class="cell small-58 large-23 folder text-center flex-vertical-center-stack button large radius">
         <i class="icon-folder icon-4x"></i> {{ name }}

@@ -15,37 +15,6 @@ from project.manager_frontend.forms.roms import RomUploadForm, RomDeleteForm
 from project.utils.views import MultiFormView, JsonMixin
 
 
-class SystemsListView(TemplateView):
-    """
-    List rom system folders
-    """
-    template_name = "manager_frontend/systems_list.html"
-            
-    def get_system_list(self):
-        path = settings.RECALBOX_ROMS_PATH
-        system_dirs = []
-        for item in os.listdir(path):
-            # Only display directories
-            if os.path.isdir(os.path.join(path, item)) and not item.startswith('.'):
-                # Try to find the dirname in the system manifest
-                if item in settings.RECALBOX_MANIFEST:
-                    system_dirs.append( (item, settings.RECALBOX_MANIFEST[item]['name']) )
-                # Unknowed dirname
-                else:
-                    system_dirs.append( (item, item) )
-        
-        return sorted(system_dirs, key=itemgetter(0))
-            
-    def get_context_data(self, **kwargs):
-        context = super(SystemsListView, self).get_context_data(**kwargs)
-        context.update({
-            'systems_path': settings.RECALBOX_ROMS_PATH,
-            'systems_list': self.get_system_list(),
-        })
-        return context
-
-
-
 class RomListView(MultiFormView):
     """
     List rom from a system folder with an upload form and delete form
