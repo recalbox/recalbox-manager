@@ -1,8 +1,13 @@
 History
 =======
 
-Version 1.0.0 - 2015/**/** (unreleased)
----------------------------------------
+Version 1.0.1 - 2015/10/14
+--------------------------
+
+* Fix wrong port for Virtual gamepad to 8080 (instead of 8081);
+
+Version 1.0.0 - 2015/10/11
+--------------------------
 
 * Added Dropzone.js asset;
 * Added all machinary to enabled Dropzone on rom upload;
