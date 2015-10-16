@@ -5,6 +5,7 @@
 .. _autobreadcrumbs: https://github.com/sveetch/autobreadcrumbs
 .. _virtualenv: http://www.virtualenv.org/
 .. _psutil: https://pypi.python.org/pypi/psutil
+.. _Dropzone.js: http://www.dropzonejs.com/
 
 Recalbox manager Web interface
 ==============================
@@ -38,13 +39,15 @@ Features
 
   * Only accept supported Bios file (from manifest);
   * MD5 checksum validation;
+
+* Usage of `Dropzone.js`_ plugin for upload forms;
   
 
 Install
 *******
 
-Common Linux system
--------------------
+Common Linux system (development)
+---------------------------------
 
 Nothing special, it's just about to have PIP and `virtualenv`_ installed on your system, enter into your recalbox-manager directory, then use the Makefile action: ::
 
@@ -54,52 +57,40 @@ And voila, it's done.
 
 But note this procedure is mostly for development purpose. See next section.
 
-Recalbox system
----------------
+Recalbox system (production)
+----------------------------
 
 Recalbox system is assumed to be the production environment.
 
-This is different because Recalbox don't have all the common libraries and tools installed on a common Linux system.
+This is different because Recalbox don't have all libraries and tools common to Linux systems.
 
 Before doing anything, ensure the Raspberry can access to the internet else configure your network interface and if needed dns resolving.
 
-Get the project repository, enter in its directory then type the following commands: ::
+Go where you want to install the manager directory then type the following commands: ::
 
-    python -m ensurepip
-    pip install virtualenv
-    wget https://github.com/sveetch/recalbox-manager/archive/1.0.1.zip
-    unzip 1.0.1.zip
-    cd recalbox-manager-1.0.1/
-    virtualenv --system-site-packages .
-    bin/pip install -r requirements.txt
-    bin/python manage.py migrate
-    bin/python manage.py runserver 0.0.0.0:8001
+    wget -q -O - https://raw.githubusercontent.com/sveetch/recalbox-manager/master/deployment/install.sh | bash /dev/stdin --release=1.0.2
 
-The first two lines would be needed only the first time. The last line init a dummy database (into file ``db.sqlite3``) that is not really used for now.
+This will download an install script and automatically execute it to proceed to install.
 
-Finally, because Git is not available on Recalbox, you should get the repository on your PC before, transfer it to your recalbox and then continue on it with the commands.
-
-Some explanations, line by line:
-
-#. Install Pip;
-#. Install virtualenv;
-#. Directly download last stable release;
-#. Decompress downloaded archive;
-#. Enter recalbox-manager directory;
-#. Initialize the virtual environment, it will inherits from the Python system packages to be able to use installed `psutil`_ if any;
-#. Install dependancies using PIP;
-#. Initialize a dummy database (into file ``db.sqlite3``) that is not really used, but required;
-#. Run the server on all IP interface with port 8001 and default settings (``settings.py``);
+Actually the install script accept an additional argument to enable compatibility with Recalbox 3.2.11 (because it's actually the real last stable version). So to install recalbox-manager on Recalbox 3.2.11, add `` --compatible`` to the previous command.
 
 Usage
 *****
 
-::
+Basically, go into the recalbox-manager directory then use the following commands: ::
+
+    bin/python manage.py runserver 0.0.0.0:8001
+
+The runserver is not launched as a daemon or a background process, as soon as you stop the instance thread (using CTRL-C) the webserver is stopped.
+
+**For production** you must use the right settings: ::
+
+    bin/python manage.py runserver 0.0.0.0:80 --settings=project.settings_production --noreload
+
+**For development**, you should active the environment and you may want to use the right settings with additional stuff: ::
 
     . bin/activate
-    python manage.py runserver 0.0.0.0:8001
-
-You should also use the option ``--noreload`` at the last command end if you don't plan to develop on this project.
+    python manage.py runserver 0.0.0.0:8001 --settings=project.settings_development
     
 Notes for development
 *********************
@@ -108,11 +99,7 @@ Notes for development
 
 #. To directly install the full development environment, just use ``make install-dev`` from the project root, it will install everything (use ``make clean`` before if you previously used the ``make install`` command) but the Compass stuff.
 
-#. The ``requirements.development.txt`` contains some additional packages on top ``requirements.txt``;
-
-#. Launch the webserver using the settings file for development: ::
-
-       python manage.py runserver 0.0.0.0:8001 --settings=project.settings_development
+#. The ``pip-requirements/development.txt`` contains some additional packages;
 
 #. You can install the project on common Linux system for development but you will need to reproduce the Recalbox file structure for Roms, Bios, Configuration file, log file, etc.. Or you can edit needed paths in project settings;
 
@@ -145,12 +132,6 @@ Also to make continue development, you can use the watch task so every time Comp
 
 Notes for production
 ********************
-
-* Launch the webserver using the settings file for production: ::
-
-       bin/python manage.py runserver 0.0.0.0:80 --settings=project.settings_production
-
-* The server can take some times to fully initialize (something like 10s) the first time;
 
 Last tests on Recalbox 3.3.0 beta 6 and recalbox-manager==0.8.2 was giving 2% CPU charge when Django instance is idle and can go to 17% when furiously reloading a page during 30seconds. Memory is allways stable around 80Mo and should probably don't go further. This was a naive benchmark just using ``top``.
 

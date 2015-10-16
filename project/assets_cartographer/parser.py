@@ -1,7 +1,7 @@
 """
-Assets tags
+Manifest parsers
 
-The assets map is a JSON file like this : ::
+The assets manifest is a JSON file like this : ::
 
     {
         "stylesheets": {
@@ -16,7 +16,7 @@ The assets map is a JSON file like this : ::
         }
     }
 
-This should be usable with grunt/gulp but without "glob" pattern.
+This should be usable with grunt/gulp but without "glob" patterns.
 
 Asset package key name must be the filepath to the package file and 
 contain a list of asset file to package.
@@ -25,90 +25,36 @@ Note also that each path is relative to static directories, for
 gulp/grunt you would have to prepend them with the path to the project static dir (not 
 the app static dirs, as they would not be reachable from Grung/Gulp)
 
-This is only common static files usage, not for usage with static files through S3/etc..
+This would eventually not work with static files through S3/etc..
 """
 import json, os
 
 from django.conf import settings
 from django.template import Context
-from django.template.loader import get_template
-from django.template.defaulttags import register
+from django.template.loader import get_template as loader_get_template
 from django.contrib.staticfiles import finders
 
 class AssetMapError(Exception):
     pass
 
+
 class StaticfileAssetNotFound(Exception):
     pass
 
 
-def render_asset_tags(kind, *bundle_names):
+class AssetTagsManagerBase(object):
     """
-    Helper to render asset tags using AssetTagsManager
+    Base for management assets using given asset map
     
-    @kind: either 'stylesheets' or 'javascripts' (or whatever root element keys existing in the asset map)
-    @bundle_names: list of bundles to get for the given kind name
-    """
-    # Open the template fragment
-    tag_template = get_template(settings.ASSETS_TAG_TEMPLATES.get(kind))
-    # Open and parse the JSON file for the map
-    with open(settings.ASSETS_MAP_FILEPATH, 'rb') as json_file:
-        assets_map = json.load(json_file)
-    
-    #print "* Kind:", kind
-    manager = AssetTagsManager(assets_map[kind])
-    #print
-    
-    return manager.render(bundle_names, tag_template)
-
-
-@register.simple_tag
-def stylesheet_tag(*bundle_names):
-    """
-    Build tag for stylesheet assets
-    
-    Usage
-    *****
-    
-    Just gives package names (one or more) as arguments: ::
-    
-        {% stylesheet_tag "css/item1.min.css" "css/item2.min.css" .. %}
-        
-    Depending on settings.ASSETS_PACKAGED it would build (if True) an unique tag for the packaged asset file or (if False) tag for each package components files.
-    """
-    return render_asset_tags('stylesheets', *bundle_names)
-
-
-@register.simple_tag
-def javascript_tag(*bundle_names):
-    """
-    Build tag for javascript assets
-    
-    Usage
-    *****
-    
-    Just gives package names (one or more) as arguments: ::
-    
-        {% javascript_tag "css/item1.min.js" "css/item2.min.js" .. %}
-        
-    Depending on settings.ASSETS_PACKAGED it would build (if True) an unique tag for the packaged asset file or (if False) tag for each package components files.
-    """
-    return render_asset_tags('javascripts', *bundle_names)
-
-
-class AssetTagsManager(object):
-    """
-    Manage assets using given asset map
+    Just take assets map to get its files and render their HTML "loader" fragment
     
     This does not intend to compress/minify/uglify asset, just rendering their tags to 
     load them from your template
     
     @assets_map: file maps for an asset kind (not the full asset map)
-    @packaged: switch to know if we use the packed files or the original ones
     """
-    def __init__(self, assets_map, packaged=True):
-        self.assets_map = assets_map # file maps for an asset kind (not the full asset map)
-        self.packaged = packaged # switch to know if we use the packed files or the original ones
+    def __init__(self, assets_map):
+        self.assets_map = assets_map
         
     def render_fragment(self, template, context=None):
         """
@@ -157,3 +103,27 @@ class AssetTagsManager(object):
                 tags.append( self.render_fragment(template, context=Context({"ASSET_URL": item})) )
             
         return '\n'.join(tags)
+
+
+
+class AssetTagsManagerFromManifest(AssetTagsManagerBase):
+    """
+    Override AssetTagsManagerBase to implement management from the whole 
+    manifest
+    """
+    def __init__(self, manifest):
+        self.manifest = manifest # full asset map from settings
+        self.templates = self.get_templates()
+        
+    def get_templates(self):
+        """
+        Render fragment using given django template
+        """
+        templates = {}
+        for k,v in settings.ASSETS_TAG_TEMPLATES.items():
+            templates[k] = loader_get_template(v)
+        return templates
+    
+    def render_for_kind(self, names, kind):
+        self.assets_map = self.manifest[kind]
+        return self.render(names, self.templates[kind])

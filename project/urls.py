@@ -21,6 +21,9 @@ from django.views.generic import TemplateView
 import autobreadcrumbs
 autobreadcrumbs.autodiscover()
 
+from project import assets_cartographer
+assets_cartographer.autodiscover()
+
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('project.manager_frontend.urls', namespace='manager')),

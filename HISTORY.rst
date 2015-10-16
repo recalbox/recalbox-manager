@@ -1,10 +1,21 @@
 History
 =======
 
+Version 1.0.2 - 2015/10/16
+--------------------------
+
+* Fixed CRLF caracters when editing recalbox config, close #31;
+* Fixed not packaged assets with production settings;
+* Refactored asset management to use persistent manifest registry (avoid to load JSON manifest file on every request) and move it to its own embedded app to ``project.assets_cartographer``;
+* Open Virtual gamepad link into a new window/tab;
+* Fixed Dropzone assets, close #32;
+* Moved Python requirements to ``pip-requirements`` directory and refactored them for backward compatible with Recalbox versions without ``psutil`` yet;
+* Added automatic deployment bash script in ``deployment/install.sh``, update Readme install procedure;
+
 Version 1.0.1 - 2015/10/14
 --------------------------
 
-* Fix wrong port for Virtual gamepad to 8080 (instead of 8081);
+* Fixed wrong port for Virtual gamepad to 8080 (instead of 8081);
 
 Version 1.0.0 - 2015/10/11
 --------------------------
@@ -32,7 +43,7 @@ Version 0.8.4 - 2015/09/26
 * Updated dev requirements to ``django-icomoon==0.2``;
 * Added ``hostname`` var to ``SITE`` in template context;
 * Updated webfont;
-* Added link to Recalbox 'virtual gamepad' app on homepage, close #24;;
+* Added link to Recalbox 'virtual gamepad' app on homepage, close #24;
 * Update README.rst;
 * Minor fix in readme for runserver command for production;
 

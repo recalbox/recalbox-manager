@@ -54,6 +54,7 @@ INSTALLED_APPS = (
     
     'autobreadcrumbs',
     
+    'project.assets_cartographer',
     'project.manager_frontend',
     
     #'ajaxuploader',

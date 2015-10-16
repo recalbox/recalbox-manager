@@ -1,0 +1,3 @@
+# Dependancies for default env for last Recalbox versions
+-r basic.txt
+psutil==2.1.3
