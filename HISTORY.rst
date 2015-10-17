@@ -1,12 +1,20 @@
 History
 =======
 
+Version 1.1.0 - 2015/10/17
+--------------------------
+
+* Better 'manager_frontend' structure, cleaning some minor things, close #34;
+* Added ``asset_tag``;
+* Dont show 'available systems' form if all systems allready exist, close #35;
+* Moved 'Recalbox manifest' stuff into ``project.recalbox_manifest``, removed manifest loading from settings in profit of loading from ``urls.py``;
+
 Version 1.0.2 - 2015/10/16
 --------------------------
 
 * Fixed CRLF caracters when editing recalbox config, close #31;
 * Fixed not packaged assets with production settings;
-* Refactored asset management to use persistent manifest registry (avoid to load JSON manifest file on every request) and move it to its own embedded app to ``project.assets_cartographer``;
+* Refactored asset management to use persistent manifest registry (avoid to load JSON manifest file on every request) and move it to its own embedded app to ``project.assets_cartographer``, close #33;
 * Open Virtual gamepad link into a new window/tab;
 * Fixed Dropzone assets, close #32;
 * Moved Python requirements to ``pip-requirements`` directory and refactored them for backward compatible with Recalbox versions without ``psutil`` yet;

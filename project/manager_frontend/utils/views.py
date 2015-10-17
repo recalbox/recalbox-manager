@@ -1,14 +1,10 @@
 """
 Some common class based views
-
-TODO: Move this into 'manager_frontend' app
 """
 import json
 
 from django.views.generic.edit import TemplateResponseMixin, FormMixin, ProcessFormView
 from django.http import HttpResponse
-
-from project.manager_frontend.forms.roms import RomUploadForm, RomDeleteForm
 
 class MultiFormView(TemplateResponseMixin, FormMixin, ProcessFormView):
     """
@@ -29,9 +25,9 @@ class MultiFormView(TemplateResponseMixin, FormMixin, ProcessFormView):
     
     Both must be unique through the forms of the view.
     
-    WARNING: This view should implement some warnings about needed stuff like 
-             form attributes and form object names if not defined. So actually 
-             you'll have to remember of this yourself.
+    TODO: This view should implement some warnings about needed stuff like 
+          form attributes and form object names if not defined. So actually 
+          you'll have to remember of this yourself.
     """
     # The patterns used to find method/names from form 'form_key' attribute
     getformkwargs_pattern = 'get_{}_form_kwargs'

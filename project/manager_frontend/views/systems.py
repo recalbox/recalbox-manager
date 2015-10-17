@@ -10,6 +10,8 @@ from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.utils.translation import ugettext as _
 
+from project.recalbox_manifest import manifest as RECALBOX_MANIFEST
+
 from project.manager_frontend.forms.systems import SystemCreateForm
 
 class SystemsListView(FormView):
@@ -29,14 +31,14 @@ class SystemsListView(FormView):
             # Only display directories
             if os.path.isdir(os.path.join(path, item)) and not item.startswith('.'):
                 # Try to find the dirname in the system manifest
-                if item in settings.RECALBOX_MANIFEST:
-                    existing_sys.append( (item, settings.RECALBOX_MANIFEST[item]['name']) )
+                if item in RECALBOX_MANIFEST:
+                    existing_sys.append( (item, RECALBOX_MANIFEST[item]['name']) )
                 # Unknowed dirname
                 else:
                     existing_sys.append( (item, item) )
         
         # Get system available: the ones that dont allready have a directory in systems dir
-        for sys_key, sys_values in settings.RECALBOX_MANIFEST.items():
+        for sys_key, sys_values in RECALBOX_MANIFEST.items():
             if sys_key not in [v[0] for v in existing_sys]:
                 available_sys.append( (sys_key, sys_values['name']) )
         
@@ -50,6 +52,7 @@ class SystemsListView(FormView):
         context.update({
             'systems_path': settings.RECALBOX_ROMS_PATH,
             'systems_list': self.existing_systems,
+            'available_systems': self.available_systems,
         })
         return context
             
@@ -63,11 +66,8 @@ class SystemsListView(FormView):
     def form_valid(self, form):
         new_system = form.save()
         
-        ## Throw a message to tell about upload success
-        #if is_backuped:
-            #messages.success(self.request, _('File has been backuped then edited'))
-        #else:
-            #messages.success(self.request, _('File has been edited'))
+        # Throw a message to tell about upload success
+        messages.success(self.request, _('System "{}" has been created').format(new_system['name']))
         
         return super(SystemsListView, self).form_valid(form)
 

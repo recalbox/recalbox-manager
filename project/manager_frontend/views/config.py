@@ -4,8 +4,6 @@ Views for configuration files
 import os
 
 from django.conf import settings
-from django.shortcuts import render
-from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
 from django.core.urlresolvers import reverse
 from django.contrib import messages

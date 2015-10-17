@@ -1,19 +1,19 @@
 """
 Views for Bios views
 """
-import os, re
+import os
 from operator import itemgetter
 
 from django.conf import settings
-from django.views.generic import TemplateView
-from django.views.generic.edit import FormView
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.http import Http404, HttpResponseBadRequest
 from django.utils.translation import ugettext as _
 
+from project.recalbox_manifest import manifest as RECALBOX_MANIFEST
+
 from project.manager_frontend.forms.bios import BiosDeleteForm, BiosUploadForm
-from project.utils.views import MultiFormView, JsonMixin
+from project.manager_frontend.utils.views import MultiFormView, JsonMixin
 
 class BiosListView(MultiFormView):
     """
@@ -49,7 +49,7 @@ class BiosListView(MultiFormView):
         """
         bios_dict = {}
         
-        for system_key, system_datas in settings.RECALBOX_MANIFEST.items():
+        for system_key, system_datas in RECALBOX_MANIFEST.items():
             system_name = system_datas.get('name', system_key)
             if len(system_datas.get('bios', []))>0:
                 for md5hash,filename in system_datas['bios']:

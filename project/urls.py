@@ -18,11 +18,17 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic import TemplateView
 
+# Discover crumbs from enabled apps
 import autobreadcrumbs
 autobreadcrumbs.autodiscover()
 
+# Load asset manifest in memory
 from project import assets_cartographer
 assets_cartographer.autodiscover()
+
+# Load Recalbox manifest in memory
+from project import recalbox_manifest
+recalbox_manifest.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),

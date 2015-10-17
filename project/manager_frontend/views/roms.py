@@ -1,18 +1,19 @@
 """
 Views for roms
 """
-import json, os
+import os
 from operator import itemgetter
 
 from django.conf import settings
-from django.views.generic import TemplateView
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.http import Http404, HttpResponseBadRequest
 from django.utils.translation import ugettext as _
 
+from project.recalbox_manifest import manifest as RECALBOX_MANIFEST
+
 from project.manager_frontend.forms.roms import RomUploadForm, RomDeleteForm
-from project.utils.views import MultiFormView, JsonMixin
+from project.manager_frontend.utils.views import MultiFormView, JsonMixin
 
 
 class RomListView(MultiFormView):
@@ -42,7 +43,7 @@ class RomListView(MultiFormView):
             'name': self.system_key
         })
         # Get the system manifest part if any, else a default dict
-        self.system_manifest = settings.RECALBOX_MANIFEST.get(self.system_key, default_manifest)
+        self.system_manifest = RECALBOX_MANIFEST.get(self.system_key, default_manifest)
             
     def get_rom_choices(self):
         rom_list = []

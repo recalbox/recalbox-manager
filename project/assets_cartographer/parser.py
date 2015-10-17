@@ -27,7 +27,7 @@ the app static dirs, as they would not be reachable from Grung/Gulp)
 
 This would eventually not work with static files through S3/etc..
 """
-import json, os
+import os
 
 from django.conf import settings
 from django.template import Context

@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from utils.manifest import ManifestParser
+from manager_frontend.utils.manifest import RecalboxManifestParser
 
 gettext = lambda s: s
 
@@ -55,6 +55,7 @@ INSTALLED_APPS = (
     'autobreadcrumbs',
     
     'project.assets_cartographer',
+    'project.recalbox_manifest',
     'project.manager_frontend',
     
     #'ajaxuploader',
@@ -151,6 +152,9 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_DIR, "webapp_statics"),
 )
 
+# For Django messages framework to avoid database requests
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
 # For assets management
 ASSETS_PACKAGED = not(DEBUG)
 ASSETS_STRICT = False
@@ -159,8 +163,6 @@ ASSETS_TAG_TEMPLATES = {
     "javascripts": "assets/javascript_tag.html",
     "stylesheets": "assets/stylesheet_tag.html",
 }
-# For Django messages framework, we could use this settings to avoid database requests
-#MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 #
 # Recalbox needed paths
@@ -186,9 +188,6 @@ RECALBOX_SYSTEM_DEFAULT = {
     'download_links': [],
     'bios': [],
 }
-
-# Recalbox manifest about system roms and bios
-RECALBOX_MANIFEST = ManifestParser(RECALBOX_MANIFEST_FILEPATH).read()
 
 # Blocking time during psutil watch for cpu charge in second (float number)
 RECALBOX_PSUTIL_CPU_INTERVAL = 0.5 # 0.1 seems a little too low but 1.0 add 1s on page loading time

@@ -5,7 +5,7 @@ Manifest parser
 import json
 import xml.etree.cElementTree as ET
 
-class ManifestParser(object):
+class RecalboxManifestParser(object):
     """
     Recalbox XML manifest parser
     """
@@ -37,6 +37,8 @@ class ManifestParser(object):
         Return the manifest as a Python dictionnary
         """
         manifest = {}
+        
+        print "self.filepath:", self.filepath
         
         tree = ET.parse(self.filepath)
         

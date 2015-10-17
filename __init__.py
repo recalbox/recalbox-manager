@@ -1,4 +1,4 @@
 """
 Django project to manage a Recalbox from a web interface
 """
-__version__ = '1.0.2'
+__version__ = '1.1.0'

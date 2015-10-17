@@ -2,7 +2,6 @@
 Monitoring views
 """
 from django.conf import settings
-from django.shortcuts import render
 from django.views.generic import TemplateView
 
 # Compatibility support for Recalbox versions from 3.2.x to 3.3.x

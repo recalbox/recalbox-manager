@@ -7,15 +7,7 @@
     <li><span class="label info radius">{% trans "Total" %}: {{ systems_list|length }}</span></li>
 </ul>
 
-{% comment %}<div class="row systems-list">{% for key,name in systems_list %}
-    <div class="small-6 large-3 columns folder text-center{% if forloop.last %} end{% endif %}">
-        <a href="{% url 'manager:roms-list' system=key %}" class="button large expand radius">
-            <i class="icon-folder icon-4x"></i> {{ name }}
-        </a>
-    </div>
-{% endfor %}</div>{% endcomment %}
-
-<form action="." method="post">
+{% if available_systems %}<form action="." method="post">
     {% csrf_token %}
     <div class="row">
         <div class="large-12 columns">
@@ -47,7 +39,7 @@
             </div>
         </div>
     </div>
-</form>
+</form>{% endif %}
 
 
 <div class="flex-grid marged systems-list">{% for key,name in systems_list %}
