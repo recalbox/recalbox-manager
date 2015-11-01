@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-20 03:46+0200\n"
+"POT-Creation-Date: 2015-11-01 17:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,23 +22,27 @@ msgstr ""
 msgid "Home"
 msgstr "Accueil"
 
-#: manager_frontend/crumbs.py:10 templates/skeleton.html:49
+#: manager_frontend/crumbs.py:10 templates/skeleton.html:51
 msgid "Bios"
 msgstr ""
 
-#: manager_frontend/crumbs.py:11 templates/skeleton.html:52
+#: manager_frontend/crumbs.py:11 templates/skeleton.html:50
 msgid "Configuration"
 msgstr ""
 
-#: manager_frontend/crumbs.py:12 templates/skeleton.html:51
+#: manager_frontend/crumbs.py:12 templates/skeleton.html:53
 msgid "Logs"
 msgstr ""
 
-#: manager_frontend/crumbs.py:13
+#: manager_frontend/crumbs.py:13 templates/skeleton.html:49
+msgid "Monitoring"
+msgstr ""
+
+#: manager_frontend/crumbs.py:14
 msgid "Rom by system"
 msgstr "Roms par système"
 
-#: manager_frontend/crumbs.py:14
+#: manager_frontend/crumbs.py:15
 msgid "{{ system_name }}"
 msgstr ""
 
@@ -63,7 +67,7 @@ msgid "Content"
 msgstr "Contenu"
 
 #: manager_frontend/forms/config.py:23
-#: templates/manager_frontend/config_form.html:38
+#: manager_frontend/templates/manager_frontend/config_form.html:38
 msgid "Backup previous version before saving"
 msgstr "Sauvegarder la version précédente avant d'enregistrer"
 
@@ -75,31 +79,198 @@ msgstr "Fichier de Rom"
 msgid "Your file does not seem to be a valid Rom for this system"
 msgstr "Votre fichier ne semble pas être un type de Rom valide pour ce système"
 
-#: manager_frontend/views/bios.py:91 manager_frontend/views/roms.py:116
+#: manager_frontend/forms/systems.py:32
+msgid "Add a new system"
+msgstr "Ajouter un nouveau système"
+
+#: manager_frontend/templates/manager_frontend/bios_list.html:27
+#: manager_frontend/templates/manager_frontend/config_form.html:13
+#: manager_frontend/templates/manager_frontend/config_form.html:50
+#: manager_frontend/templates/manager_frontend/logs_detail.html:6
+#: manager_frontend/templates/manager_frontend/rom_list.html:27
+#: manager_frontend/templates/manager_frontend/systems_list.html:6
+msgid "Path"
+msgstr "Chemin"
+
+#: manager_frontend/templates/manager_frontend/bios_list.html:28
+#: manager_frontend/templates/manager_frontend/monitoring.html:65
+#: manager_frontend/templates/manager_frontend/rom_list.html:28
+#: manager_frontend/templates/manager_frontend/systems_list.html:7
+msgid "Total"
+msgstr ""
+
+#: manager_frontend/templates/manager_frontend/bios_list.html:54
+msgid "Upload a bios"
+msgstr "Uploader un Bios"
+
+#: manager_frontend/templates/manager_frontend/bios_list.html:82
+msgid ""
+"This is the full list of supported Bios, existing bios you have uploaded "
+"will be decorated and followed with a checkbox"
+msgstr ""
+"Ceci est la liste complète des Bios supportés, les bios existant "
+"que vous avez uploadé seront décorés et suivi d'une case à cocher"
+
+#: manager_frontend/templates/manager_frontend/bios_list.html:85
+#: manager_frontend/templates/manager_frontend/bios_list.html:114
+#: manager_frontend/templates/manager_frontend/rom_list.html:81
+#: manager_frontend/templates/manager_frontend/rom_list.html:102
+msgid "Delete selected files"
+msgstr "Supprimer les fichiers séléctionnés"
+
+#: manager_frontend/templates/manager_frontend/bios_list.html:94
+msgid "System"
+msgstr "Système"
+
+#: manager_frontend/templates/manager_frontend/bios_list.html:95
+#: manager_frontend/templates/manager_frontend/rom_list.html:86
+msgid "Filename"
+msgstr "Nom du fichier"
+
+#: manager_frontend/templates/manager_frontend/bios_list.html:96
+msgid "MD5 checksum"
+msgstr "Somme de vérification MD5"
+
+#: manager_frontend/templates/manager_frontend/bios_list.html:97
+#: manager_frontend/templates/manager_frontend/rom_list.html:88
+msgid "Check"
+msgstr "Séléctionner"
+
+#: manager_frontend/templates/manager_frontend/config_form.html:6
+msgid "Current"
+msgstr "Actuel"
+
+#: manager_frontend/templates/manager_frontend/config_form.html:7
+msgid "Backup"
+msgstr "Sauvegarde"
+
+#: manager_frontend/templates/manager_frontend/config_form.html:41
+msgid "Save"
+msgstr "Enregistrer"
+
+#: manager_frontend/templates/manager_frontend/home.html:14
+msgid "<strong>Monitor</strong> your system resources"
+msgstr "<strong>Surveillez</strong> les ressources de votre système"
+
+#: manager_frontend/templates/manager_frontend/home.html:20
+msgid "Read and edit the Recalbox <strong>Configuration</strong> file"
+msgstr ""
+"Consultez et éditez le fichier de <strong>configuration</strong> de la "
+"Recalbox"
+
+#: manager_frontend/templates/manager_frontend/home.html:26
+msgid "Read the Recalbox <strong>logs</strong>"
+msgstr "Consultez les <strong>logs</strong> de la Recalbox"
+
+#: manager_frontend/templates/manager_frontend/home.html:32
+msgid "Manage all supported <strong>Bios</strong> files for emulated systems"
+msgstr ""
+"Gérez tout les <strong>Bios</strong> supportés pour les systèmes émulés"
+
+#: manager_frontend/templates/manager_frontend/home.html:38
+msgid "Manage <strong>Rom</strong> files for emulated systems"
+msgstr "Gérez les fichiers de <strong>Rom</strong> pour les systèmes émulés"
+
+#: manager_frontend/templates/manager_frontend/home.html:44
+msgid "Use the <strong>Virtual gamepad</strong>"
+msgstr "Utilisez le <strong>Gamepad virtuel</strong>"
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:10
+msgid "CPU"
+msgstr "Processeur"
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:16
+#, python-format
+msgid "Core&nbsp;%(number)s"
+msgstr "Coeur&nbsp;%(number)s"
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:34
+msgid "Memory"
+msgstr "Mémoire"
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:37
+#, python-format
+msgid "Free: %(size)s"
+msgstr "Libre: %(size)s"
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:46
+#, python-format
+msgid "Total: %(size)s"
+msgstr ""
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:55
+msgid "File system"
+msgstr "Système de fichiers"
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:59
+msgid "Device"
+msgstr "Périphérique"
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:60
+msgid "Mount"
+msgstr "Montage"
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:61
+msgid "Type"
+msgstr ""
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:62
+msgid "Usage"
+msgstr ""
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:63
+msgid "Used"
+msgstr "Utilisé"
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:64
+msgid "Free"
+msgstr "Libre"
+
+#: manager_frontend/templates/manager_frontend/rom_list.html:54
+msgid "Upload a rom"
+msgstr "Uploader une Rom"
+
+#: manager_frontend/templates/manager_frontend/rom_list.html:87
+msgid "Size"
+msgstr "Taille"
+
+#: manager_frontend/templates/manager_frontend/systems_list.html:31
+msgid "Available systems"
+msgstr "Système de fichiers"
+
+#: manager_frontend/templates/manager_frontend/systems_list.html:37
+msgid "Add"
+msgstr ""
+
+#: manager_frontend/views/bios.py:90 manager_frontend/views/roms.py:89
 msgid "File has been uploaded: {}"
 msgstr "Le fichier a été uploadé: {}"
 
-#: manager_frontend/views/bios.py:98 manager_frontend/views/roms.py:123
+#: manager_frontend/views/bios.py:97 manager_frontend/views/roms.py:96
 msgid "Deleted file(s): {}"
 msgstr "Fichier(s) supprimé(s): {}"
 
-#: manager_frontend/views/config.py:77
+#: manager_frontend/views/config.py:75
 msgid "File has been backuped then edited"
 msgstr "Le fichier a été sauvegardé puis édité"
 
-#: manager_frontend/views/config.py:79
+#: manager_frontend/views/config.py:77
 msgid "File has been edited"
 msgstr "Le fichier a été édité"
 
-#: settings.py:120
+#: manager_frontend/views/systems.py:70
+msgid "System \"{}\" has been created"
+msgstr "Le système \"{}\" a été créé"
+
+#: settings.py:121
 msgid "English"
 msgstr "Anglais"
 
-#: settings.py:121
+#: settings.py:122
 msgid "French"
 msgstr "Français"
 
-#: settings.py:122
+#: settings.py:123
 msgid "German"
 msgstr "Allemand"
 
@@ -131,157 +302,22 @@ msgstr ""
 "Le serveur a rencontré une erreur ou un problème de configuration et a été "
 "incapable de répondre à la requête"
 
-#: templates/manager_frontend/bios_list.html:6
-#: templates/manager_frontend/config_form.html:13
-#: templates/manager_frontend/config_form.html:50
-#: templates/manager_frontend/logs_detail.html:6
-#: templates/manager_frontend/rom_list.html:6
-#: templates/manager_frontend/systems_list.html:6
-msgid "Path"
-msgstr "Chemin"
-
-#: templates/manager_frontend/bios_list.html:7
-#: templates/manager_frontend/home.html:68
-#: templates/manager_frontend/rom_list.html:7
-#: templates/manager_frontend/systems_list.html:7
-msgid "Total"
-msgstr ""
-
-#: templates/manager_frontend/bios_list.html:31
-msgid "Upload a bios"
-msgstr "Uploader un Bios"
-
-#: templates/manager_frontend/bios_list.html:61
-#: templates/manager_frontend/bios_list.html:90
-#: templates/manager_frontend/rom_list.html:57
-#: templates/manager_frontend/rom_list.html:78
-msgid "Delete selected files"
-msgstr "Supprimer les fichiers séléctionnés"
-
-#: templates/manager_frontend/bios_list.html:70
-msgid "System"
-msgstr "Système"
-
-#: templates/manager_frontend/bios_list.html:71
-#: templates/manager_frontend/rom_list.html:62
-msgid "Filename"
-msgstr "Nom du fichier"
-
-#: templates/manager_frontend/bios_list.html:72
-msgid "MD5 checksum"
-msgstr "Somme de vérification MD5"
-
-#: templates/manager_frontend/bios_list.html:73
-#: templates/manager_frontend/rom_list.html:64
-msgid "Check"
-msgstr "Séléctionner"
-
-#: templates/manager_frontend/config_form.html:6
-msgid "Current"
-msgstr "Actuel"
-
-#: templates/manager_frontend/config_form.html:7
-msgid "Backup"
-msgstr "Sauvegarde"
-
-#: templates/manager_frontend/config_form.html:41
-msgid "Save"
-msgstr "Enregistrer"
-
-#: templates/manager_frontend/home.html:13
-msgid "CPU"
-msgstr "Processeur"
-
-#: templates/manager_frontend/home.html:19
-#, python-format
-msgid "Core&nbsp;%(number)s"
-msgstr "Coeur&nbsp;%(number)s"
-
-#: templates/manager_frontend/home.html:37
-msgid "Memory"
-msgstr "Mémoire"
-
-#: templates/manager_frontend/home.html:40
-#, python-format
-msgid "Free: %(size)s"
-msgstr "Libre: %(size)s"
-
-#: templates/manager_frontend/home.html:49
-#, python-format
-msgid "Total: %(size)s"
-msgstr ""
-
-#: templates/manager_frontend/home.html:58
-msgid "File system"
-msgstr "Système de fichiers"
-
-#: templates/manager_frontend/home.html:62
-msgid "Device"
-msgstr "Périphérique"
-
-#: templates/manager_frontend/home.html:63
-msgid "Mount"
-msgstr "Montage"
-
-#: templates/manager_frontend/home.html:64
-msgid "Type"
-msgstr ""
-
-#: templates/manager_frontend/home.html:65
-msgid "Usage"
-msgstr ""
-
-#: templates/manager_frontend/home.html:66
-msgid "Used"
-msgstr "Utilisé"
-
-#: templates/manager_frontend/home.html:67
-msgid "Free"
-msgstr "Libre"
-
-#: templates/manager_frontend/home.html:103
-msgid "Manage all supported <strong>Bios</strong> files for emulated systems"
-msgstr ""
-"Gérez tout les <strong>Bios</strong> supportés pour les systèmes émulés"
-
-#: templates/manager_frontend/home.html:111
-msgid "Manage <strong>Rom</strong> files for emulated systems"
-msgstr "Gérez les fichiers de <strong>Rom</strong> pour les systèmes émulés"
-
-#: templates/manager_frontend/home.html:119
-msgid "Read the Recalbox <strong>logs</strong>"
-msgstr "Consultez les <strong>logs</strong> de la Recalbox"
-
-#: templates/manager_frontend/home.html:127
-msgid "Read and edit the Recalbox <strong>Configuration</strong> file"
-msgstr ""
-"Consultez et éditez le fichier de <strong>configuration</strong> de la "
-"Recalbox"
-
-#: templates/manager_frontend/rom_list.html:31
-msgid "Upload a rom"
-msgstr "Uploader une Rom"
-
-#: templates/manager_frontend/rom_list.html:63
-msgid "Size"
-msgstr "Taille"
-
-#: templates/skeleton.html:50
+#: templates/skeleton.html:52
 msgid "Roms"
 msgstr ""
 
-#: templates/skeleton.html:54
+#: templates/skeleton.html:55
 msgid "Links"
 msgstr "Liens"
 
-#: templates/skeleton.html:56
+#: templates/skeleton.html:57
 msgid "Forum"
 msgstr ""
 
-#: templates/skeleton.html:57
+#: templates/skeleton.html:58
 msgid "https://github.com/digitalLumberjack/recalbox-os/wiki/Home-(EN)"
 msgstr "https://github.com/digitalLumberjack/recalbox-os/wiki/Home-(FR)"
 
-#: templates/skeleton.html:57
+#: templates/skeleton.html:58
 msgid "Wiki (EN)"
 msgstr "Wiki (FR)"

@@ -1,6 +1,14 @@
 History
 =======
 
+Version 1.1.1 - 2015/11/01
+--------------------------
+
+* Cleaning deprecated stuff in assets_cartographer;
+* Minor changes on url/texts in homepage;
+* Added missing translation blocks;
+* Updated PO and french translation;
+
 Version 1.1.0 - 2015/10/17
 --------------------------
 

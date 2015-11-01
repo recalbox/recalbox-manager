@@ -10,6 +10,7 @@ site.update({
     'manager:bios': ugettext_lazy('Bios'),
     'manager:config': ugettext_lazy('Configuration'),
     'manager:logs': ugettext_lazy('Logs'),
+    'manager:monitoring': ugettext_lazy('Monitoring'),
     'manager:roms-systems': ugettext_lazy('Rom by system'),
     'manager:roms-list': ugettext_lazy('{{ system_name }}'),
 })
