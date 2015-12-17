@@ -3,6 +3,7 @@
    <system key="atari2600" name="Atari 2600">
       <extensions>
          <extension>a26</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/atari-2600</link>
@@ -12,6 +13,7 @@
       <extensions>
          <extension>a78</extension>
          <extension>bin</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/atari-7800</link>
@@ -35,6 +37,7 @@
    <system key="fds" name="Nintendo Family Computer Disk System">
       <extensions>
          <extension>fds</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/nintendo-famicom-disk-system</link>
@@ -46,6 +49,7 @@
    <system key="gamegear" name="Game Gear">
       <extensions>
          <extension>gg</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/sega-game-gear</link>
@@ -54,6 +58,7 @@
    <system key="gb" name="Game Boy">
       <extensions>
          <extension>gb</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/nintendo-game-boy</link>
@@ -62,6 +67,7 @@
    <system key="gba" name="Game Boy Advance">
       <extensions>
          <extension>gba</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/nintendo-game-boy-advance</link>
@@ -74,6 +80,7 @@
       <extensions>
          <extension>gb</extension>
          <extension>gbc</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/nintendo-game-boy</link>
@@ -83,6 +90,7 @@
    <system key="gw" name="Game &amp; Watch">
       <extensions>
          <extension>mgw</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://bot.libretro.com/assets/cores/gw/</link>
@@ -91,6 +99,7 @@
    <system key="lutro" name="LUA games">
       <extensions>
          <extension>lua</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>https://github.com/libretro/lutro-platformer</link>
@@ -104,6 +113,7 @@
    <system key="lynx" name="Lynx">
       <extensions>
          <extension>lnx</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/atari-lynx</link>
@@ -123,6 +133,7 @@
    <system key="mastersystem" name="Sega Master System">
       <extensions>
          <extension>sms</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/sega-master-system</link>
@@ -134,6 +145,7 @@
          <extension>md</extension>
          <extension>smd</extension>
          <extension>bin</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/sega-mega-drive</link>
@@ -143,6 +155,7 @@
       <extensions>
          <extension>mx1</extension>
          <extension>mx2</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/goodmsx1</link>
@@ -197,6 +210,7 @@
       <extensions>
          <extension>ngp</extension>
          <extension>ngc</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/snk-neo-geo-pocket</link>
@@ -209,6 +223,7 @@
          <extension>cue</extension>
          <extension>ccd</extension>
          <extension>sgx</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/nec-pc-engine</link>
@@ -247,6 +262,7 @@
          <extension>32x</extension>
          <extension>smd</extension>
          <extension>bin</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/sega-32x</link>
@@ -273,6 +289,7 @@
    <system key="sg1000" name="SG1000">
       <extensions>
          <extension>sg</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/sega-sg-1000</link>
@@ -282,6 +299,7 @@
       <extensions>
          <extension>sfc</extension>
          <extension>smc</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/nintendo-super-nes</link>
@@ -290,6 +308,7 @@
    <system key="vectrex" name="Vectrex">
       <extensions>
          <extension>vec</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.gametronik.com/site/AffichListingAll/vectrex/</link>
@@ -298,6 +317,7 @@
    <system key="virtualboy" name="Nintendo Virtual Boy">
       <extensions>
          <extension>vb</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/nintendo-virtual-boy</link>
@@ -307,6 +327,7 @@
       <extensions>
          <extension>ws</extension>
          <extension>wsc</extension>
+         <extension>zip</extension>
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/bandai-wonderswan</link>
