@@ -10795,7 +10795,40 @@ html.no-flexbox .flex-grid {
   line-height: inherit;
 }
 
-/* line 96, ../../../compass/scss/app.scss */
+/*
+ * 
+ * All stuff for footer
+ * 
+ */
+/* line 6, ../../../compass/scss/components/_footer.scss */
+footer {
+  margin-top: 2rem;
+  color: #838b8b;
+}
+/* line 10, ../../../compass/scss/components/_footer.scss */
+footer > .row > .columns > p, html.no-flexbox footer > .flex-inline-list > .columns > p,
+html.no-flexbox footer > .flex-grid > .columns > p, html.no-flexbox footer > .flex-inline-list > .cell > p,
+html.no-flexbox footer > .flex-grid > .cell > p {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-top: 1px solid #838b8b;
+}
+/* line 16, ../../../compass/scss/components/_footer.scss */
+footer small {
+  font-size: 80%;
+}
+/* line 20, ../../../compass/scss/components/_footer.scss */
+footer p {
+  color: inherit;
+  margin: 0;
+  line-height: 1.1;
+}
+/* line 25, ../../../compass/scss/components/_footer.scss */
+footer p + p {
+  margin-top: .5rem;
+}
+
+/* line 97, ../../../compass/scss/app.scss */
 #body_content {
   /*
    * Breadcrumbs customize

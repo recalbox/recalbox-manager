@@ -72,6 +72,14 @@
         {% block base_content %}{% endblock %}
     </div>{% endblock %}
 
+    {% block footer_container %}<footer>
+    <div class="row larger">
+        <div class="small-12 columns text-right">{% spaceless %}
+            <p><small>{{ SITE.name }} v{{ manager_version }}</small></p>
+        {% endspaceless %}</div>
+    </div>
+    </footer>{% endblock %}
+
     {% block page_more_js %}
         {% javascript_tag "js/app.min.js" %}
     {% endblock %}

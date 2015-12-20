@@ -92,7 +92,8 @@
 @import "vendor-libs/dropzone";
 
 @import "components/header";
-//@import "components/footer";
+@import "components/footer";
+
 #body_content{
     @import "components/contents";
 }

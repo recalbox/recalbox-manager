@@ -68,7 +68,7 @@ Before doing anything, ensure the Raspberry can access to the internet else conf
 
 Go where you want to install the manager directory then type the following commands: ::
 
-    wget -q -O - https://raw.githubusercontent.com/sveetch/recalbox-manager/master/deployment/install.sh | bash /dev/stdin --release=1.1.1
+    wget -q -O - https://raw.githubusercontent.com/sveetch/recalbox-manager/master/deployment/install.sh | bash /dev/stdin --release=1.1.3
 
 This will download an install script and automatically execute it to proceed to install.
 

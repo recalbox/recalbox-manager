@@ -2,5 +2,5 @@
 """
 Recalbox manifest registry
 """
-# Just a dummy dict waiting to be filled
+# Just an empty dict waiting to be filled
 manifest = {}

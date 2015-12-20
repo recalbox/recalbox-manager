@@ -21,7 +21,7 @@ clean: delpyc
 
 install:
 	virtualenv --no-site-packages .
-	bin/pip install -r requirements.txt
+	bin/pip install -r pip-requirements/basic.txt
 	bin/python manage.py migrate
 
 install-dev: install

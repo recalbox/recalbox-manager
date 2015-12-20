@@ -3,4 +3,27 @@
  * All stuff for footer
  * 
  */
-footer{}
+footer{
+    margin-top: 2rem;
+    color: $Azure4;
+    
+    &>.row > .columns > p{
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        border-top: 1px solid $Azure4;
+    }
+    
+    small{
+        font-size: 80%;
+    }
+    
+    p{
+        color: inherit;
+        margin: 0;
+        line-height: 1.1;
+        
+        &+p{
+            margin-top: .5rem;
+        }
+    }
+}

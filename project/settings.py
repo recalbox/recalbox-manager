@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from manager_frontend.utils.manifest import RecalboxManifestParser
+#from manager_frontend.utils.manifest import RecalboxManifestParser
 
 gettext = lambda s: s
 
@@ -93,6 +93,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'project.utils.context_processors.site_metas',
+                'project.utils.context_processors.manager_version',
                 'autobreadcrumbs.context_processors.AutoBreadcrumbsContext',
             ],
         },
@@ -181,7 +182,7 @@ RECALBOX_LOGFILE_PATH = "/recalbox.log"
 # Path to the Recalbox manifest file (actually shipped into manager project)
 RECALBOX_MANIFEST_FILEPATH = os.path.join(PROJECT_DIR, 'MANIFEST.xml')
 
-# Default empty entry for a system unknowed from Manifest
+# Default empty entry for unknowed system from Manifest
 RECALBOX_SYSTEM_DEFAULT = {
     'name': 'Unknow',
     'extensions': [],

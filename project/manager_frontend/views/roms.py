@@ -45,14 +45,37 @@ class RomListView(MultiFormView):
         # Get the system manifest part if any, else a default dict
         self.system_manifest = RECALBOX_MANIFEST.get(self.system_key, default_manifest)
             
-    def get_rom_choices(self):
-        rom_list = []
+    def get_rom_choices(self, force=False):
+        """
+        Return rom files as a choice list for form
         
-        for item in os.listdir(self.system_path):
-            if os.path.isfile(os.path.join(self.system_path, item)) and not item.startswith('.'):
-                rom_list.append( (item, os.path.getsize(os.path.join(self.system_path, item))) )
+        Don't list hided files and directories.
         
-        return tuple( sorted(rom_list, key=itemgetter(0)) )
+        If system is a supported system in manifest, filter files so only 
+        supported rom type is listed, else dont filter on file extension.
+        
+        Use some internal memory cache to not digg the dir each time, use 
+        force=True to bypass the cache
+        """
+        cache_key = '_get_rom_choices_cache'
+        if force or not hasattr(self, cache_key):
+            rom_list = []
+            system_extensions = ['.{}'.format(k) for k in self.system_manifest.get('extensions', [])]
+            
+            for item in os.listdir(self.system_path):
+                try:
+                    if os.path.isfile(os.path.join(self.system_path, item)) and not item.startswith('.'):
+                        if system_extensions and os.path.splitext(item)[-1]  not in system_extensions:
+                            continue
+                        rom_list.append( (item, os.path.getsize(os.path.join(self.system_path, item))) )
+                # Issue #39: Naive fix to avoid throwing exception on bad encoded 
+                #            filename, just ignore it and continue.
+                except UnicodeDecodeError:
+                    continue
+            
+            setattr(self, cache_key, tuple( sorted(rom_list, key=itemgetter(0)) ))
+        
+        return getattr(self, cache_key)
             
     def get_context_data(self, **kwargs):
         context = super(RomListView, self).get_context_data(**kwargs)
@@ -107,7 +130,7 @@ class RomListView(MultiFormView):
 
 class RomUploadJsonView(JsonMixin, RomListView):
     """
-    Inherit from RomListView to be similary but gives only response in JSON
+    Inherit from RomListView to be similary but only response in JSON
     
     Also the delete form should not really be used here
     """

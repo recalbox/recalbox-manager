@@ -31,7 +31,7 @@ from project import recalbox_manifest
 recalbox_manifest.autodiscover()
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    #url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('project.manager_frontend.urls', namespace='manager')),
 ]
 

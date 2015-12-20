@@ -6,8 +6,7 @@ from .registry import manifest
 
 def autodiscover():
     """
-    Dummy loader actually, this should be backward compatible for futur assets 
-    discovery per app
+    Simple manifest loader
     """
     from django.conf import settings
     from .parser import RecalboxManifestParser

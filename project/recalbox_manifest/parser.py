@@ -38,8 +38,6 @@ class RecalboxManifestParser(object):
         """
         manifest = {}
         
-        print "self.filepath:", self.filepath
-        
         tree = ET.parse(self.filepath)
         
         root = tree.getroot()

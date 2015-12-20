@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-import socket
+import imp, os, socket
 from django.conf import settings
-
 
 def get_host_ipaddress():
     """
@@ -75,6 +74,14 @@ def get_site_metas(with_static=False, with_media=False, is_secure=False,
     metas.update(extra)
     return metas
 
+
+def manager_version(request):
+    """
+    Context processor to add the recalbox-manager version
+    """
+    # Tricky way to know the manager version because its version lives out of project path
+    root = imp.load_source('__init__', os.path.join(settings.BASE_DIR, '__init__.py'))
+    return {'manager_version': root.__version__}
 
 def site_metas(request):
     """

@@ -1,6 +1,18 @@
 History
 =======
 
+Version 1.1.3 - 2015/12/19
+--------------------------
+
+* Updated Manifest to add zip extensions on some systems, related to #44 and #46;
+* Granted ``bin`` extension for roms on Atari2600 system;
+* Updated basic pip requirement file to fix Django version on 1.8.x for now;
+* Fixed Makefile action ``install`` to use the right pip requirement file path;
+* Added a global page footer containing the manager version, close #45;
+* Only display supported extensions for knowed rom systems from manifest, for unknow system ddirs don't filter on file extension, close #40;
+* Unmount ``/admin/`` because it's useless and may give back some ressources;
+* Naive fix to avoid throwing exception on bad encoded filename in rom list view, just ignore it and continue. Related to #39;
+
 Version 1.1.1 - 2015/11/01
 --------------------------
 

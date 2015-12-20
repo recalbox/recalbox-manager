@@ -3,6 +3,7 @@
    <system key="atari2600" name="Atari 2600">
       <extensions>
          <extension>a26</extension>
+         <extension>bin</extension>
          <extension>zip</extension>
       </extensions>
       <download_links>

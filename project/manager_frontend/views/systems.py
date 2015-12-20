@@ -26,7 +26,7 @@ class SystemsListView(FormView):
         existing_sys = []
         available_sys = []
         
-        # Get systems allready existing as directories
+        # Get existing systems as directories
         for item in os.listdir(path):
             # Only display directories
             if os.path.isdir(os.path.join(path, item)) and not item.startswith('.'):
