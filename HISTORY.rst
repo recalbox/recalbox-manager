@@ -1,6 +1,12 @@
 History
 =======
 
+Version 1.1.4 - 2015/12/21
+--------------------------
+
+* Added CPU temperature in monitoring using ACPI thermal API, close #38;
+* Notify about missing system bios in rom list view, close #50;
+
 Version 1.1.3 - 2015/12/19
 --------------------------
 

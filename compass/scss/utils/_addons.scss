@@ -262,6 +262,24 @@ button, .button{
     &.quaternary {}
 }
 
+
+/*
+ * Alert-box improvements
+ */
+.alert-box{
+    &>*{
+        &:last-child{
+            margin-bottom: 0;
+        }
+    }
+    &>p{
+        margin-bottom:0;
+        &+p{
+            margin-top: 0.5rem;
+        }
+    }
+}
+
 /*
  * Visually transform a dropdown button into a select list with vertical 
  * scrollbar. This is useful for long list items that can impact on page size

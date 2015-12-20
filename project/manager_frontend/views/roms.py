@@ -88,6 +88,22 @@ class RomListView(MultiFormView):
         })
         return context
 
+    def check_system_bios(self):
+        """
+        Use manifest for bios systems and check if they exists on FS
+        
+        Return a list of bios filenames that are missing if any
+        """
+        if self.system_manifest.get('bios', False):
+            missing = []
+            bios_filenames = [v for k,v in self.system_manifest['bios']]
+            for item in bios_filenames:
+                if not os.path.exists(os.path.join(settings.RECALBOX_BIOS_PATH, item)):
+                    missing.append(item)
+            return missing
+            
+        return None
+
     def get_success_url(self):
         return reverse('manager:roms-list', args=[self.kwargs.get('system')])
     

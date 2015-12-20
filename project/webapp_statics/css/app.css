@@ -8928,31 +8928,47 @@ button.reverse-primary:hover, .button.reverse-primary:hover {
 }
 
 /*
+ * Alert-box improvements
+ */
+/* line 271, ../../../compass/scss/utils/_addons.scss */
+.alert-box > *:last-child {
+  margin-bottom: 0;
+}
+/* line 275, ../../../compass/scss/utils/_addons.scss */
+.alert-box > p {
+  margin-bottom: 0;
+}
+/* line 277, ../../../compass/scss/utils/_addons.scss */
+.alert-box > p + p {
+  margin-top: 0.5rem;
+}
+
+/*
  * Visually transform a dropdown button into a select list with vertical 
  * scrollbar. This is useful for long list items that can impact on page size
  */
-/* line 269, ../../../compass/scss/utils/_addons.scss */
+/* line 287, ../../../compass/scss/utils/_addons.scss */
 .f-dropdown.overflow {
   overflow: auto;
   height: 14.28571rem;
 }
-/* line 273, ../../../compass/scss/utils/_addons.scss */
+/* line 291, ../../../compass/scss/utils/_addons.scss */
 .f-dropdown.overflow.overflow-100 {
   height: 7.14286rem;
 }
-/* line 274, ../../../compass/scss/utils/_addons.scss */
+/* line 292, ../../../compass/scss/utils/_addons.scss */
 .f-dropdown.overflow.overflow-150 {
   height: 10.71429rem;
 }
-/* line 275, ../../../compass/scss/utils/_addons.scss */
+/* line 293, ../../../compass/scss/utils/_addons.scss */
 .f-dropdown.overflow.overflow-200 {
   height: 14.28571rem;
 }
-/* line 276, ../../../compass/scss/utils/_addons.scss */
+/* line 294, ../../../compass/scss/utils/_addons.scss */
 .f-dropdown.overflow.overflow-250 {
   height: 17.85714rem;
 }
-/* line 277, ../../../compass/scss/utils/_addons.scss */
+/* line 295, ../../../compass/scss/utils/_addons.scss */
 .f-dropdown.overflow.overflow-300 {
   height: 21.42857rem;
 }
@@ -8960,12 +8976,12 @@ button.reverse-primary:hover, .button.reverse-primary:hover {
 /* 
  * Some usefull stuff for Grids
  */
-/* line 286, ../../../compass/scss/utils/_addons.scss */
+/* line 304, ../../../compass/scss/utils/_addons.scss */
 .row.row-fluid, html.no-flexbox .row-fluid.flex-inline-list,
 html.no-flexbox .row-fluid.flex-grid {
   max-width: 100%;
 }
-/* line 289, ../../../compass/scss/utils/_addons.scss */
+/* line 307, ../../../compass/scss/utils/_addons.scss */
 .row.row-fluid .row, html.no-flexbox .row-fluid.flex-inline-list .row,
 html.no-flexbox .row-fluid.flex-grid .row, .row.row-fluid html.no-flexbox .flex-inline-list, html.no-flexbox .row.row-fluid .flex-inline-list, html.no-flexbox .row-fluid.flex-inline-list .flex-inline-list,
 html.no-flexbox .row-fluid.flex-grid .flex-inline-list,
@@ -9005,7 +9021,7 @@ html.no-flexbox .row-fluid.flex-inline-list .flex-grid:after,
 html.no-flexbox .row-fluid.flex-grid .flex-grid:after {
   clear: both;
 }
-/* line 293, ../../../compass/scss/utils/_addons.scss */
+/* line 311, ../../../compass/scss/utils/_addons.scss */
 .row.row-fluid .row.row-fluid, html.no-flexbox .row-fluid.flex-inline-list .row.row-fluid,
 html.no-flexbox .row-fluid.flex-grid .row.row-fluid, .row.row-fluid html.no-flexbox .row-fluid.flex-inline-list, html.no-flexbox .row.row-fluid .row-fluid.flex-inline-list, html.no-flexbox .row-fluid.flex-inline-list .row-fluid.flex-inline-list,
 html.no-flexbox .row-fluid.flex-grid .row-fluid.flex-inline-list,
@@ -9016,32 +9032,32 @@ html.no-flexbox .row-fluid.flex-grid .row-fluid.flex-grid {
   max-width: 100%;
 }
 @media only screen and (min-width: 102.92857em) {
-  /* line 301, ../../../compass/scss/utils/_addons.scss */
+  /* line 319, ../../../compass/scss/utils/_addons.scss */
   .row.larger, html.no-flexbox .larger.flex-inline-list,
   html.no-flexbox .larger.flex-grid {
     max-width: 83rem;
   }
 }
-/* line 308, ../../../compass/scss/utils/_addons.scss */
+/* line 326, ../../../compass/scss/utils/_addons.scss */
 .row .divider, html.no-flexbox .flex-inline-list .divider,
 html.no-flexbox .flex-grid .divider {
   margin-bottom: 0.71429rem;
 }
 @media only screen and (min-width: 45.78571em) {
-  /* line 308, ../../../compass/scss/utils/_addons.scss */
+  /* line 326, ../../../compass/scss/utils/_addons.scss */
   .row .divider, html.no-flexbox .flex-inline-list .divider,
   html.no-flexbox .flex-grid .divider {
     margin-bottom: 2.14286rem;
   }
 }
-/* line 316, ../../../compass/scss/utils/_addons.scss */
+/* line 334, ../../../compass/scss/utils/_addons.scss */
 .row .columns > .row-inner, html.no-flexbox .flex-inline-list .columns > .row-inner,
 html.no-flexbox .flex-grid .columns > .row-inner, html.no-flexbox .flex-inline-list > .cell > .row-inner,
 html.no-flexbox .flex-grid > .cell > .row-inner {
   margin-left: -1.07143rem;
   margin-right: -1.07143rem;
 }
-/* line 325, ../../../compass/scss/utils/_addons.scss */
+/* line 343, ../../../compass/scss/utils/_addons.scss */
 .row .columns.divider, html.no-flexbox .flex-inline-list .columns.divider,
 html.no-flexbox .flex-grid .columns.divider, html.no-flexbox .row .flex-inline-list > .divider.cell, html.no-flexbox .flex-inline-list > .divider.cell,
 html.no-flexbox .flex-grid .flex-inline-list > .divider.cell,
@@ -9051,7 +9067,7 @@ html.no-flexbox .flex-grid > .divider.cell {
   margin-bottom: 0.35714rem;
 }
 @media only screen and (min-width: 45.78571em) {
-  /* line 325, ../../../compass/scss/utils/_addons.scss */
+  /* line 343, ../../../compass/scss/utils/_addons.scss */
   .row .columns.divider, html.no-flexbox .flex-inline-list .columns.divider,
   html.no-flexbox .flex-grid .columns.divider, html.no-flexbox .row .flex-inline-list > .divider.cell, html.no-flexbox .flex-inline-list > .divider.cell,
   html.no-flexbox .flex-grid .flex-inline-list > .divider.cell,
@@ -9061,7 +9077,7 @@ html.no-flexbox .flex-grid > .divider.cell {
     margin-bottom: 0;
   }
 }
-/* line 332, ../../../compass/scss/utils/_addons.scss */
+/* line 350, ../../../compass/scss/utils/_addons.scss */
 .row .columns.unpadded, html.no-flexbox .flex-inline-list .columns.unpadded,
 html.no-flexbox .flex-grid .columns.unpadded, html.no-flexbox .row .flex-inline-list > .unpadded.cell, html.no-flexbox .flex-inline-list > .unpadded.cell,
 html.no-flexbox .flex-grid .flex-inline-list > .unpadded.cell,
@@ -9071,7 +9087,7 @@ html.no-flexbox .flex-grid > .unpadded.cell {
   padding: 0;
 }
 @media only screen and (max-width: 45.71429em) {
-  /* line 336, ../../../compass/scss/utils/_addons.scss */
+  /* line 354, ../../../compass/scss/utils/_addons.scss */
   .row .columns.small-unpadded, html.no-flexbox .flex-inline-list .columns.small-unpadded,
   html.no-flexbox .flex-grid .columns.small-unpadded, html.no-flexbox .row .flex-inline-list > .small-unpadded.cell, html.no-flexbox .flex-inline-list > .small-unpadded.cell,
   html.no-flexbox .flex-grid .flex-inline-list > .small-unpadded.cell,
@@ -9082,7 +9098,7 @@ html.no-flexbox .flex-grid > .unpadded.cell {
   }
 }
 @media only screen and (min-width: 45.78571em) and (max-width: 73.14286em) {
-  /* line 341, ../../../compass/scss/utils/_addons.scss */
+  /* line 359, ../../../compass/scss/utils/_addons.scss */
   .row .columns.medium-unpadded, html.no-flexbox .flex-inline-list .columns.medium-unpadded,
   html.no-flexbox .flex-grid .columns.medium-unpadded, html.no-flexbox .row .flex-inline-list > .medium-unpadded.cell, html.no-flexbox .flex-inline-list > .medium-unpadded.cell,
   html.no-flexbox .flex-grid .flex-inline-list > .medium-unpadded.cell,
@@ -9093,7 +9109,7 @@ html.no-flexbox .flex-grid > .unpadded.cell {
   }
 }
 @media only screen and (min-width: 73.21429em) and (max-width: 102.85714em) {
-  /* line 346, ../../../compass/scss/utils/_addons.scss */
+  /* line 364, ../../../compass/scss/utils/_addons.scss */
   .row .columns.large-unpadded, html.no-flexbox .flex-inline-list .columns.large-unpadded,
   html.no-flexbox .flex-grid .columns.large-unpadded, html.no-flexbox .row .flex-inline-list > .large-unpadded.cell, html.no-flexbox .flex-inline-list > .large-unpadded.cell,
   html.no-flexbox .flex-grid .flex-inline-list > .large-unpadded.cell,
@@ -9110,26 +9126,26 @@ html.no-flexbox .flex-grid > .unpadded.cell {
 /*
  * Forms addons
  */
-/* line 365, ../../../compass/scss/utils/_addons.scss */
+/* line 383, ../../../compass/scss/utils/_addons.scss */
 form .inline .divide-for-after {
   padding-right: 0.5rem;
 }
-/* line 369, ../../../compass/scss/utils/_addons.scss */
+/* line 387, ../../../compass/scss/utils/_addons.scss */
 form .inline .button {
   padding-top: 0.5rem;
   padding-bottom: 0.57143rem;
 }
-/* line 376, ../../../compass/scss/utils/_addons.scss */
+/* line 394, ../../../compass/scss/utils/_addons.scss */
 form .hide-label .holder > label,
 form .hide-label .holder > .label {
   display: none;
 }
-/* line 383, ../../../compass/scss/utils/_addons.scss */
+/* line 401, ../../../compass/scss/utils/_addons.scss */
 form input[type="file"] {
   padding: 0;
 }
 
-/* line 389, ../../../compass/scss/utils/_addons.scss */
+/* line 407, ../../../compass/scss/utils/_addons.scss */
 .tiny-button-v-align {
   line-height: 2.6rem;
 }
@@ -9137,11 +9153,11 @@ form input[type="file"] {
 /*
  * Progress addons
  */
-/* line 396, ../../../compass/scss/utils/_addons.scss */
+/* line 414, ../../../compass/scss/utils/_addons.scss */
 .progress {
   position: relative;
 }
-/* line 400, ../../../compass/scss/utils/_addons.scss */
+/* line 418, ../../../compass/scss/utils/_addons.scss */
 .progress .value {
   position: absolute;
   top: 0;
@@ -10838,6 +10854,18 @@ footer p + p {
    * Body contents elements
    * **
    */
+  /*
+   * Dropzone (deprecated ?)
+   */
+  /*
+   * Introduction icons from homepage
+   */
+  /*
+   * Emulation systems list
+   */
+  /*
+   * Monitoring
+   */
 }
 /* line 7, ../../../compass/scss/components/_contents.scss */
 #body_content .breadcrumbs {
@@ -10891,17 +10919,30 @@ footer p + p {
   color: #008CBA;
   margin-right: 0.4rem;
 }
-/* line 65, ../../../compass/scss/components/_contents.scss */
+/* line 67, ../../../compass/scss/components/_contents.scss */
 #body_content .dropzone.dz-clickable input[type="file"] {
   display: none;
 }
-/* line 71, ../../../compass/scss/components/_contents.scss */
+/* line 75, ../../../compass/scss/components/_contents.scss */
 #body_content .dashboard-icons {
   padding: 2.14286rem 0;
 }
-/* line 78, ../../../compass/scss/components/_contents.scss */
+/* line 84, ../../../compass/scss/components/_contents.scss */
 #body_content .systems-list .folder a > i {
   display: block;
+}
+/* line 95, ../../../compass/scss/components/_contents.scss */
+#body_content .dashboard-system-infos .thermal-cpu-infos .biggest {
+  font-size: 250%;
+}
+/* line 99, ../../../compass/scss/components/_contents.scss */
+#body_content .dashboard-system-infos .thermal-cpu-infos p:not([class^="title-"]) {
+  line-height: 1.1;
+  margin: 0;
+}
+/* line 103, ../../../compass/scss/components/_contents.scss */
+#body_content .dashboard-system-infos .thermal-cpu-infos p:not([class^="title-"]) + p {
+  margin-top: 0.5rem;
 }
 
 /*

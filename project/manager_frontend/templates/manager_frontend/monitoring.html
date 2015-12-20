@@ -12,7 +12,7 @@
         {% for core_percent in cpu_infos.usage %}{% with core_int=core_percent|floatformat:"0" %}
         <div class="small-6 columns{% if forloop.last %} end{% endif %} core-item">
             <div class="row">
-                <div class="small-12 medium-4 columns core-number">
+                <div class="small-12 medium-4 columns core-number text-right">
                     <p>{% blocktrans with number=forloop.counter %}Core&nbsp;{{ number }}{% endblocktrans %}</p>
                 </div>
                 <div class="small-12 medium-8 columns core-usage-progress">
@@ -28,24 +28,33 @@
 
     <hr>
 
-    <div class="row memory">
-        {% with memory_usage_int=memory_infos.usage_percent|floatformat:"0" %}
-        <div class="small-12 columns">
-            <p class="title-3">{% trans "Memory" %}</p>
-        </div>
-        <div class="small-12 medium-3 columns medium-text-right free">
-            {% blocktrans with size=memory_infos.free_unified|filesizeformat %}Free: {{ size }}{% endblocktrans %}
-        </div>
-        <div class="small-12 medium-6 columns usage">
-            <div class="progress success radius">
-                <span class="meter" style="width: {{ memory_usage_int }}%"></span>
-                <span class="value">{{ memory_usage_int }}%</span>
+    <div class="row">
+        <div class="small-12 columns medium-9">
+            <div class="row memory">
+                {% with memory_usage_int=memory_infos.usage_percent|floatformat:"0" %}
+                <div class="small-12 columns">
+                    <p class="title-3">{% trans "Memory" %}</p>
+                </div>
+                <div class="small-12 medium-3 columns medium-text-right free">
+                    {% blocktrans with size=memory_infos.free_unified|filesizeformat %}Free: {{ size }}{% endblocktrans %}
+                </div>
+                <div class="small-12 medium-6 columns usage">
+                    <div class="progress success radius">
+                        <span class="meter" style="width: {{ memory_usage_int }}%"></span>
+                        <span class="value">{{ memory_usage_int }}%</span>
+                    </div>
+                </div>
+                <div class="small-12 medium-3 columns medium-text-left total">
+                    {% blocktrans with size=memory_infos.total|filesizeformat %}Total: {{ size }}{% endblocktrans %}
+                </div>
+                {% endwith %}
             </div>
         </div>
-        <div class="small-12 medium-3 columns medium-text-left total">
-            {% blocktrans with size=memory_infos.total|filesizeformat %}Total: {{ size }}{% endblocktrans %}
+        <div class="small-12 columns medium-3 thermal-cpu-infos">
+            <p class="title-3">{% trans "CPU Temperature" %}</p>
+            <p class="text-center"><span class="biggest">{{ cpu_thermal_infos.current }}°c</span></p>
+            <p class="text-center">{% trans "Max" %}: {{ cpu_thermal_infos.max }}°c</p>
         </div>
-        {% endwith %}
     </div>
 
     <hr>

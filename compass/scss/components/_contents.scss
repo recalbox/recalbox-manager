@@ -60,23 +60,49 @@
  * Body contents elements
  * **
  */
-// Dropzone (deprecated ?)
+/*
+ * Dropzone (deprecated ?)
+ */
 .dropzone.dz-clickable{
     input[type="file"]{
         display: none;
     }
 }
 
-// Introduction icons from homepage
+/*
+ * Introduction icons from homepage
+ */
 .dashboard-icons{
     padding: $column-gutter 0;
 }
 
-// Emulation systems list
+/*
+ * Emulation systems list
+ */
 .systems-list{
     .folder{
         a > i{
             display: block;
+        }
+    }
+}
+
+/*
+ * Monitoring
+ */
+.dashboard-system-infos{
+    .thermal-cpu-infos{
+        .biggest{
+            font-size: 250%;
+        }
+        
+        p:not([class^="title-"]){
+            line-height: 1.1;
+            margin: 0;
+            
+            &+p{
+                margin-top: 0.5rem;
+            }
         }
     }
 }

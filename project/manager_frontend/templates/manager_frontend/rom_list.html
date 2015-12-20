@@ -28,6 +28,15 @@
     <li><span class="label info radius">{% trans "Total" %}: {{ total_roms }}</span></li>
 </ul>
 
+{% with bios_checking=view.check_system_bios %}
+{% if bios_checking %}
+<div data-alert class="alert-box warning radius">
+  <p>This system requires one or more <a href="">bios</a> file that are missing from your installation:</p>
+  <p><strong>{{ bios_checking|join:', ' }}</strong></p>
+</div>
+{% endif %}
+{% endwith %}
+
 <form action="{% url 'manager:roms-list' system=system %}" method="post" id="upload-dropzone" class="dropzone" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="hidden" name="upload_submit" value="1">
