@@ -1,6 +1,12 @@
 History
 =======
 
+Version 1.1.4.1 - 2015/12/22
+----------------------------
+
+* Updated PO and french translation;
+* Minor improvement on some CSS stuff;
+
 Version 1.1.4 - 2015/12/21
 --------------------------
 

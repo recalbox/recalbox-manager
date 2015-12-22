@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-01 17:27+0100\n"
+"POT-Creation-Date: 2015-12-23 00:38+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -93,7 +93,7 @@ msgid "Path"
 msgstr "Pfad"
 
 #: manager_frontend/templates/manager_frontend/bios_list.html:28
-#: manager_frontend/templates/manager_frontend/monitoring.html:65
+#: manager_frontend/templates/manager_frontend/monitoring.html:74
 #: manager_frontend/templates/manager_frontend/rom_list.html:28
 #: manager_frontend/templates/manager_frontend/systems_list.html:7
 msgid "Total"
@@ -111,8 +111,8 @@ msgstr ""
 
 #: manager_frontend/templates/manager_frontend/bios_list.html:85
 #: manager_frontend/templates/manager_frontend/bios_list.html:114
-#: manager_frontend/templates/manager_frontend/rom_list.html:81
-#: manager_frontend/templates/manager_frontend/rom_list.html:102
+#: manager_frontend/templates/manager_frontend/rom_list.html:91
+#: manager_frontend/templates/manager_frontend/rom_list.html:112
 msgid "Delete selected files"
 msgstr "Lösche ausgewählte Dateien"
 
@@ -121,7 +121,7 @@ msgid "System"
 msgstr "System"
 
 #: manager_frontend/templates/manager_frontend/bios_list.html:95
-#: manager_frontend/templates/manager_frontend/rom_list.html:86
+#: manager_frontend/templates/manager_frontend/rom_list.html:96
 msgid "Filename"
 msgstr "Dateiname"
 
@@ -130,7 +130,7 @@ msgid "MD5 checksum"
 msgstr "MD5 Checksumme"
 
 #: manager_frontend/templates/manager_frontend/bios_list.html:97
-#: manager_frontend/templates/manager_frontend/rom_list.html:88
+#: manager_frontend/templates/manager_frontend/rom_list.html:98
 msgid "Check"
 msgstr "Auswählen"
 
@@ -183,53 +183,68 @@ msgstr ""
 msgid "Core&nbsp;%(number)s"
 msgstr ""
 
-#: manager_frontend/templates/manager_frontend/monitoring.html:34
+#: manager_frontend/templates/manager_frontend/monitoring.html:36
 msgid "Memory"
 msgstr ""
 
-#: manager_frontend/templates/manager_frontend/monitoring.html:37
+#: manager_frontend/templates/manager_frontend/monitoring.html:39
 #, python-format
 msgid "Free: %(size)s"
 msgstr ""
 
-#: manager_frontend/templates/manager_frontend/monitoring.html:46
+#: manager_frontend/templates/manager_frontend/monitoring.html:48
 #, python-format
 msgid "Total: %(size)s"
 msgstr ""
 
-#: manager_frontend/templates/manager_frontend/monitoring.html:55
-msgid "File system"
+#: manager_frontend/templates/manager_frontend/monitoring.html:54
+msgid "CPU Temperature"
 msgstr ""
 
-#: manager_frontend/templates/manager_frontend/monitoring.html:59
-msgid "Device"
-msgstr ""
-
-#: manager_frontend/templates/manager_frontend/monitoring.html:60
-msgid "Mount"
-msgstr ""
-
-#: manager_frontend/templates/manager_frontend/monitoring.html:61
-msgid "Type"
-msgstr ""
-
-#: manager_frontend/templates/manager_frontend/monitoring.html:62
-msgid "Usage"
-msgstr ""
-
-#: manager_frontend/templates/manager_frontend/monitoring.html:63
-msgid "Used"
+#: manager_frontend/templates/manager_frontend/monitoring.html:56
+msgid "Max"
 msgstr ""
 
 #: manager_frontend/templates/manager_frontend/monitoring.html:64
+msgid "File system"
+msgstr ""
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:68
+msgid "Device"
+msgstr ""
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:69
+msgid "Mount"
+msgstr ""
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:70
+msgid "Type"
+msgstr ""
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:71
+msgid "Usage"
+msgstr ""
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:72
+msgid "Used"
+msgstr ""
+
+#: manager_frontend/templates/manager_frontend/monitoring.html:73
 msgid "Free"
 msgstr ""
 
-#: manager_frontend/templates/manager_frontend/rom_list.html:54
+#: manager_frontend/templates/manager_frontend/rom_list.html:35
+#, python-format
+msgid ""
+"This system requires one or more <a href=\"%(bios_url)s\">bios</a> file that "
+"are missing from your installation:"
+msgstr ""
+
+#: manager_frontend/templates/manager_frontend/rom_list.html:64
 msgid "Upload a rom"
 msgstr "Rom hochladen"
 
-#: manager_frontend/templates/manager_frontend/rom_list.html:87
+#: manager_frontend/templates/manager_frontend/rom_list.html:97
 msgid "Size"
 msgstr "Grösse"
 
@@ -241,11 +256,11 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: manager_frontend/views/bios.py:90 manager_frontend/views/roms.py:89
+#: manager_frontend/views/bios.py:90 manager_frontend/views/roms.py:128
 msgid "File has been uploaded: {}"
 msgstr "Datei wurde hochgeladen: {}"
 
-#: manager_frontend/views/bios.py:97 manager_frontend/views/roms.py:96
+#: manager_frontend/views/bios.py:97 manager_frontend/views/roms.py:135
 msgid "Deleted file(s): {}"
 msgstr "Gelöschte Datei(en): {}"
 
@@ -263,15 +278,15 @@ msgstr "Datei wurde editiert"
 msgid "System \"{}\" has been created"
 msgstr "Datei wurde editiert"
 
-#: settings.py:121
+#: settings.py:122
 msgid "English"
 msgstr "Englisch"
 
-#: settings.py:122
+#: settings.py:123
 msgid "French"
 msgstr "Französisch"
 
-#: settings.py:123
+#: settings.py:124
 msgid "German"
 msgstr "Deutsch"
 

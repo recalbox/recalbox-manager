@@ -9165,6 +9165,35 @@ form input[type="file"] {
 }
 
 /*
+ * Alert boxes addons
+ */
+/* line 430, ../../../compass/scss/utils/_addons.scss */
+.alert-box a {
+  color: #001921;
+  text-decoration: underline;
+}
+/* line 434, ../../../compass/scss/utils/_addons.scss */
+.alert-box.info a {
+  color: #206683;
+}
+/* line 437, ../../../compass/scss/utils/_addons.scss */
+.alert-box.secondary a {
+  color: #5b5b5b;
+}
+/* line 440, ../../../compass/scss/utils/_addons.scss */
+.alert-box.success a {
+  color: #183e26;
+}
+/* line 443, ../../../compass/scss/utils/_addons.scss */
+.alert-box.warning a {
+  color: #432405;
+}
+/* line 446, ../../../compass/scss/utils/_addons.scss */
+.alert-box.alert a {
+  color: #731708;
+}
+
+/*
  * Mixin to create cells widths with flexbox
  */
 /*

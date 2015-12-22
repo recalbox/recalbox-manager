@@ -421,3 +421,29 @@ form{
         left: 50%;
     }
 }
+
+/*
+ * Alert boxes addons
+ */
+.alert-box{
+    // Better link visibility in any alert type
+    a{
+        color: darken($primary-color, 30%);
+        text-decoration: underline;
+    }
+    &.info a{
+        color: darken($info-color, 45%);
+    }
+    &.secondary a{
+        color: darken($secondary-color, 55%);
+    }
+    &.success a{
+        color: darken($success-color, 30%);
+    }
+    &.warning a{
+        color: darken($warning-color, 40%);
+    }
+    &.alert a{
+        color: darken($alert-color, 30%);
+    }
+}

@@ -31,8 +31,9 @@
 {% with bios_checking=view.check_system_bios %}
 {% if bios_checking %}
 <div data-alert class="alert-box warning radius">
-  <p>This system requires one or more <a href="">bios</a> file that are missing from your installation:</p>
-  <p><strong>{{ bios_checking|join:', ' }}</strong></p>
+    {% url 'manager:bios' as bios_url %}
+    <p><strong>{% blocktrans with bios_url=bios_url %}This system requires one or more <a href="{{ bios_url }}">bios</a> file that are missing from your installation:{% endblocktrans %}</strong></p>
+    <p><strong>{{ bios_checking|join:', ' }}</strong></p>
 </div>
 {% endif %}
 {% endwith %}

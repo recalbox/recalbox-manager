@@ -68,7 +68,7 @@ Before doing anything, ensure the Raspberry can access to the internet else conf
 
 Go where you want to install the manager directory then type the following commands: ::
 
-    wget -q -O - https://raw.githubusercontent.com/sveetch/recalbox-manager/master/deployment/install.sh | bash /dev/stdin --release=1.1.4
+    wget -q -O - https://raw.githubusercontent.com/sveetch/recalbox-manager/master/deployment/install.sh | bash /dev/stdin --release=1.1.4.1
 
 This will download an install script and automatically execute it to proceed to install.
 
@@ -140,8 +140,6 @@ Caveats
 
 * Python devel lib is not installed on Recalbox, this would prevent you to be able to install somes additional Python packages that require to compile some C code;
 
-* Currently the webapp is served using the development server from Django. It is strongly advised to not use it in production, but this should be fine as the webapp should not have to response to many connections because it's not a website on internet. This choice has been done to avoid to load a real web server on the Raspberry;
+* Currently, webapp is served using the development server from Django. It's awful but at least the webapp should not have to response to many connections. This choice has been done to avoid loading a real web server on the Raspberry additionaly to the Django instance;
 
-* UTC Timezone does not seems available, have to set settings.TIME_ZONE to None and set settings.USE_TZ to False and so it start with a dummy project freshly created from startproject Django command;
-
-* Minified and compressed assets are shipped in static files. This is not a common and good way but needed for the special production environment (on Recalbox) that is not able to correctly do asset management;
+* UTC Timezone does not seems available for now, so have to set ``settings.TIME_ZONE`` to ``None`` and set ``settings.USE_TZ`` to ``False``;
