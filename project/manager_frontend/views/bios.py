@@ -10,10 +10,12 @@ from django.contrib import messages
 from django.http import Http404, HttpResponseBadRequest
 from django.utils.translation import ugettext as _
 
+from project.utils.views import JsonMixin
+
 from project.recalbox_manifest import manifest as RECALBOX_MANIFEST
 
 from project.manager_frontend.forms.bios import BiosDeleteForm, BiosUploadForm
-from project.manager_frontend.utils.views import MultiFormView, JsonMixin
+from project.manager_frontend.utils.views import MultiFormView
 
 class BiosListView(MultiFormView):
     """

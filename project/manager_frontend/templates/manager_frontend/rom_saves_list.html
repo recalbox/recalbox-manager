@@ -1,0 +1,19 @@
+{% extends "manager_frontend/base.html" %}
+{% load i18n %}
+
+{% block manager_content %}
+<ul class="inline-list">
+    <li><span class="label info radius">{% trans "Total" %}: {{ systems_list|length }}</span></li>
+</ul>
+
+<dl class="saves-list">{% for name,files in saves_list %}
+    <dt>
+        {{ name }}
+    </dt>
+    <dd>
+        <ul>{% for item in files %}
+            <li>{{ item }}</li>
+        {% endfor %}</ul>
+    </dd>
+{% endfor %}</dl>
+{% endblock %}

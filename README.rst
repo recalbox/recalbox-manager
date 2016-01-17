@@ -21,7 +21,7 @@ Features
     
   * Actually don't have any app models, so we never perform database request for anything;
   * Don't use Django site framework (to avoid database request);
-  * Don't use compressor system (like django-assets or django-pipeline) to avoid processing many files just to display static files tags. Instead ships allready compressed assets and switch to them in production environment;
+  * Don't use compressor "on the fly" (like *django-assets* or *django-pipeline*) to avoid processing many files just to display static files tags. Instead ships allready compressed assets and switch to them in production environment;
 
 * Hardly repose on Recalbox Manifest file to validate uploads;
 * Web integration on top of `Foundation`_;
@@ -40,7 +40,7 @@ Features
   * Only accept supported Bios file (from manifest);
   * MD5 checksum validation;
 
-* Usage of `Dropzone.js`_ plugin for upload forms;
+* Usage of `Dropzone.js`_ plugin for multiple-upload forms;
   
 
 Install
@@ -70,9 +70,10 @@ Go where you want to install the manager directory then type the following comma
 
     wget -q -O - https://raw.githubusercontent.com/sveetch/recalbox-manager/master/deployment/install.sh | bash /dev/stdin --release=1.1.4.1
 
-This will download an install script and automatically execute it to proceed to install.
+This will download an install script and automatically execute it to proceed to install. **This procedure is only for Recalbox systems that don't have the manager installed yet**, since Recalbox 3.3.0 beta15, the manager is allready installed at ``/usr/recalbox-manager``.
 
-Actually the install script accept an additional argument to enable compatibility with Recalbox 3.2.11 (because it's actually the real last stable version). So to install recalbox-manager on Recalbox 3.2.11, add `` --compatible`` to the previous command.
+Actually the install script accept an additional argument to enable compatibility with Recalbox 3.2.11 (because it's actually the real last stable version). So to install recalbox-manager on Recalbox 3.2.11, add ``--compatible`` to the previous command.
+
 
 Usage
 *****
@@ -128,12 +129,12 @@ Also to make continue development, you can use the watch task so every time Comp
 
     grunt watch
 
-**Remember** to execute theses tasks before commiting updates on assets.
+**Remember to execute theses tasks before commiting updates on assets.**
 
 Notes for production
 ********************
 
-Last tests on Recalbox 3.3.0 beta 6 and recalbox-manager==0.8.2 was giving 2% CPU charge when Django instance is idle and can go to 17% when furiously reloading a page during 30seconds. Memory is allways stable around 80Mo and should probably don't go further. This was a naive benchmark just using ``top``.
+Last tests on Recalbox 3.3.0 beta 6 and ``recalbox-manager==0.8.2`` was giving 2% CPU charge when Django instance is idle and can go to 17% when furiously reloading a page during 30seconds. Memory is allways stable around 80Mo and should probably don't go further. This was a naive benchmark just using ``top``.
 
 Caveats
 *******

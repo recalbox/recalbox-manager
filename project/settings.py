@@ -173,6 +173,8 @@ ASSETS_TAG_TEMPLATES = {
 RECALBOX_BIOS_PATH = "/recalbox/share/bios"
 # Path to directory that contains system roms directories
 RECALBOX_ROMS_PATH = '/recalbox/share/roms'
+# Path to directory that contains system saves
+RECALBOX_SAVES_PATH = '/recalbox/share/saves'
 # Path to the Recalbox configuration file
 RECALBOX_CONF_PATH = '/recalbox/share/system/recalbox.conf'
 # Path to the Recalbox configuration backup file

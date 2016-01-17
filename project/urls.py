@@ -33,6 +33,7 @@ recalbox_manifest.autodiscover()
 urlpatterns = [
     #url(r'^admin/', include(admin.site.urls)),
     url(r'^', include('project.manager_frontend.urls', namespace='manager')),
+    #url(r'^api/', include('project.api.urls', namespace='api')),
 ]
 
 # Debug

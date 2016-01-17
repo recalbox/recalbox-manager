@@ -48,8 +48,8 @@ done
 
 
 echo "* Installing pip and virtualenv"
-# python -m ensurepip
-# pip install virtualenv
+python -m ensurepip
+pip install virtualenv
 echo
 
 echo "* Downloading release $RELEASE"
