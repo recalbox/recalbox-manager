@@ -180,7 +180,7 @@ RECALBOX_CONF_PATH = '/recalbox/share/system/recalbox.conf'
 # Path to the Recalbox configuration backup file
 RECALBOX_CONF_BACKUP_PATH = '/recalbox/share/system/recalbox.old.conf'
 # Path to the Recalbox logs file
-RECALBOX_LOGFILE_PATH = "/recalbox.log"
+RECALBOX_LOGFILE_PATH = "/recalbox/share/system/logs/recalbox.log"
 # Path to the Recalbox manifest file (actually shipped into manager project)
 RECALBOX_MANIFEST_FILEPATH = os.path.join(PROJECT_DIR, 'MANIFEST.xml')
 
