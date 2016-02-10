@@ -335,4 +335,63 @@
          <link>http://www.planetemu.net/roms/bandai-wonderswan-color</link>
       </download_links>
    </system>
+   <system key="amstradcpc" name="Amstrad CPC">
+      <extensions>
+         <extension>dsk</extension>
+         <extension>zip</extension>
+      </extensions>
+      <download_links>
+         <link>http://www.planetemu.net/roms/amstrad-cpc-games-dsk</link>
+      </download_links>
+   </system>
+   <system key="atarist" name="Atari ST">
+      <extensions>
+         <extension>st</extension>
+         <extension>stx</extension>
+         <extension>zip</extension>
+      </extensions>
+      <download_links>
+         <link>http://www.planetemu.net/roms/atari-st-games-st</link>
+         <link>http://www.planetemu.net/roms/atari-st-games-stx</link>
+      </download_links>
+      <bios>
+         <file md5="b2a8570de2e850c5acf81cb80512d9f6">tos.img</file>
+      </bios>
+   </system>
+   <system key="o2em" name="Odyssey 2">
+      <extensions>
+         <extension>bin</extension>
+         <extension>zip</extension>
+      </extensions>
+      <download_links>
+         <link>http://www.planetemu.net/roms/magnavox-odyssey2</link>
+      </download_links>
+      <bios>
+         <file md5="562d5ebf9e030a40d6fabfc2f33139fd">o2rom.bin</file>
+      </bios>
+   </system>
+   <system key="zx81" name="Sinclair ZX81">
+      <extensions>
+         <extension>tzx</extension>
+         <extension>p</extension>
+         <extension>zip</extension>
+      </extensions>
+      <download_links>
+         <link>https://www.loveroms.com/roms/sinclair-zx81</link>
+      </download_links>
+   </system>
+   <system key="zxspectrum" name="Sinclair ZX Spectrum">
+      <extensions>
+         <extension>tzx</extension>
+         <extension>tap</extension>
+         <extension>z80</extension>
+         <extension>rzx</extension>
+         <extension>scl</extension>
+         <extension>tr</extension>
+         <extension>zip</extension>
+      </extensions>
+      <download_links>
+         <link>http://www.planetemu.net/machine/zx-spectrum</link>
+      </download_links>
+   </system>
 </systems>
