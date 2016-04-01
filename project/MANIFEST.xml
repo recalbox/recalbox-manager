@@ -180,6 +180,26 @@
          <file md5="279efd1eae0d358eecd4edc7d9adedf3">RS232.ROM</file>
       </bios>
    </system>
+   <system key="msx1" name="MSX1">
+      <extensions>
+         <extension>mx1</extension>
+         <extension>mx2</extension>
+         <extension>zip</extension>
+      </extensions>
+      <download_links>
+         <link>http://www.planetemu.net/roms/goodmsx1</link>
+      </download_links>
+   </system>
+   <system key="msx2" name="MSX2">
+      <extensions>
+         <extension>mx1</extension>
+         <extension>mx2</extension>
+         <extension>zip</extension>
+      </extensions>
+      <download_links>
+         <link>http://www.planetemu.net/roms/goodmsx2</link>
+      </download_links>
+   </system>
    <system key="n64" name="Nintendo64">
       <extensions>
          <extension>n64</extension>
@@ -218,6 +238,16 @@
          <link>http://www.planetemu.net/roms/snk-neo-geo-pocket-color</link>
       </download_links>
    </system>
+   <system key="ngpc" name="NeoGeo Pocket Color">
+      <extensions>
+         <extension>ngp</extension>
+         <extension>ngc</extension>
+         <extension>zip</extension>
+      </extensions>
+      <download_links>
+         <link>http://www.planetemu.net/roms/snk-neo-geo-pocket-color</link>
+      </download_links>
+   </system>
    <system key="pcengine" name="PC Engine">
       <extensions>
          <extension>pce</extension>
@@ -233,6 +263,30 @@
       <bios>
          <file md5="ff1a674273fe3540ccef576376407d1d">syscard3.pce</file>
       </bios>
+   </system>
+   <system key="pcenginecd" name="PC Engine CD">
+      <extensions>
+         <extension>pce</extension>
+         <extension>cue</extension>
+         <extension>ccd</extension>
+         <extension>sgx</extension>
+         <extension>zip</extension>
+      </extensions>
+      <download_links>
+         <link>http://www.mondemul.net/zisos.php?genre=liste&amp;type=pcecd</link>
+      </download_links>
+   </system>
+   <system key="supergrafx" name="SuperGrafx">
+      <extensions>
+         <extension>pce</extension>
+         <extension>cue</extension>
+         <extension>ccd</extension>
+         <extension>sgx</extension>
+         <extension>zip</extension>
+      </extensions>
+      <download_links>
+         <link>http://www.planetemu.net/roms/nec-super-grafx</link>
+      </download_links>
    </system>
    <system key="prboom" name="PRBoom">
       <extensions>
@@ -332,6 +386,15 @@
       </extensions>
       <download_links>
          <link>http://www.planetemu.net/roms/bandai-wonderswan</link>
+      </download_links>
+   </system>
+   <system key="wswanc" name="Wonder Swan Color">
+      <extensions>
+         <extension>ws</extension>
+         <extension>wsc</extension>
+         <extension>zip</extension>
+      </extensions>
+      <download_links>
          <link>http://www.planetemu.net/roms/bandai-wonderswan-color</link>
       </download_links>
    </system>
