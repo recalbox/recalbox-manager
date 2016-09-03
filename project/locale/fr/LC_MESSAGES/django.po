@@ -108,8 +108,8 @@ msgid ""
 "This is the full list of supported Bios, existing bios you have uploaded "
 "will be decorated and followed with a checkbox"
 msgstr ""
-"Ceci est la liste complète des Bios supportés, les bios existant que vous "
-"avez uploadé seront décorés et suivi d'une case à cocher"
+"Ceci est la liste complète des Bios supportés, les bios existants que vous "
+"avez uploadés seront décorés et suivis d'une case à cocher"
 
 #: manager_frontend/templates/manager_frontend/bios_list.html:85
 #: manager_frontend/templates/manager_frontend/bios_list.html:114
@@ -134,7 +134,7 @@ msgstr "Somme de vérification MD5"
 #: manager_frontend/templates/manager_frontend/bios_list.html:97
 #: manager_frontend/templates/manager_frontend/rom_list.html:98
 msgid "Check"
-msgstr "Séléctionner"
+msgstr "Sélectionner"
 
 #: manager_frontend/templates/manager_frontend/config_form.html:6
 msgid "Current"
@@ -165,7 +165,7 @@ msgstr "Consultez les <strong>logs</strong> de la Recalbox"
 #: manager_frontend/templates/manager_frontend/home.html:32
 msgid "Manage all supported <strong>Bios</strong> files for emulated systems"
 msgstr ""
-"Gérez tout les <strong>Bios</strong> supportés pour les systèmes émulés"
+"Gérez tous les <strong>Bios</strong> supportés pour les systèmes émulés"
 
 #: manager_frontend/templates/manager_frontend/home.html:38
 msgid "Manage <strong>Rom</strong> files for emulated systems"
@@ -191,12 +191,12 @@ msgstr "Mémoire"
 #: manager_frontend/templates/manager_frontend/monitoring.html:39
 #, python-format
 msgid "Free: %(size)s"
-msgstr "Libre: %(size)s"
+msgstr "Libre&nbsp;: %(size)s"
 
 #: manager_frontend/templates/manager_frontend/monitoring.html:48
 #, python-format
 msgid "Total: %(size)s"
-msgstr ""
+msgstr "Total&nbsp;: %(size)s"
 
 #: manager_frontend/templates/manager_frontend/monitoring.html:54
 msgid "CPU Temperature"
@@ -204,7 +204,7 @@ msgstr "Température CPU"
 
 #: manager_frontend/templates/manager_frontend/monitoring.html:56
 msgid "Max"
-msgstr ""
+msgstr "Max"
 
 #: manager_frontend/templates/manager_frontend/monitoring.html:64
 msgid "File system"
@@ -224,7 +224,7 @@ msgstr ""
 
 #: manager_frontend/templates/manager_frontend/monitoring.html:71
 msgid "Usage"
-msgstr ""
+msgstr "Utilisation"
 
 #: manager_frontend/templates/manager_frontend/monitoring.html:72
 msgid "Used"
@@ -261,11 +261,11 @@ msgstr "Ajouter"
 
 #: manager_frontend/views/bios.py:90 manager_frontend/views/roms.py:128
 msgid "File has been uploaded: {}"
-msgstr "Le fichier a été uploadé: {}"
+msgstr "Le fichier a été uploadé&nbsp;: {}"
 
 #: manager_frontend/views/bios.py:97 manager_frontend/views/roms.py:135
 msgid "Deleted file(s): {}"
-msgstr "Fichier(s) supprimé(s): {}"
+msgstr "Fichier(s) supprimé(s)&nbsp;: {}"
 
 #: manager_frontend/views/config.py:75
 msgid "File has been backuped then edited"
@@ -309,15 +309,15 @@ msgstr "Erreur 500"
 
 #: templates/500.html:6 templates/500.html.py:14
 msgid "Internal Server Error"
-msgstr "Erreur interne au serveur"
+msgstr "Erreur interne du serveur"
 
 #: templates/500.html:15
 msgid ""
 "The server encountered an internal server error or misconfiguration and was "
 "unable to complete your request."
 msgstr ""
-"Le serveur a rencontré une erreur ou un problème de configuration et a été "
-"incapable de répondre à la requête"
+"Le serveur a rencontré une erreur ou un problème de configuration et n'a pas "
+"pu répondre à la requête"
 
 #: templates/skeleton.html:52
 msgid "Roms"
