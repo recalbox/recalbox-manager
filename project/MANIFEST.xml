@@ -411,6 +411,7 @@
       <extensions>
          <extension>st</extension>
          <extension>stx</extension>
+         <extension>ipf</extension>
          <extension>zip</extension>
       </extensions>
       <download_links>
@@ -456,5 +457,69 @@
       <download_links>
          <link>http://www.planetemu.net/machine/zx-spectrum</link>
       </download_links>
+   </system>
+   <system key="colecovision" name="ColecoVision">
+      <extensions>
+         <extension>col</extension>
+         <extension>zip</extension>
+      </extensions>
+   </system>
+   <system key="lutro" name="Lutro">
+      <extensions>
+         <extension>lua</extension>
+         <extension>lutro</extension>
+         <extension>zip</extension>
+      </extensions>
+   </system>
+   <system key="dreamcast" name="Dreamcast">
+      <extensions>
+         <extension>gdi</extension>
+         <extension>cdi</extension>
+         <extension>chd</extension>
+      </extensions>
+      <bios>
+         <file md5="e10c53c2f8b90bab96ead2d368858623">dc_boot.bin</file>
+         <file md5="d6e11a23f1fa01cddb5dfccf7e4cc8d7">dc_flash.bin</file>
+      </bios>
+   </system>
+   <system key="psp" name="PSP">
+      <extensions>
+         <extension>iso</extension>
+         <extension>cso</extension>
+      </extensions>
+   </system>
+   <system key="dos" name="DOS (x86)">
+      <extensions>
+         <extension>pc</extension>
+         <extension>dos</extension>
+      </extensions>
+   </system>
+   <system key="gamecube" name="GameCube">
+      <extensions>
+         <extension>iso</extension>
+         <extension>gc</extension>
+         <extension>gcz</extension>
+      </extensions>
+   </system>
+   <system key="wii" name="Wii">
+      <extensions>
+         <extension>iso</extension>
+         <extension>wbfs</extension>
+      </extensions>
+   </system>
+   <system key="apple2" name="Apple II">
+      <extensions>
+         <extension>nib</extension>
+         <extension>do</extension>
+         <extension>po</extension>
+         <extension>dsk</extension>
+      </extensions>
+   </system>
+   <system key="c64" name="Commodore c64">
+      <extensions>
+         <extension>d64</extension>
+         <extension>t64</extension>
+         <extension>x64</extension>
+      </extensions>
    </system>
 </systems>
