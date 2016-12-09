@@ -9,6 +9,7 @@ from .views.roms import RomListView, RomUploadJsonView
 #from .views.saves import SavesListView
 from .views.systems import SystemsListView
 from .views.monitor import MonitoringView
+from .views.moonlight import RecalboxMoonlightFormView
 
 urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
@@ -23,6 +24,8 @@ urlpatterns = [
     url(r'^logs/$', LogsView.as_view(), name='logs'),
     
     url(r'^systems/$', SystemsListView.as_view(), name='roms-systems'),
+
+    url(r'^moonlight/$', RecalboxMoonlightFormView.as_view(), name='moonlight'),
     
     #url(r'^systems/roms/saves/$', SavesListView.as_view(), name='roms-saves-list'),
     
