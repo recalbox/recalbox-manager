@@ -11,7 +11,7 @@ RECALBOX_THERMAL_BASEDIR = '/sys/class/thermal'
 # Assume 'thermal_zone0' is the CPU thermal infos on Raspberry
 RECALBOX_THERMAL_DEVICE_CPU_DIR = 'thermal_zone0'
 RECALBOX_THERMAL_CURRENT_TEMP_FILE = 'temp'
-RECALBOX_THERMAL_MAXTEMP_LIMIT_FILE = 'trip_point_0_temp'
+#RECALBOX_THERMAL_MAXTEMP_LIMIT_FILE = 'trip_point_0_temp'
 
 
 # Compatibility support for Recalbox versions from 3.2.x to 3.3.x
@@ -38,7 +38,8 @@ else:
             This is a naive implementation for the Raspberry2 which have only 
             one "trip_point" that is the "hot" type (should be critical)
             """
-            critical_limit = float(open(os.path.join(device_dir, RECALBOX_THERMAL_MAXTEMP_LIMIT_FILE), 'r').read().strip())
+            #critical_limit = float(open(os.path.join(device_dir, RECALBOX_THERMAL_MAXTEMP_LIMIT_FILE), 'r').read().strip())
+            critical_limit = 80000
             current_temp = float(open(os.path.join(device_dir, RECALBOX_THERMAL_CURRENT_TEMP_FILE), 'r').read().strip())
             
             # Divide per 1000 to have temperature in degrees Celsius
