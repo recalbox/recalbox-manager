@@ -183,6 +183,9 @@ RECALBOX_CONF_BACKUP_PATH = '/recalbox/share/system/recalbox.old.conf'
 RECALBOX_LOGFILE_PATH = "/recalbox/share/system/logs/recalbox.log"
 # Path to the Recalbox manifest file (actually shipped into manager project)
 RECALBOX_MANIFEST_FILEPATH = os.path.join(PROJECT_DIR, 'MANIFEST.xml')
+# Path to moonlight conf and backup
+RECALBOX_MOONLIGHT_PATH =  "/recalbox/share/system/configs/moonlight/moonlight.conf"
+RECALBOX_MOONLIGHT_BACKUP_PATH = "/recalbox/share/system/configs/moonlight/moonlight.old.conf"
 
 # Default empty entry for unknowed system from Manifest
 RECALBOX_SYSTEM_DEFAULT = {

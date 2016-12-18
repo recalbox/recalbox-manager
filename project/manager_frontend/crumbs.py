@@ -13,5 +13,6 @@ site.update({
     'manager:monitoring': ugettext_lazy('Monitoring'),
     'manager:roms-systems': ugettext_lazy('Rom by system'),
     'manager:roms-list': ugettext_lazy('{{ system_name }}'),
+    'manager:moonlight': ugettext_lazy('Moonlight'),
     #'manager:roms-saves-list': ugettext_lazy('Saves'),
 })
