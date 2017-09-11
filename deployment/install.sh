@@ -53,7 +53,7 @@ pip install virtualenv
 echo
 
 echo "* Downloading release $RELEASE"
-wget https://github.com/sveetch/recalbox-manager/archive/$RELEASE.zip
+wget https://github.com/recalbox/recalbox-manager/archive/$RELEASE.zip
 unzip $RELEASE.zip
 echo
 
