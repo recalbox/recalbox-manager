@@ -84,9 +84,10 @@ Basically, go into the recalbox-manager directory then use the following command
 
 The runserver is not launched as a daemon or a background process, as soon as you stop the instance thread (using CTRL-C) the webserver is stopped.
 
-**For production** you must use the right settings: ::
+**For production** you must use django with gunicorn and with the right settings: ::
 
-    bin/python manage.py runserver 0.0.0.0:80 --settings=project.settings_production --noreload
+    . bin/activate
+    DJANGO_SETTINGS_MODULE=project.settings_production bin/gunicorn --bind 0.0.0.0:80 project.wsgi
 
 **For development**, you should active the environment and you may want to use the right settings with additional stuff: ::
 

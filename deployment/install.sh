@@ -66,6 +66,10 @@ echo "* Installing project requirements"
 bin/pip install -r pip-requirements/$REQUIREMENTS
 echo
 
+echo "* Installing gunicorn server"
+bin/pip install gunicorn
+echo
+
 echo "* Initialize project"
 bin/python manage.py migrate
 echo
@@ -74,5 +78,5 @@ echo
 echo "DONE!"
 echo "Go into directory 'recalbox-manager-$RELEASE/' and you can start the server with the following command:"
 echo
-echo "bin/python manage.py runserver 0.0.0.0:80 --settings=project.settings_production --noreload"
+echo "DJANGO_SETTINGS_MODULE=project.settings_production bin/gunicorn --bind 0.0.0.0:80 project.wsgi"
 echo
