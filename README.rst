@@ -68,7 +68,7 @@ Before doing anything, ensure the Raspberry can access to the internet else conf
 
 Go where you want to install the manager directory then type the following commands: ::
 
-    wget -q -O - https://raw.githubusercontent.com/sveetch/recalbox-manager/master/deployment/install.sh | bash /dev/stdin --release=1.1.4.1
+    wget -q -O - https://raw.githubusercontent.com/recalbox/recalbox-manager/master/deployment/install.sh | bash /dev/stdin --release=1.1.4.1
 
 This will download an install script and automatically execute it to proceed to install. **This procedure is only for Recalbox systems that don't have the manager installed yet**, since Recalbox 3.3.0 beta15, the manager is allready installed at ``/usr/recalbox-manager``.
 
@@ -84,9 +84,10 @@ Basically, go into the recalbox-manager directory then use the following command
 
 The runserver is not launched as a daemon or a background process, as soon as you stop the instance thread (using CTRL-C) the webserver is stopped.
 
-**For production** you must use the right settings: ::
+**For production** you must use django with gunicorn and with the right settings: ::
 
-    bin/python manage.py runserver 0.0.0.0:80 --settings=project.settings_production --noreload
+    . bin/activate
+    DJANGO_SETTINGS_MODULE=project.settings_production bin/gunicorn --bind 0.0.0.0:80 project.wsgi
 
 **For development**, you should active the environment and you may want to use the right settings with additional stuff: ::
 

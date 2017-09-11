@@ -1,39 +1,43 @@
 .PHONY: help install install-dev assets clean delpyc syncf5
+.DEFAULT_GOAL := help
+
+define PRINT_HELP_PYSCRIPT
+import re, sys
+
+print("Please use `make <target>` where <target> is one of these")
+for line in sys.stdin:
+	match = re.match(r'^([a-zA-Z_-]+):.*?## (.*)$$', line)
+	if match:
+		target, help = match.groups()
+		print("%-20s %s" % (target, help))
+endef
+export PRINT_HELP_PYSCRIPT
 
 help:
-	@echo "Please use \`make <target>' where <target> is one of"
-	@echo
-	@echo "  clean  -- to clean your local repository from all builded stuff and caches"
-	@echo "  delpyc  -- to remove all *.pyc files, this is recursive from the current directory"
-	@echo
-	@echo "  install -- to build the project"
-	@echo "  install-dev -- to build the project for development"
-	@echo
-	@echo "  assets  -- to build assets for production environment"
-	@echo
-	@echo "  syncf5 -- to synchronize Foundation5 sources dir to assets (used only when you upgrade Foundation5)"
+	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
-delpyc:
+delpyc: ## to remove all *.pyc files, this is recursive from the current directory
 	find . -name "*\.pyc"|xargs rm -f
 
-clean: delpyc
+clean: delpyc ## to clean your local repository from all builded stuff and caches
 	rm -Rf bin include lib local node_modules compass/.sass-cache
 
-install:
+install: ## to build the project
 	virtualenv --no-site-packages .
+	bin/pip install gunicorn
 	bin/pip install -r pip-requirements/basic.txt
 	bin/python manage.py migrate
 
-install-dev: install
+install-dev: install ## to build the project for development
 	bundle install --gemfile=compass/Gemfile
 	npm install
 	foundation new foundation5 --version=5.5.2
 
-assets: 
+assets: ## to build assets for production environment
 	grunt uglify
 	grunt cssmin
 
-syncf5:
+syncf5: ## to synchronize Foundation5 sources dir to assets (used only when you upgrade Foundation5)
 	rm -f foundation5/bower_components/foundation/js/vendor/jquery.js
 	cp foundation5/bower_components/jquery/dist/jquery.js foundation5/bower_components/foundation/js/vendor/jquery.js
 	rm -Rf project/webapp_statics/js/foundation5
